@@ -2,6 +2,8 @@
 ![Download/month](https://img.shields.io/npm/dm/bahtrext.svg)
 ![Total Download](https://img.shields.io/npm/dt/bahtrext.svg)
 
+<a href="https://pkg-size.dev/bahtrext"><img src="https://pkg-size.dev/badge/install/106851" title="Install size for bahtrext"></a>
+<a href="https://pkg-size.dev/bahtrext"><img src="https://pkg-size.dev/badge/bundle/18197" title="Bundle size for bahtrext"></a>
 
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?logo=jest)](https://github.com/jestjs/jest)
 
@@ -11,7 +13,7 @@
   - [scroll-trigger](https://github.com/PingHuskar/bahtrext-scroll-trigger)
 
 ## Must Read
-- **Checkout Test Cases in `./test` Before Implement**
+- **Checkout Test Cases in `./__test__` Before Implement**
 - **`101`** ควรจะถูกอ่านอย่างไร ?
   - `หนึ่งร้อยหนึ่งบาทถ้วน`
     - [`Google Sheets`](https://sheets.google.com/)
@@ -28,17 +30,17 @@
       - [GitHub Repo](https://github.com/PingHuskar/npm-bahtrext)
 
 ## Beliefs
-1. Money in Thai Baht can be translate to word
-2. Default Decimal places is 2 digits; 3+ digits are optional.
+1. Money in Thai Baht can be translate to word, vice versa
+2. Default Decimal places is 2 digits; 3+ digits are optional
 3. Support Negative Number as Other Baht JS Library
 4. All Synchronous function
-5. This Number System not working well with large numbers.
+5. This Number System not working well with large numbers
 
 ## Change V2
 > Next Update Coming Soon
 - 2.0.0 - ES6
 
-
+++ webpack
 
 ## Change V1
 - 1.4.3 - 1.4.5 - Refactor

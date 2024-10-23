@@ -8,6 +8,10 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?logo=jest)](https://github.com/jestjs/jest)
 
 ## Demo / Example
+- Webpack
+  - [REPO](https://github.com/PingHuskar/webpack-bahtrext)
+  - [DEMO](https://pinghuskar.github.io/webpack-bahtrext/)
+  - [scripts](https://pinghuskar.github.io/webpack-bahtrext/main.js)
 - React
   - [BahtGame](https://timely-fenglisu-b68fd6.netlify.app/)
   - [scroll-trigger](https://github.com/PingHuskar/bahtrext-scroll-trigger)
@@ -39,8 +43,6 @@
 ## Change V2
 > Next Update Coming Soon
 - 2.0.0 - ES6
-
-++ webpack
 
 ## Change V1
 - 1.4.3 - 1.4.5 - Refactor

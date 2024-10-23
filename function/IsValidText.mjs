@@ -8,10 +8,11 @@ import TEN from "../const/primitive/TEN.mjs";
 import SPECIALONE from "../const/primitive/SPECIALONE.mjs";
 import SPECIALTWO from "../const/primitive/SPECIALTWO.mjs";
 import ONETONINE from "../const/array/ONETONINE.mjs";
+import RepEmt from "./RepEmt.mjs";
 
 const IsValidText = (text) => {
   if (typeof text !== `string`) return false;
-  if (text.replace(/ล้าน/g, "") === "") return false;
+  if (RepEmt(text, /ล้าน/g) === "") return false;
   const sixdigitswords = text.split(MILLION);
   for (const sixdigitsword of sixdigitswords) {
     if (/สองสิบ/.test(sixdigitsword)) return false;

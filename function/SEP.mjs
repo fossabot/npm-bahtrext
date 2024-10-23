@@ -6,6 +6,7 @@ import SPECIALONE from "../const/primitive/SPECIALONE.mjs";
 import SPECIALTWO from "../const/primitive/SPECIALTWO.mjs";
 import BAHT from "../const/primitive/BAHT.mjs";
 import FULLBAHT from "../const/primitive/FULLBAHT.mjs";
+import Replace from "./Replace.mjs";
 
 const SEP = (num, separator = `-`) => {
   let ret = ABT(num, true);
@@ -15,13 +16,15 @@ const SEP = (num, separator = `-`) => {
   for (let i of REVERSETHAIDIGITWORDS.filter((x) => x !== ``)) {
     ret = ret.replace(new RegExp(i, `g`), `${i}${separator}`);
   }
-  ret = ret
-    .replace(new RegExp(MILLION, `g`), `${MILLION}${separator}`)
-    .replace(new RegExp(SPECIALONE, `g`), `${SPECIALONE}${separator}`)
-    .replace(new RegExp(SPECIALTWO, `g`), `${SPECIALTWO}${separator}`)
-    .replace(`${BAHT}${FULLBAHT}`, "")
-    .replace(BAHT, `${BAHT}${separator}`)
-    .replace(new RegExp(`${separator}$`), ``);
+  ret = Replace(
+    ret
+    ,[new RegExp(MILLION, `g`), `${MILLION}${separator}`]
+    ,[new RegExp(SPECIALONE, `g`), `${SPECIALONE}${separator}`]
+    ,[new RegExp(SPECIALTWO, `g`), `${SPECIALTWO}${separator}`]
+    ,[`${BAHT}${FULLBAHT}`]
+    ,[BAHT, `${BAHT}${separator}`]
+    ,[new RegExp(`${separator}$`)]
+  );
   return ret;
 };
 

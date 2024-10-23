@@ -6,6 +6,7 @@ import BAHT from "../const/primitive/BAHT.mjs";
 import SATANG from "../const/primitive/SATANG.mjs";
 import MILLION from "../const/primitive/MILLION.mjs";
 import padWithLeadingZeros from "../snippet/padWithLeadingZeros.mjs";
+import RepEmt from "./RepEmt.mjs";
 
 const TB = (BT, error = `Invalid String`) => {
   if (!BT) return undefined;
@@ -57,7 +58,7 @@ const TB = (BT, error = `Invalid String`) => {
     );
   }
   return `${removeLeadingZeros(moneyBahts.reverse().join(""))}.${SatangNum(
-    moneySatang.replace(SATANG, ``)
+    RepEmt(moneySatang, SATANG)
   )}`;
 };
 export default TB;

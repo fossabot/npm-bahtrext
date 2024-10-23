@@ -8,11 +8,11 @@
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?logo=jest)](https://github.com/jestjs/jest)
 
 ## Demo / Example
-- Webpack
+- [Webpack](https://webpack.js.org/)
   - [REPO](https://github.com/PingHuskar/webpack-bahtrext)
   - [DEMO](https://pinghuskar.github.io/webpack-bahtrext/)
   - [scripts](https://pinghuskar.github.io/webpack-bahtrext/main.js)
-- React
+- [React](https://react.dev/)
   - [BahtGame](https://timely-fenglisu-b68fd6.netlify.app/)
   - [scroll-trigger](https://github.com/PingHuskar/bahtrext-scroll-trigger)
 

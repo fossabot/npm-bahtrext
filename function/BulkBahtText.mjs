@@ -2,6 +2,8 @@ import BahtText from "./BahtText.mjs";
 import IsMatchInSkipsPattern from "./IsMatchInSkipsPattern.mjs";
 import defaultBulkBahtTextPat from "../const/regex/defaultBulkBahtTextPat.mjs";
 import defaultBulkBahtTextSkips from "../const/regex/defaultBulkBahtTextSkips.mjs";
+import RepEmt from "./RepEmt.mjs";
+import globalNotDigits from "../const/regex/globalNotDigits.mjs";
 
 const BulkBahtText = (
   str,
@@ -17,7 +19,7 @@ const BulkBahtText = (
     if (IsMatchInSkipsPattern(match, skips)) continue;
     str = str.replace(
       match,
-      BahtText(match.replace(/[^\d]/g, "")).split('"').at(-2),
+      BahtText(RepEmt(match, globalNotDigits)).split('"').at(-2),
       ed
     );
   }

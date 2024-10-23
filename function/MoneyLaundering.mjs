@@ -1,11 +1,12 @@
-import removeLeadingZeros from "../snippet/removeLeadingZeros.mjs";
+import LeadingZerosRegex from "../const/regex/LeadingZerosRegex.mjs";
+import Replace from "./Replace.mjs";
 
 const MoneyLaundering = (money) => {
-  const removeComma = money.replace(/,/g, "");
-  const removeCommaAndUnderScore = removeComma.replace(/_/g, "");
-  const removeCommaAndUnderScoreAndLeadingZeros = removeLeadingZeros(
-    removeCommaAndUnderScore
+  return Replace(
+    money
+    , [/,/g]
+    , [/_/g]
+    , [LeadingZerosRegex]
   );
-  return removeCommaAndUnderScoreAndLeadingZeros;
 };
 export default MoneyLaundering;

@@ -1,1 +1,1 @@
-module.exports = ZERO = `ศูนย์`;
+module.exports = `ศูนย์`;

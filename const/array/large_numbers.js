@@ -1,4 +1,4 @@
-module.exports = large_numbers = [
+module.exports = [
   { name: "Million", powof10: 6 },
   { name: "Billion", powof10: 9 },
   { name: "Trillion", powof10: 12 },

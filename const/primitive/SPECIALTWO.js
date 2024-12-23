@@ -1,1 +1,1 @@
-module.exports = SPECIALTWO = `ยี่`;
+module.exports = `ยี่`;

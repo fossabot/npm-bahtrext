@@ -7,7 +7,7 @@ const SPECIALTWO = require(`../const/primitive/SPECIALTWO`);
 const BAHT = require(`../const/primitive/BAHT`);
 const FULLBAHT = require(`../const/primitive/FULLBAHT`);
 
-module.exports = SEP = (num, separator = `-`) => {
+module.exports = (num, separator = `-`) => {
   let ret = ABT(num, true);
   for (let i of ONETONINE) {
     ret = ret.replace(new RegExp(i, `g`), `${i}${separator}`);

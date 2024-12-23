@@ -6,7 +6,7 @@ const SatangFirstDigit = require(`./SatangFirstDigit`);
 const SatangSecondDigit = require(`./SatangSecondDigit`);
 const op = require(`operation-strint`)
 
-module.exports = PrintSatangs = (satangs, rounding = ``) => {
+module.exports = (satangs, rounding = ``) => {
   if (satangs.match(/^0*$/)) return [FULLBAHT, `0`];
   if ((!/^\d{0,2}$/.test(satangs) && rounding === ``) || /[^\d]/.test(satangs))
     return [undefined, `0`];

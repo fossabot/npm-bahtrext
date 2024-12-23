@@ -1,5 +1,5 @@
 const THAINUMBERWORDS = require(`../const/array/THAINUMBERWORDS`);
-module.exports = NumText = (str, arr = THAINUMBERWORDS, flag = `g`) => {
+module.exports = (str, arr = THAINUMBERWORDS, flag = `g`) => {
   if (!str) return undefined;
   if (typeof str !== "string") return `Invalid Type`;
   for (const i in arr) {

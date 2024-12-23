@@ -10,7 +10,7 @@ const EIGHT = require(`../primitive/EIGHT`);
 const NINE = require(`../primitive/NINE`);
 const TEN = require(`../primitive/TEN`)
 
-module.exports = THAINUMBERWORDS = [
+module.exports = [
   ZERO,
   ONE,
   TWO,

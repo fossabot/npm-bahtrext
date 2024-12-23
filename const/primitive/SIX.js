@@ -1,1 +1,1 @@
-module.exports = SIX = `หก`;
+module.exports = `หก`;

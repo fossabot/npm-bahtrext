@@ -3,7 +3,7 @@ const IsMatchInSkipsPattern = require(`./IsMatchInSkipsPattern`);
 const defaultBulkBahtTextPat = require(`../const/regex/defaultBulkBahtTextPat`);
 const defaultBulkBahtTextSkips = require(`../const/regex/defaultBulkBahtTextSkips`);
 
-module.exports = BulkBahtText = (
+module.exports = (
   str,
   pat = defaultBulkBahtTextPat,
   skips = defaultBulkBahtTextSkips,

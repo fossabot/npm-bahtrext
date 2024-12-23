@@ -45,6 +45,7 @@ const large_numbers = require(`./array/large_numbers`);
 const MAX_SAFE_INTEGER = require(`./primitive/MAX_SAFE_INTEGER`);
 const octalRegex1 = require(`./regex/octalRegex1`);
 const octalRegex2 = require(`./regex/octalRegex2`);
+const binaryRegex = require(`./regex/binaryRegex`);
 let THB = require(`./THB`);
 
 module.exports = {
@@ -90,6 +91,7 @@ module.exports = {
   large_numbers,
   octalRegex1,
   octalRegex2,
+  binaryRegex,
   MAX_SAFE_INTEGER,
   THB,
   negative,

@@ -3,7 +3,7 @@ const {
     SPECIALTWO,
     THAINUMBERWORDS
 } = require(`../const`)
-module.exports = SatangFirstDigit = (digit) => {
+module.exports = (digit) => {
   if (digit == 0) return ``;
   if (digit == 1) return `${TEN}`;
   if (digit == 2) return `${SPECIALTWO}${TEN}`;

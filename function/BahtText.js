@@ -1,15 +1,12 @@
 const splitIntFrac = require(`./splitIntFrac`)
 const MoneyLaundering = require(`./MoneyLaundering`)
 const PrintBaht = require(`./PrintBaht`)
-const { THAINUMBERWORDS , BAHT, FULLBAHT} = require(`../const`);
+const IsMoneyValidate = require(`./IsMoneyValidate`);
 const PrintSatangs = require(`./PrintSatangs`);
-const IsMoneyValidate = require("./IsMoneyValidate");
+const MoneyInvalid = require("../snippet/MoneyInvalid");
+const { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } = require(`../const`);
 const op = require(`operation-strint`);
-const MoneyInvalid = require(`../snippet/MoneyInvalid`);
-const THB = require("../const/THB")
-const READAS = require("../const/primitive/READAS");
-
-module.exports = BahtText = (
+module.exports = (
   money,
   ed = false,
   currencyformat = THB,

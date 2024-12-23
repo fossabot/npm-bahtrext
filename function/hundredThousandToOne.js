@@ -7,7 +7,7 @@ const {
 } = require(`../const`)
 
 const padWithLeadingZeros = require(`../snippet/padWithLeadingZeros`)
-module.exports = hundredThousandToOne = (digits, ed = false) => {
+module.exports = (digits, ed = false) => {
   let word = ``;
   let c = 0;
   const digitspadWithLeadingZeros = padWithLeadingZeros(digits, 6);

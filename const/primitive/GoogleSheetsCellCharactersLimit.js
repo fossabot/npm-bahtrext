@@ -1,1 +1,1 @@
-module.exports = GoogleSheetsCellCharactersLimit = 50000;
+module.exports = 50000;

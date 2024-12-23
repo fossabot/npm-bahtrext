@@ -1,11 +1,14 @@
 const SatangNum = require(`./SatangNum`)
-const IsValidText = require(`./IsValidText`);
+const padWithLeadingZeros = require(`../snippet/padWithLeadingZeros`);
 const removeLeadingingZeros = require(`../snippet/removeLeadingingZeros`);
-const FULLBAHT = require(`../const/primitive/FULLBAHT`)
-const BAHT = require(`../const/primitive/BAHT`)
-const SATANG = require(`../const/primitive/SATANG`)
-
-module.exports = TB = (BT, error = `Invalid String`) => {
+const IsValidText = require(`./IsValidText`);
+const FULLBAHT = require("../const/primitive/FULLBAHT");
+const BAHT = require("../const/primitive/BAHT");
+const ZERO = require("../const/primitive/ZERO");
+const MILLION = require("../const/primitive/MILLION");
+const SATANG = require("../const/primitive/SATANG");
+const THAINUMBERWORDS = require("../const/array/THAINUMBERWORDS");
+module.exports = (BT, error = `Invalid String`) => {
   if (!BT) return undefined;
   if (/บาท$/.test(BT)) BT = `${BT}${FULLBAHT}`;
   if (!/สตางค์$/.test(BT) && !/ถ้วน$/.test(BT)) return error;
@@ -24,19 +27,23 @@ module.exports = TB = (BT, error = `Invalid String`) => {
       continue;
     }
     const THUNDREDTHOUSAND =
-      /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?แสน/.exec(million)?.at(1) ||
+      // /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?แสน/.exec(million)?.at(1) ||
+      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?แสน/)?.at(1) ||
       ZERO;
     const VHUNDREDTHOUSAND = THAINUMBERWORDS.indexOf(THUNDREDTHOUSAND);
     const TTENTHOUSAND =
-      /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?หมื่น/.exec(million)?.at(1) ||
+      // /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?หมื่น/.exec(million)?.at(1) ||
+      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?หมื่น/)?.at(1) ||
       ZERO;
     const VTENTHOUSAND = THAINUMBERWORDS.indexOf(TTENTHOUSAND);
     const TTHOUSAND =
-      /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?พัน/.exec(million)?.at(1) ||
+      // /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?พัน/.exec(million)?.at(1) ||
+      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?พัน/)?.at(1) ||
       ZERO;
     const VTHOUSAND = THAINUMBERWORDS.indexOf(TTHOUSAND);
     const THUNDRED =
-      /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?ร้อย/.exec(million)?.at(1) ||
+      // /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?ร้อย/.exec(million)?.at(1) ||
+      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?ร้อย/)?.at(1) ||
       ZERO;
     const VHUNDRED = THAINUMBERWORDS.indexOf(THUNDRED);
     const VL =

@@ -7,7 +7,7 @@ const SIX = require(`../primitive/SIX`)
 const SEVEN = require(`../primitive/SEVEN`)
 const EIGHT = require(`../primitive/EIGHT`)
 const NINE = require(`../primitive/NINE`)
-module.exports = LTHAISATANGWORDS = [
+module.exports = [
   ``,
   SPECIALONE,
   TWO,

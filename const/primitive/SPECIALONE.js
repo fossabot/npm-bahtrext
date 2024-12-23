@@ -1,1 +1,1 @@
-module.exports = SPECIALONE = `เอ็ด`;
+module.exports = `เอ็ด`;

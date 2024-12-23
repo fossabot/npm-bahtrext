@@ -1,4 +1,4 @@
-module.exports = IsMatchInSkipsPattern = (match, skips) => {
+module.exports = (match, skips) => {
   for (const skip of skips) {
     if (skip.test(match)) return true;
   }

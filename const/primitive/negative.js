@@ -1,1 +1,1 @@
-module.exports = negative = `ลบ`;
+module.exports = `ลบ`;

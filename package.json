@@ -1,14 +1,15 @@
 {
   "name": "bahtrext",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "BahtText Stringify",
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "perf": "node performance",
     "cv": "jest --coverage"
   },
   "author": "Chadin Chaipornpisuth",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PingHuskar/npm-bahtrext.git"

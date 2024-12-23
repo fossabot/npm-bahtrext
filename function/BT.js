@@ -1,11 +1,18 @@
 const {isOctal, toDec} = require(`../octal`)
+const {isBin, toBin} = require(`../binary`)
 const MoneyInvalid = require(`../snippet/MoneyInvalid`);
 const BahtText = require("./BahtText");
-
-module.exports = BT = (money, ed = false, OL = false, rounding = ``) => {
+const THB = require('../const/THB')
+const READAS = require("../const/primitive/READAS");
+const GoogleSheetsCellCharactersLimit = require("../const/primitive/GoogleSheetsCellCharactersLimit");
+module.exports = (money, ed = false, OL = false, rounding = ``) => {
   const isOL = OL && isOctal(money);
+  const isBL = isBin(money);
   if (isOL) {
     money = toDec(money);
+  }
+  else if (isBL) {
+    money = toBin(money);
   }
   const rBahtText = BahtText(
     money,

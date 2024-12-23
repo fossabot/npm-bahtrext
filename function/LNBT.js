@@ -1,8 +1,7 @@
 const large_numbers = require(`../const/array/large_numbers`)
+const repeat = require("./repeat");
 const BT = require(`./BT`)
-const repeat = require("./repeat")
-
-module.exports = LNBT = (nameorpowerof10, d = `1`) => {
+module.exports = (nameorpowerof10, d = `1`) => {
   const tnameorpowerof10 = typeof nameorpowerof10;
   switch (tnameorpowerof10) {
     case `string`:
@@ -18,7 +17,7 @@ module.exports = LNBT = (nameorpowerof10, d = `1`) => {
       }
     case `number`:
       if (nameorpowerof10 < 0) return undefined;
-      return BT(d + `0`.repeat(nameorpowerof10));
+      return BT(d + repeat(`0`, [nameorpowerof10]));
     default:
       return undefined;
   }

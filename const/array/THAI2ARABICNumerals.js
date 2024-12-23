@@ -1,4 +1,4 @@
-module.exports = THAI2ARABICNumerals = [
+module.exports = [
   { th: `๐`, a: `0` },
   { th: `๑`, a: `1` },
   { th: `๒`, a: `2` },

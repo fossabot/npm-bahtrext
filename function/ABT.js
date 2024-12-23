@@ -1,6 +1,7 @@
 const NEG = require(`./NEG`)
 const BF = require(`./BF`)
-module.exports = ABT = (money, ed = false, allow_neg = false) => {
+const MAX_SAFE_INTEGER = require("../const/primitive/MAX_SAFE_INTEGER");
+module.exports = (money, ed = false, allow_neg = false) => {
   let retVal = undefined;
   if (!money) return retVal;
   switch (typeof money) {

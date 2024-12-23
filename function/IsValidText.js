@@ -1,15 +1,14 @@
-const MILLION = require(`../const/primitive/MILLION`);
-const REVERSETHAIDIGITWORDS = require(`../const/array/REVERSETHAIDIGITWORDS`);
-const HUNDREDTHOUSAND = require(`../const/primitive/HUNDREDTHOUSAND`);
-const TENTHOUSAND = require(`../const/primitive/TENTHOUSAND`);
-const THOUSAND = require(`../const/primitive/THOUSAND`);
-const HUNDRED = require(`../const/primitive/HUNDRED`);
-const TEN = require(`../const/primitive/TEN`);
-const SPECIALONE = require(`../const/primitive/SPECIALONE`);
-const SPECIALTWO = require(`../const/primitive/SPECIALTWO`);
-const ONETONINE = require(`../const/array/ONETONINE`);
-
-module.exports = IsValidText = (text) => {
+const MILLION = require("../const/primitive/MILLION");
+const SPECIALONE = require("../const/primitive/SPECIALONE");
+const SPECIALTWO = require("../const/primitive/SPECIALTWO");
+const HUNDREDTHOUSAND = require("../const/primitive/HUNDREDTHOUSAND");
+const TENTHOUSAND = require("../const/primitive/TENTHOUSAND");
+const THOUSAND = require("../const/primitive/THOUSAND");
+const HUNDRED = require("../const/primitive/HUNDRED");
+const TEN = require("../const/primitive/TEN");
+const REVERSETHAIDIGITWORDS = require("../const/array/REVERSETHAIDIGITWORDS");
+const ONETONINE = require("../const/array/ONETONINE");
+module.exports = (text) => {
   if (typeof text !== `string`) return false;
   if (text.replace(/ล้าน/g, "") === "") return false;
   const sixdigitswords = text.split(MILLION);

@@ -1,1 +1,1 @@
-module.exports = MILLION = `ล้าน`;
+module.exports = `ล้าน`;

@@ -1,1 +1,1 @@
-module.exports = BAHT = `บาท`;
+module.exports = `บาท`;

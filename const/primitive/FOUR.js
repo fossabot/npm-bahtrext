@@ -1,1 +1,1 @@
-module.exports = FOUR = `สี่`;
+module.exports = `สี่`;

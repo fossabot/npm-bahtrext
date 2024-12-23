@@ -1,5 +1,5 @@
 const removeLeadingingZeros = require(`../snippet/removeLeadingingZeros`)
-module.exports = MoneyLaundering = (money) => {
+module.exports = (money) => {
   const removeComma = money.replace(/,/g, "");
   const removeCommaAndUnderScore = removeComma.replace(/_/g, "");
   const removeCommaAndUnderScoreAndLeadingingZeros = removeLeadingingZeros(

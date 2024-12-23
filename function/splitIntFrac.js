@@ -1,4 +1,4 @@
-module.exports = splitIntFrac = (money) => {
+module.exports = (money) => {
   const match = money.match(/(\d*)(\.\d+)?/);
   let [moneyFull, moneyInt, moneyFrac] = match;
   moneyFrac === undefined

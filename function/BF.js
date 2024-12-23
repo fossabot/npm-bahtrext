@@ -1,7 +1,7 @@
 const THAI2ARABICNumerals = require(`../const/array/THAI2ARABICNumerals`);
-const BT = require("./BT")
+const BT = require(`./BT`);
 
-module.exports = BF = (flexmoney, ed = false, InvalidType = `Invalid Type`, OL = false) => {
+module.exports = (flexmoney, ed = false, InvalidType = `Invalid Type`, OL = false) => {
   if (!flexmoney) return undefined;
   if (typeof flexmoney !== "string") return InvalidType;
   let money = flexmoney;

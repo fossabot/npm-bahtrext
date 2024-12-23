@@ -1,5 +1,5 @@
 const ABT = require(`./ABT`)
-module.exports = OB = (money) => {
+module.exports = (money) => {
   return {
     val: money,
     typ: typeof money,

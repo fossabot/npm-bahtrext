@@ -27,7 +27,7 @@ const performanceBR = (money_array) => {
 const performance_arr = [];
 const performance_arr_s = [];
 
-for (i = 1; i <= 1000000; i++) {
+for (i = 1; i <= 10000; i+=0.01) {
   performance_arr.push(i);
   performance_arr_s.push(`${i}`);
 }

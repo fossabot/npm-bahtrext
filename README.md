@@ -3,12 +3,16 @@
 ![Total Download](https://img.shields.io/npm/dt/bahtrext.svg)
 
 ## Demo / Example
+- [Webpack](https://webpack.js.org/)
+  - [REPO](https://github.com/PingHuskar/webpack-bahtrext)
+  - [DEMO](https://pinghuskar.github.io/webpack-bahtrext/)
+  - [scripts](https://pinghuskar.github.io/webpack-bahtrext/main.js)
 - React
   - [BahtGame](https://timely-fenglisu-b68fd6.netlify.app/)
   - [scroll-trigger](https://github.com/PingHuskar/bahtrext-scroll-trigger)
 
 ## Must Read
-- **Checkout Test Cases in `./test` Before Implement**
+- **Checkout Test Cases in `index.test.js` Before Implement**
 - **`101`** ควรจะถูกอ่านอย่างไร ?
   - `หนึ่งร้อยหนึ่งบาทถ้วน`
     - [`Google Sheets`](https://sheets.google.com/)
@@ -29,10 +33,11 @@
 2. Default Decimal places is 2 digits; 3+ digits are optional.
 3. Support Negative Number as Other Baht JS Library
 4. All Synchronous function
-5. This Number System not working well with large numbers.
+5. This Number System not working well with large numbers. Is there a better way to read numbers in Thai?
 
 ## Changes
-- 1.4.3 - 1.4.5 - Refactor
+- 1.5.0 - add Binary Literal
+- 1.4.3 - 1.4.4 - Refactor
 - 1.4.2 - add NEG
 - 1.3.3 - Update Version Thai Baht Text JS + add SEP
 - 1.2.1 - GoogleSheetsCellCharactersLimit
@@ -52,6 +57,7 @@
 - [ValidSATANGRegex](https://regex101.com/r/yVvsFN/3)
 
 ## 😊 Plz Consider
+- [Line Sticker](https://store.line.me/stickershop/product/28717665/en)
 - [Give A Star](https://github.com/PingHuskar/npm-bahtrext)
 - Write a Review
 - Submit Test Case(s)

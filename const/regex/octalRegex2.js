@@ -1,1 +1,1 @@
-module.exports = octalRegex2 = /^0+[0-7]+$/i;
+module.exports = /^0+[0-7]+$/i;

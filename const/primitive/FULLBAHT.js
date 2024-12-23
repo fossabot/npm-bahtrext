@@ -1,1 +1,1 @@
-module.exports = FULLBAHT = `ถ้วน`;
+module.exports = `ถ้วน`;

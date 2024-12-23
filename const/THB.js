@@ -1,4 +1,4 @@
-module.exports = THB = new Intl.NumberFormat("th-TH", {
+module.exports = new Intl.NumberFormat("th-TH", {
   style: "currency",
   currency: "THB",
 });

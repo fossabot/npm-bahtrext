@@ -5,6 +5,7 @@ const {
 const {
   NumText,
   BT,
+  BF,
   ABT,
   PrintSatangs,
   BulkBahtText,
@@ -35,6 +36,11 @@ test('NumText', () => {
     expect(NumText(84000)).toBe(`Invalid Type`);
 });
 
+test("BF", () => {
+  expect(BF()).toBe(undefined);
+  expect(BF(283)).toBe(`Invalid Type`);
+});
+
 test(`BT CEIL`,() => {
   expect(BT(`4.990001`, false, false, `c`)).toBe(`ห้าบาทถ้วน`);
 })
@@ -48,6 +54,7 @@ test("BT BL", () => {
 });
 
 test('BT OL', () => {
+  expect(BT(`0x77`)).toBe(`หนึ่งร้อยสิบเก้าบาทถ้วน`);
   expect(BT(`077`)).toBe(`เจ็ดสิบเจ็ดบาทถ้วน`);
   expect(BT(`077`, false, true)).toBe(`หกสิบสามบาทถ้วน`);
   expect(BT(`0o71`, false, true)).toBe(`ห้าสิบเจ็ดบาทถ้วน`);
@@ -228,6 +235,9 @@ test(`BulkBahtText`, () =>{
         `กู้ 2000000000000 ดอก 3000000000000 กู้ชาตินี้........ใช้หนี้ชาติหน้า`
       ).replace(RegExp(`${BAHT}${FULLBAHT}`,`g`), ``)
     ).toBe(`กู้ สองล้านล้าน ดอก สามล้านล้าน กู้ชาตินี้........ใช้หนี้ชาติหน้า`);
+    expect(BulkBahtText(123)).toBe(`Invalid Type`);
+    expect(BulkBahtText(0x3)).toBe(`Invalid Type`);
+    expect(BulkBahtText(``)).toBe(null);
 })
 
 test('SatangNum', () => {
@@ -452,6 +462,7 @@ test(`LNBT`, () => {
     expect(LNBT(`JumNumKaoEpu`)).toBe(undefined);
     expect(LNBT(1, 0)).toBe(`ศูนย์บาทถ้วน`);
     expect(LNBT([`asdf`])).toBe(undefined);
+    expect(LNBT('undefined',234)).toBe(undefined);
 });
 
 test(`sep`, () => {

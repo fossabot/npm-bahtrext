@@ -5,14 +5,19 @@ const BahtText = require("./BahtText");
 const THB = require('../const/THB')
 const READAS = require("../const/primitive/READAS");
 const GoogleSheetsCellCharactersLimit = require("../const/primitive/GoogleSheetsCellCharactersLimit");
+const { isHex, toHex } = require("../hexadecimal");
 module.exports = (money, ed = false, OL = false, rounding = ``) => {
   const isOL = OL && isOctal(money);
   const isBL = isBin(money);
+  const isHD = isHex(money);
   if (isOL) {
     money = toDec(money);
   }
   else if (isBL) {
     money = toBin(money);
+  }
+  else if (isHD) {
+    money = toHex(money);
   }
   const rBahtText = BahtText(
     money,

@@ -2,6 +2,13 @@ const {octalRegex1, octalRegex2} = require('./const')
 const op = require(`operation-strint`)
 const isOctal = (money) => {
     if (typeof(money) !== `string`) return undefined;
+    if (/__/i.test(money)) return false;
+    if (/^0o.+/i.test(money)) {
+      money = money.replace(/(?<=[0-7])_(?=[0-7])/g, "");
+    }
+    else if (/_/i.test(money)) {
+      return false;
+    }
     return octalRegex1.test(money) || octalRegex2.test(money);
 }
 

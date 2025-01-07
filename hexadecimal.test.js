@@ -6,12 +6,23 @@ test(`isHex true`, () => {
   expect(isHex(`0X1F`)).toBe(true);
   expect(isHex(`0x0F`)).toBe(true);
   expect(isHex(`0X0E`)).toBe(true);
+  expect(isHex(`0x101_A010`)).toBe(true);
+  expect(isHex(`0x1_F`)).toBe(true);
+  expect(isHex(`0X1_F`)).toBe(true);
+  expect(isHex(`0x0_F`)).toBe(true);
+  expect(isHex(`0X0_E`)).toBe(true);
   expect(
     isHex(`0X001010101010A01C01010F1011E001010010010100100001010010001001`)
   ).toBe(true);
 });
 
 test(`isHex false`, () => {
+  expect(isHex(`0x101__A010`)).toBe(false);
+  expect(isHex(`0x1__F`)).toBe(false);
+  expect(isHex(`0X1__F`)).toBe(false);
+  expect(isHex(`0x0_F_`)).toBe(false);
+  expect(isHex(`0X_0_E`)).toBe(false);
+
   expect(isHex(`0xVb`)).toBe(false);
   expect(isHex(`0xb10W13010`)).toBe(false);
   expect(isHex(`0x7G7`)).toBe(false);

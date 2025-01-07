@@ -1,12 +1,4 @@
-module.exports = [
-  { th: `๐`, a: `0` },
-  { th: `๑`, a: `1` },
-  { th: `๒`, a: `2` },
-  { th: `๓`, a: `3` },
-  { th: `๔`, a: `4` },
-  { th: `๕`, a: `5` },
-  { th: `๖`, a: `6` },
-  { th: `๗`, a: `7` },
-  { th: `๘`, a: `8` },
-  { th: `๙`, a: `9` },
-]
+module.exports = Array.from({ length: 10 }, (_, i) => ({
+  th: String.fromCodePoint(3664 + i),
+  a: String.fromCodePoint(48 + i),
+}));;

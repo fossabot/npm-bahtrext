@@ -5,3 +5,4 @@ lib
 playground.js
 coverage
 app.js
+webpack.config.js

@@ -2,6 +2,7 @@ const { isBin, toBin } = require(`./binary`);
 
 test(`isBin true`, () => {
   expect(isBin(`0b101010`)).toBe(true);
+  expect(isBin(`0b1_0101_0`)).toBe(true);
   expect(isBin(`0b1`)).toBe(true);
   expect(isBin(`0B1`)).toBe(true);
   expect(isBin(`0b0`)).toBe(true);
@@ -11,6 +12,12 @@ test(`isBin true`, () => {
 
 test(`isBin false`, () => {
   expect(isBin(`0b`)).toBe(false);
+  expect(isBin(`0b1_`)).toBe(false);
+  expect(isBin(`0b0_`)).toBe(false);
+  expect(isBin(`0b_0_`)).toBe(false);
+  expect(isBin(`0b_1`)).toBe(false);
+  expect(isBin(`0b0_1010__111`)).toBe(false);
+  expect(isBin(`0b01_101010_`)).toBe(false);
   expect(isBin(`0b1013010`)).toBe(false);
   expect(isBin(`077`)).toBe(false);
   expect(isBin(`000077`)).toBe(false);

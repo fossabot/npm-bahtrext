@@ -3,6 +3,8 @@ const op = require(`operation-strint`);
 
 const isHex = (money) => {
   if (typeof money !== `string`) return undefined;
+  if (/__/i.test(money)) return false;
+  money = money.replace(/(?<=[\da-f])_(?=[\da-f])/gi, "");
   return hexadecRegex.test(money);
 };
 

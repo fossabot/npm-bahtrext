@@ -3,6 +3,8 @@ const op = require(`operation-strint`);
 
 const isBin = (money) => {
   if (typeof money !== `string`) return undefined;
+  if (/__/i.test(money)) return false;
+  money = money.replace(/(?<=[01])_(?=[01])/g, "");
   return binaryRegex.test(money);
 };
 

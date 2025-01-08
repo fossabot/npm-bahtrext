@@ -9,19 +9,17 @@ const isBin = (money) => {
 };
 
 const toBin = (num) => {
-  let val = `0`;
   if (!isBin(num)) return num;
   num = num.replace(/^0b/i, ``);
-  let pos = -1;
-  for (let i of num.split('').reverse()) {
-    let thispos_val = op.multiply(op.pow(`2`, `${pos + 1}`), i);
-    val = op.sum(val, thispos_val);
-    if (val == '') val = '0'
-    pos++;
-  }
-  return val;
-};
 
+  return num
+    .split("")
+    .reverse()
+    .reduce((acc, digit, index) => {
+      const thispos_val = op.multiply(op.pow(`2`, `${index}`), digit);
+      return op.sum(acc, thispos_val) || "0";
+    }, "0");
+};
 
 module.exports = {
   isBin,

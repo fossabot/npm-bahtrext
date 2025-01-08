@@ -1,29 +1,31 @@
-const {octalRegex1, octalRegex2} = require('./const')
-const op = require(`operation-strint`)
+const { octalRegex1, octalRegex2 } = require("./const");
+const op = require(`operation-strint`);
+
 const isOctal = (money) => {
-    if (typeof(money) !== `string`) return undefined;
-    if (/__/i.test(money)) return false;
-    if (/^0o.+/i.test(money)) {
-      money = money.replace(/(?<=[0-7])_(?=[0-7])/g, "");
-    }
-    else if (/_/i.test(money)) {
-      return false;
-    }
-    return octalRegex1.test(money) || octalRegex2.test(money);
-}
+  if (typeof money !== `string`) return undefined;
+  if (/__/i.test(money)) return false;
+
+  if (/^0o.+/i.test(money)) {
+    money = money.replace(/(?<=[0-7])_(?=[0-7])/g, "");
+  } else if (/_/i.test(money)) {
+    return false;
+  }
+
+  return octalRegex1.test(money) || octalRegex2.test(money);
+};
 
 const toDec = (num) => {
-    let val = `0`
-    if (!isOctal(num)) return num
-    num = num.replace(/^0+o?/, ``)
-    let pos = -1
-    for (let i of num.split("").reverse()) {
-      let thispos_val = op.multiply(op.pow(`8`, `${pos+1}`), i);
-      val = op.sum(val, thispos_val);
-      pos++;
-    }
-    return val
-}
+  if (!isOctal(num)) return num;
+  num = num.replace(/^0+o?/, ``);
+
+  return num
+    .split("")
+    .reverse()
+    .reduce((acc, digit, index) => {
+      const thispos_val = op.multiply(op.pow(`8`, `${index}`), digit);
+      return op.sum(acc, thispos_val) || "0";
+    }, "0");
+};
 
 module.exports = {
   isOctal,

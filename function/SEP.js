@@ -1,4 +1,4 @@
-const ABT = require(`./ABT`)
+const ABT = require(`./ABT`);
 const ONETONINE = require(`../const/array/ONETONINE`);
 const REVERSETHAIDIGITWORDS = require(`../const/array/REVERSETHAIDIGITWORDS`);
 const MILLION = require(`../const/primitive/MILLION`);
@@ -9,12 +9,16 @@ const FULLBAHT = require(`../const/primitive/FULLBAHT`);
 
 module.exports = (num, separator = `-`) => {
   let ret = ABT(num, true);
-  for (let i of ONETONINE) {
-    ret = ret.replace(new RegExp(i, `g`), `${i}${separator}`);
-  }
-  for (let i of REVERSETHAIDIGITWORDS.filter((x) => x !== ``)) {
-    ret = ret.replace(new RegExp(i, `g`), `${i}${separator}`);
-  }
+
+  const replaceWithSeparator = (arr) => {
+    arr.forEach((i) => {
+      ret = ret.replace(new RegExp(i, `g`), `${i}${separator}`);
+    });
+  };
+
+  replaceWithSeparator(ONETONINE);
+  replaceWithSeparator(REVERSETHAIDIGITWORDS.filter((x) => x !== ``));
+
   ret = ret
     .replace(new RegExp(MILLION, `g`), `${MILLION}${separator}`)
     .replace(new RegExp(SPECIALONE, `g`), `${SPECIALONE}${separator}`)
@@ -22,5 +26,6 @@ module.exports = (num, separator = `-`) => {
     .replace(`${BAHT}${FULLBAHT}`, "")
     .replace(BAHT, `${BAHT}${separator}`)
     .replace(new RegExp(`${separator}$`), ``);
+
   return ret;
 };

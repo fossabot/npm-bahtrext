@@ -1,11 +1,12 @@
-const splitIntFrac = require(`./splitIntFrac`)
-const MoneyLaundering = require(`./MoneyLaundering`)
-const PrintBaht = require(`./PrintBaht`)
+const splitIntFrac = require(`./splitIntFrac`);
+const MoneyLaundering = require(`./MoneyLaundering`);
+const PrintBaht = require(`./PrintBaht`);
 const IsMoneyValidate = require(`./IsMoneyValidate`);
 const PrintSatangs = require(`./PrintSatangs`);
 const MoneyInvalid = require("../snippet/MoneyInvalid");
 const { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } = require(`../const`);
 const op = require(`operation-strint`);
+
 module.exports = (
   money,
   ed = false,
@@ -18,14 +19,19 @@ module.exports = (
 ) => {
   if (!money) return NoInput;
   if (typeof money !== "string") return InvalidType;
+
   const cleanedMoney = MoneyLaundering(money);
-  if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`)
+  if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {
     return ClErr(money);
+  }
+
   const [moneyFull, moneyInt, moneyFrac] = splitIntFrac(cleanedMoney);
-  if (moneyFull.match(/^(0*)(\.0*)?$/))
+  if (moneyFull.match(/^(0*)(\.0*)?$/)) {
     return `${
       currencyformat ? currencyformat.format(moneyFull) : moneyFull
     } ${arrow} "${THAINUMBERWORDS[0]}${BAHT}${FULLBAHT}"`;
+  }
+
   const satang_part = PrintSatangs(moneyFrac, rounding);
   const opsum = op.sum(satang_part[1], moneyInt === `` ? `0` : moneyInt);
   const new_baht = opsum === `` ? `0` : opsum;

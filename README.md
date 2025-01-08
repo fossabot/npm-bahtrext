@@ -36,6 +36,7 @@
 5. This Number System not working well with large numbers. Is there a better way to read numbers in Thai?
 
 ## Changes
+- 1.6.2 - [Refact.ai] model gpt-4o-mini + human refactor
 - 1.6.1 - allow literal separator (,)
 - 1.6.0 - add Hexadecimal
 - 1.5.0 - add Binary Literal

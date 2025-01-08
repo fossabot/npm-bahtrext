@@ -1,24 +1,21 @@
-const {isOctal, toDec} = require(`../octal`)
-const {isBin, toBin} = require(`../binary`)
+const { isOctal, toDec } = require(`../octal`);
+const { isBin, toBin } = require(`../binary`);
 const MoneyInvalid = require(`../snippet/MoneyInvalid`);
 const BahtText = require("./BahtText");
-const THB = require('../const/THB')
+const THB = require("../const/THB");
 const READAS = require("../const/primitive/READAS");
 const GoogleSheetsCellCharactersLimit = require("../const/primitive/GoogleSheetsCellCharactersLimit");
 const { isHex, toHex } = require("../hexadecimal");
+
 module.exports = (money, ed = false, OL = false, rounding = ``) => {
-  const isOL = OL && isOctal(money);
-  const isBL = isBin(money);
-  const isHD = isHex(money);
-  if (isOL) {
+  if (OL && isOctal(money)) {
     money = toDec(money);
-  }
-  else if (isBL) {
+  } else if (isBin(money)) {
     money = toBin(money);
-  }
-  else if (isHD) {
+  } else if (isHex(money)) {
     money = toHex(money);
   }
+
   const rBahtText = BahtText(
     money,
     ed,
@@ -29,13 +26,17 @@ module.exports = (money, ed = false, OL = false, rounding = ``) => {
     null,
     rounding
   );
+
   if (!rBahtText) return undefined;
+
   const retText = rBahtText.split('"').at(-2);
   if (!retText) return undefined;
+
   if (retText.length > GoogleSheetsCellCharactersLimit) {
     console.warn(
-      `return string Exceed Google Sheets Cell Limit (${GoogleSheetsCellCharactersLimit})`
+      `Return string exceeds Google Sheets Cell Limit (${GoogleSheetsCellCharactersLimit})`
     );
   }
+
   return retText;
 };

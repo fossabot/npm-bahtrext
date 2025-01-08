@@ -1,15 +1,14 @@
-const negative = require(`../const/primitive/negative`)
-const BF = require(`./BF`)
+const negative = require(`../const/primitive/negative`);
+const BF = require(`./BF`);
+
 module.exports = (money, ed = false, f = BF, neg = negative) => {
-  let retVal
   if (
     /^\-([\d๐-๙]*)(\.\[\d๐-๙]{0,2}0*)?/.test(money) &&
     !/^\-{2,}/.test(money)
   ) {
     money = money.replace(/^\-/, ``);
-    retVal = `${neg}${f(money, ed)}`;
-  } else {
-    retVal = f(money, ed);
+    return `${neg}${f(money, ed)}`;
   }
-  return retVal
-}
+
+  return f(money, ed);
+};

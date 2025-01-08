@@ -1,25 +1,29 @@
 const pass = (val) => {
-    return
-}
+  return;
+};
 
-const performance = (money_array) => {
+const performance = async (money_array) => {
   const THBText = require("thai-baht-text");
   console.time("thai-baht-text");
+
   for (const money of money_array) {
     // console.log(THBText(money));
-    pass(THBText(money));
+    await pass(THBText(money));
   }
+
   console.timeEnd("thai-baht-text");
   return `return`;
 };
 
-const performanceBR = (money_array) => {
-    const BahtRext = require('./index');
+const performanceBR = async (money_array) => {
+  const BahtRext = require("./index");
   console.time("BahtRext");
+
   for (const money of money_array) {
     // console.log(BahtRext.BF(money));
-    pass(BahtRext.BF(money));
+    await pass(BahtRext.BF(money));
   }
+
   console.timeEnd("BahtRext");
   return `return`;
 };
@@ -27,10 +31,16 @@ const performanceBR = (money_array) => {
 const performance_arr = [];
 const performance_arr_s = [];
 
-for (i = 1; i <= 10000; i+=0.01) {
-  performance_arr.push(i);
-  performance_arr_s.push(`${i}`);
-}
+const generatePerformanceArrays = (start, end, step) => {
+  for (let i = start; i <= end; i += step) {
+    performance_arr.push(i);
+    performance_arr_s.push(`${i}`);
+  }
+};
 
-console.log(performanceBR(performance_arr_s));
-console.log(performance(performance_arr));
+generatePerformanceArrays(1, 10000, 0.01);
+
+(async () => {
+  console.log(await performanceBR(performance_arr_s));
+  console.log(await performance(performance_arr));
+})();

@@ -39,7 +39,7 @@ module.exports = (digits, ed = false) => {
         return;
       (w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`); return;
     }
-    (w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`); return;
+    w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`;
   });
   return w;
 };

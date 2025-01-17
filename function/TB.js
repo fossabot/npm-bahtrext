@@ -21,7 +21,7 @@ module.exports = (BT, error = `Invalid String`) => {
     return `0.${SatangNum(moneyBaht.replace(SATANG, ''))}`;
   }
 
-  const retSatang = SatangNum(moneySatang.replace(SATANG, ``));
+  const retSatang = SatangNum(moneySatang.replace(SATANG, ''));
   if (!retSatang) return error;
 
   if (!IsValidText(moneyBaht)) return error;
@@ -65,6 +65,6 @@ module.exports = (BT, error = `Invalid String`) => {
   }
 
   return `${removeLeadingingZeros(moneyBahts.toReversed().join(""))}.${SatangNum(
-    moneySatang.replace(SATANG, ``)
+    moneySatang.replace(SATANG, '')
   )}`;
 };

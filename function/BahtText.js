@@ -5,20 +5,18 @@ const IsMoneyValidate = require(`./IsMoneyValidate`);
 const PrintSatangs = require(`./PrintSatangs`);
 const MoneyInvalid = require("../snippet/MoneyInvalid");
 const { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } = require(`../const`);
-const op = require(`operation-strint`);
+const { sum } = require(`operation-strint`);
 
 module.exports = (
   money,
   ed = false,
+  rounding = ``,
   currencyformat = THB,
-  arrow = READAS,
   ClErr = MoneyInvalid,
-  InvalidType = `"Invalid Type"`,
-  NoInput = null,
-  rounding = ``
+  arrow = READAS,
 ) => {
-  if (!money) return NoInput;
-  if (typeof money !== "string") return InvalidType;
+  if (!money) return undefined;
+  if (typeof money !== "string") return `"Invalid Type"`;
 
   const cleanedMoney = MoneyLaundering(money);
   if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {
@@ -33,10 +31,10 @@ module.exports = (
   }
 
   const satang_part = PrintSatangs(moneyFrac, rounding);
-  const opsum = op.sum(satang_part[1], moneyInt === `` ? `0` : moneyInt);
+  const opsum = sum(satang_part[1], moneyInt === `` ? `0` : moneyInt);
   const new_baht = opsum === `` ? `0` : opsum;
 
-  const baht_part = PrintBaht(new_baht, ed).replace(/^บาท$/, ``);
+  const baht_part = PrintBaht(new_baht, ed).replace(/^บาท$/, '');
   return `${
     currencyformat ? currencyformat.format(moneyFull) : moneyFull
   } ${arrow} "${baht_part}${satang_part[0]}"`;

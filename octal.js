@@ -1,5 +1,5 @@
 const { octalRegex1, octalRegex2 } = require("./const");
-const op = require(`operation-strint`);
+const { sum, multiply, pow } = require(`operation-strint`);
 
 const isOctal = (money) => {
   if (typeof money !== `string`) return undefined;
@@ -16,14 +16,14 @@ const isOctal = (money) => {
 
 const toDec = (num) => {
   if (!isOctal(num)) return num;
-  num = num.replace(/^0+o?/, ``);
+  num = num.replace(/^0+o?/, '');
 
   return num
     .split("")
-    .reverse()
+    .toReversed()
     .reduce((acc, digit, index) => {
-      const thispos_val = op.multiply(op.pow(`8`, `${index}`), digit);
-      return op.sum(acc, thispos_val) || "0";
+      const thispos_val = multiply(pow(`8`, `${index}`), digit);
+      return sum(acc, thispos_val) || "0";
     }, "0");
 };
 

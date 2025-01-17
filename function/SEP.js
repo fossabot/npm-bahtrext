@@ -17,7 +17,7 @@ module.exports = (num, separator = `-`) => {
   };
 
   replaceWithSeparator(ONETONINE);
-  replaceWithSeparator(REVERSETHAIDIGITWORDS.filter((x) => x !== ``));
+  replaceWithSeparator(REVERSETHAIDIGITWORDS.filter((x) => x !== ''));
 
   ret = ret
     .replace(new RegExp(MILLION, `g`), `${MILLION}${separator}`)
@@ -25,7 +25,7 @@ module.exports = (num, separator = `-`) => {
     .replace(new RegExp(SPECIALTWO, `g`), `${SPECIALTWO}${separator}`)
     .replace(`${BAHT}${FULLBAHT}`, "")
     .replace(BAHT, `${BAHT}${separator}`)
-    .replace(new RegExp(`${separator}$`), ``);
+    .replace(new RegExp(`${separator}$`), '');
 
   return ret;
 };

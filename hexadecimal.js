@@ -1,5 +1,5 @@
 const hexadecRegex = require("./const/regex/hexadecRegex");
-const op = require(`operation-strint`);
+const { sum, multiply, pow } = require(`operation-strint`);
 
 const isHex = (money) => {
   if (typeof money !== `string`) return undefined;
@@ -22,14 +22,14 @@ const toDec = (atof) => {
 
 const toHex = (num) => {
   if (!isHex(num)) return num;
-  num = num.replace(/^0x/i, ``);
+  num = num.replace(/^0x/i, '');
 
   return num
     .split("")
-    .reverse()
+    .toReversed()
     .reduce((acc, digit, index) => {
-      const thispos_val = op.multiply(op.pow(`16`, `${index}`), toDec(digit));
-      return op.sum(acc, thispos_val) || "0";
+      const thispos_val = multiply(pow(`16`, `${index}`), toDec(digit));
+      return sum(acc, thispos_val) || "0";
     }, `0`);
 };
 

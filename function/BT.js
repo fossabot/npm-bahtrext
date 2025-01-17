@@ -7,7 +7,7 @@ const READAS = require("../const/primitive/READAS");
 const GoogleSheetsCellCharactersLimit = require("../const/primitive/GoogleSheetsCellCharactersLimit");
 const { isHex, toHex } = require("../hexadecimal");
 
-module.exports = (money, ed = false, OL = false, rounding = ``) => {
+module.exports = (money, ed = false, OL = false, rounding = '') => {
   if (OL && isOctal(money)) {
     money = toDec(money);
   } else if (isBin(money)) {
@@ -19,12 +19,10 @@ module.exports = (money, ed = false, OL = false, rounding = ``) => {
   const rBahtText = BahtText(
     money,
     ed,
+    rounding,
     THB,
-    READAS,
     MoneyInvalid,
-    `"Invalid Type"`,
-    null,
-    rounding
+    READAS,
   );
 
   if (!rBahtText) return undefined;

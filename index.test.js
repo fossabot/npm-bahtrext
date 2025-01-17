@@ -23,7 +23,7 @@ const {
 const op = require('operation-strint');
 
 test(`PrintBaht`, () => {
-  expect(PrintBaht(``)).toBe('');
+  expect(PrintBaht('')).toBe('');
   expect(PrintBaht(`239043`)).toBe("สองแสนสามหมื่นเก้าพันสี่สิบสามบาท");
   expect(PrintBaht(`7238974333098402`)).toBe(
     "เจ็ดพันสองร้อยสามสิบแปดล้านเก้าแสนเจ็ดหมื่นสี่พันสามร้อยสามสิบสามล้านเก้าหมื่นแปดพันสี่ร้อยสองบาท"
@@ -198,7 +198,7 @@ test('PrintSatangs', () =>{
     expect(PrintSatangs(`21`)[0]).toBe(`ยี่สิบเอ็ดสตางค์`);
     expect(PrintSatangs(`01`)[0]).toBe(`หนึ่งสตางค์`);
     expect(PrintSatangs(`1`)[0]).toBe(`สิบสตางค์`);
-    expect(PrintSatangs(``)[0]).toBe(FULLBAHT);
+    expect(PrintSatangs('')[0]).toBe(FULLBAHT);
     expect(PrintSatangs(`0`)[0]).toBe(FULLBAHT);
     expect(PrintSatangs(`00`)[0]).toBe(FULLBAHT);
     expect(PrintSatangs(`0000`)[0]).toBe(FULLBAHT);
@@ -227,23 +227,23 @@ test(`BulkBahtText`, () =>{
     ).toBe(`สามสิบบาทรักษาทุกโรค`);
     expect(
       BulkBahtText(`เงินดิจิมอน 10000฿ ใช้ยังไง ได้วันไหน ใครได้บ้าง`)
-        .replace(FULLBAHT, ``)
-        .replace(/฿/g, ``)
+        .replace(FULLBAHT, '')
+        .replace(/฿/g, '')
     ).toBe(`เงินดิจิมอน หนึ่งหมื่นบาท ใช้ยังไง ได้วันไหน ใครได้บ้าง`);
-    expect(BulkBahtText(`"900 ถูกมาก" ตุยไปละ`).replace(FULLBAHT, ``)).toBe(
+    expect(BulkBahtText(`"900 ถูกมาก" ตุยไปละ`).replace(FULLBAHT, '')).toBe(
       `"เก้าร้อยบาท ถูกมาก" ตุยไปละ`
     );
     expect(
-      BulkBahtText(`ค่าโง่จำนำข้าว 200000000000`).replace(FULLBAHT, ``)
+      BulkBahtText(`ค่าโง่จำนำข้าว 200000000000`).replace(FULLBAHT, '')
     ).toBe(`ค่าโง่จำนำข้าว สองแสนล้านบาท`);
     expect(
       BulkBahtText(
         `กู้ 2000000000000 ดอก 3000000000000 กู้ชาตินี้........ใช้หนี้ชาติหน้า`
-      ).replace(RegExp(`${BAHT}${FULLBAHT}`,`g`), ``)
+      ).replace(RegExp(`${BAHT}${FULLBAHT}`,`g`), '')
     ).toBe(`กู้ สองล้านล้าน ดอก สามล้านล้าน กู้ชาตินี้........ใช้หนี้ชาติหน้า`);
     expect(BulkBahtText(123)).toBe(`Invalid Type`);
     expect(BulkBahtText(0x3)).toBe(`Invalid Type`);
-    expect(BulkBahtText(``)).toBe(null);
+    expect(BulkBahtText('')).toBe(null);
 })
 
 test('SatangNum', () => {

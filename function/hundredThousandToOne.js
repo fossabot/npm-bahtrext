@@ -25,16 +25,21 @@ const getDigit = (d) => {
 
 module.exports = (digits, ed = false) => {
   let w = ``;
-  const digitspadWithLeadingZeros = padWithLeadingZeros(digits, 6);
-  digitspadWithLeadingZeros.split("").forEach((d, i) => {
+  const Z = padWithLeadingZeros(digits, 6);
+  Z.split("").forEach((d, i) => {
     d = parseInt(d);
     if (!d) return;
-    if (i === 4) return w += getDigit(d);
+    if (i === 4 && (w += getDigit(d))) return;
     if (i === 5) {
-      if (d === 1 && (ed || digitspadWithLeadingZeros[4] !== "0")) return w += SPECIALONE;
-      return w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`;
+      if (
+        d === 1 &&
+        (ed || Z[4] !== "0") &&
+        (w += SPECIALONE)
+      )
+        return;
+      (w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`); return;
     }
-    return w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`;
+    (w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`); return;
   });
   return w;
 };

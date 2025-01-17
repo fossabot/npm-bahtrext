@@ -8,6 +8,7 @@ const HUNDRED = require("../const/primitive/HUNDRED");
 const TEN = require("../const/primitive/TEN");
 const REVERSETHAIDIGITWORDS = require("../const/array/REVERSETHAIDIGITWORDS");
 const ONETONINE = require("../const/array/ONETONINE");
+const ISGREQ = require("./ISGREQ");
 
 module.exports = (text) => {
   if (typeof text !== `string` || text.replace(/ล้าน/g, "") === "")
@@ -20,7 +21,7 @@ module.exports = (text) => {
 
     for (const REVERSETHAIDIGITWORD of REVERSETHAIDIGITWORDS.slice(0, -1)) {
       if (
-        (sixdigitsword.match(new RegExp(REVERSETHAIDIGITWORD, "g"))?.length ||
+        (sixdigitsword.match(RegExp(REVERSETHAIDIGITWORD, "g"))?.length ||
           0) > 1
       ) {
         return false;
@@ -42,24 +43,23 @@ module.exports = (text) => {
       ])
     );
 
-    if (
-      !(
-        ((ii.TEN >= ii.HUNDRED &&
-          ii.TEN >= ii.THOUSAND &&
-          ii.TEN >= ii.TENTHOUSAND &&
-          ii.TEN >= ii.HUNDREDTHOUSAND) ||
-          ii.TEN === 0) &&
-        ((ii.HUNDRED >= ii.THOUSAND &&
-          ii.HUNDRED >= ii.TENTHOUSAND &&
-          ii.HUNDRED >= ii.HUNDREDTHOUSAND) ||
-          ii.HUNDRED === 0) &&
-        ((ii.THOUSAND >= ii.TENTHOUSAND && ii.THOUSAND >= ii.HUNDREDTHOUSAND) ||
-          ii.THOUSAND === 0) &&
+    if (!(
+        ISGREQ(
+          ii.TEN,
+          ii.HUNDRED,
+          ii.THOUSAND,
+          ii.TENTHOUSAND,
+          ii.HUNDREDTHOUSAND
+        ) &&
+        ISGREQ(
+          ii.HUNDRED,
+          ii.THOUSAND,
+          ii.TENTHOUSAND,
+          ii.HUNDREDTHOUSAND
+        ) &&
+        ISGREQ(ii.THOUSAND, ii.TENTHOUSAND, ii.HUNDREDTHOUSAND) &&
         (ii.TENTHOUSAND >= ii.HUNDREDTHOUSAND || ii.TENTHOUSAND === 0)
-      )
-    ) {
-      return false;
-    }
+    )) return false;
 
     const eachdigits = sixdigitsword.split(/แสน|หมื่น|พัน|ร้อย|สิบ/);
     for (const digit of eachdigits) {

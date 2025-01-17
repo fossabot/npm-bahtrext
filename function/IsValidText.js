@@ -11,18 +11,15 @@ const ONETONINE = require("../const/array/ONETONINE");
 const ISGREQ = require("./ISGREQ");
 
 module.exports = (text) => {
-  if (typeof text !== `string` || text.replace(/ล้าน/g, "") === "")
-    return false;
+  if (typeof text !== `string`) return false;
+  if (text.replace(/ล้าน/g, "") === "") return false;
+  if (/สองสิบ|สิบหนึ่ง|เอ็ดสิบ/.test(text)) return false;
 
-  const sixdigitswords = text.split(MILLION);
-
-  for (const sixdigitsword of sixdigitswords) {
-    if (/สองสิบ|สิบหนึ่ง/.test(sixdigitsword)) return false;
-
+  for (const sixdigitsword of text.split(MILLION)) {
     for (const REVERSETHAIDIGITWORD of REVERSETHAIDIGITWORDS.slice(0, -1)) {
       if (
-        (sixdigitsword.match(RegExp(REVERSETHAIDIGITWORD, "g"))?.length ||
-          0) > 1
+        (sixdigitsword.match(RegExp(REVERSETHAIDIGITWORD, "g"))?.length || 0) >
+        1
       ) {
         return false;
       }
@@ -43,7 +40,10 @@ module.exports = (text) => {
       ])
     );
 
-    if (!(
+    console.log(ii)
+
+    if (
+      !(
         ISGREQ(
           ii.TEN,
           ii.HUNDRED,
@@ -51,26 +51,18 @@ module.exports = (text) => {
           ii.TENTHOUSAND,
           ii.HUNDREDTHOUSAND
         ) &&
-        ISGREQ(
-          ii.HUNDRED,
-          ii.THOUSAND,
-          ii.TENTHOUSAND,
-          ii.HUNDREDTHOUSAND
-        ) &&
+        ISGREQ(ii.HUNDRED, ii.THOUSAND, ii.TENTHOUSAND, ii.HUNDREDTHOUSAND) &&
         ISGREQ(ii.THOUSAND, ii.TENTHOUSAND, ii.HUNDREDTHOUSAND) &&
         (ii.TENTHOUSAND >= ii.HUNDREDTHOUSAND || ii.TENTHOUSAND === 0)
-    )) return false;
+      )
+    )
+      return false;
 
     const eachdigits = sixdigitsword.split(/แสน|หมื่น|พัน|ร้อย|สิบ/);
-    for (const digit of eachdigits) {
-      if (digit === "") continue;
-
-      if (ONETONINE.indexOf(digit) === -1) {
-        if (digit === SPECIALONE || digit === SPECIALTWO) {
-          continue;
-        }
-        return false;
-      }
+    for (const digit of eachdigits.filter(x => x)) {
+      const b = !ONETONINE.includes(digit);
+      if (b && [SPECIALONE, SPECIALTWO].includes(digit)) continue 
+      if (b) return false;
     }
   }
 

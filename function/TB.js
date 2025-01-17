@@ -50,10 +50,10 @@ module.exports = (BT, error = `Invalid String`) => {
     const VL =
       SatangNum(
         million
-          .replace(/.+แสน/, '')
-          .replace(/.+หมื่น/, '')
-          .replace(/.+พัน/, '')
-          .replace(/.+ร้อย/, '')
+          .replace(/.*แสน/, '')
+          .replace(/.*หมื่น/, '')
+          .replace(/.*พัน/, '')
+          .replace(/.*ร้อย/, '')
       ) || `00`;
 
     moneyBahts.push(

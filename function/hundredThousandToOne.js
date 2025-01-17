@@ -8,31 +8,33 @@ const {
 
 const padWithLeadingZeros = require(`../snippet/padWithLeadingZeros`);
 
+const getDigit = (d) => {
+  let w = "";
+  switch (d) {
+    case 2:
+      w += `${SPECIALTWO}${TEN}`;
+      break;
+    case 1:
+      w += TEN;
+      break;
+    default:
+      w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[4]}`;
+  }
+  return w;
+};
+
 module.exports = (digits, ed = false) => {
-  let word = ``;
+  let w = ``;
   const digitspadWithLeadingZeros = padWithLeadingZeros(digits, 6);
-
-  digitspadWithLeadingZeros.split("").forEach((digit, index) => {
-    digit = parseInt(digit);
-    if (digit !== 0) {
-      if (index === 4) {
-        word +=
-          digit === 2
-            ? `${SPECIALTWO}${TEN}`
-            : digit === 1
-            ? TEN
-            : `${THAINUMBERWORDS[digit]}${REVERSETHAIDIGITWORDS[index]}`;
-      } else if (index === 5) {
-        if (digit === 1 && (ed || digitspadWithLeadingZeros[4] !== "0")) {
-          word += SPECIALONE;
-        } else {
-          word += `${THAINUMBERWORDS[digit]}${REVERSETHAIDIGITWORDS[index]}`;
-        }
-      } else {
-        word += `${THAINUMBERWORDS[digit]}${REVERSETHAIDIGITWORDS[index]}`;
-      }
+  digitspadWithLeadingZeros.split("").forEach((d, i) => {
+    d = parseInt(d);
+    if (!d) return;
+    if (i === 4) return w += getDigit(d);
+    if (i === 5) {
+      if (d === 1 && (ed || digitspadWithLeadingZeros[4] !== "0")) return w += SPECIALONE;
+      return w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`;
     }
+    return w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[i]}`;
   });
-
-  return word;
+  return w;
 };

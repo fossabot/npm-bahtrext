@@ -40,8 +40,6 @@ module.exports = (text) => {
       ])
     );
 
-    console.log(ii)
-
     if (
       !(
         ISGREQ(

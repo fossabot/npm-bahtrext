@@ -15,7 +15,7 @@ module.exports = (money, ed = false) => {
     money = money.replace(LAST6DIGITPATTERN, "");
   }
 
-  return `${LeadingSpecialOneToOne(newMoney.reverse().join("")).replace(
+  return `${LeadingSpecialOneToOne(newMoney.toReversed().join("")).replace(
     /ล้าน$/,
     ``
   )}${BAHT}`;

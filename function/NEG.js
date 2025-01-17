@@ -3,10 +3,10 @@ const BF = require(`./BF`);
 
 module.exports = (money, ed = false, f = BF, neg = negative) => {
   if (
-    /^\-([\d๐-๙]*)(\.\[\d๐-๙]{0,2}0*)?/.test(money) &&
-    !/^\-{2,}/.test(money)
+    /^-([\d๐-๙]*)(\.\[\d๐-๙]{0,2}0*)?/.test(money) &&
+    !/^-{2,}/.test(money)
   ) {
-    money = money.replace(/^\-/, ``);
+    money = money.replace(/^-/, ``);
     return `${neg}${f(money, ed)}`;
   }
 

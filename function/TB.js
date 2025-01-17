@@ -18,7 +18,7 @@ module.exports = (BT, error = `Invalid String`) => {
   const [moneyBaht, moneySatang] = BT.split(BAHT);
 
   if (moneyBaht.endsWith(SATANG) && !moneySatang) {
-    return `0.${SatangNum(moneyBaht.replace(SATANG, ``))}`;
+    return `0.${SatangNum(moneyBaht.replace(SATANG, ''))}`;
   }
 
   const retSatang = SatangNum(moneySatang.replace(SATANG, ``));
@@ -27,7 +27,7 @@ module.exports = (BT, error = `Invalid String`) => {
   if (!IsValidText(moneyBaht)) return error;
 
   const moneyBahts = [];
-  const millions = moneyBaht.split(MILLION).reverse();
+  const millions = moneyBaht.split(MILLION).toReversed();
 
   for (const million of millions) {
     if (SatangNum(million)) {
@@ -35,33 +35,25 @@ module.exports = (BT, error = `Invalid String`) => {
       continue;
     }
 
-    const THUNDREDTHOUSAND =
-      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?แสน/)?.at(1) ||
-      ZERO;
+    const THUNDREDTHOUSAND = /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?แสน/.exec(million)?.at(1) || ZERO;
     const VHUNDREDTHOUSAND = THAINUMBERWORDS.indexOf(THUNDREDTHOUSAND);
 
-    const TTENTHOUSAND =
-      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?หมื่น/)?.at(1) ||
-      ZERO;
+    const TTENTHOUSAND = /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?หมื่น/.exec(million)?.at(1) || ZERO;
     const VTENTHOUSAND = THAINUMBERWORDS.indexOf(TTENTHOUSAND);
 
-    const TTHOUSAND =
-      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?พัน/)?.at(1) ||
-      ZERO;
+    const TTHOUSAND = /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?พัน/.exec(million)?.at(1) || ZERO;
     const VTHOUSAND = THAINUMBERWORDS.indexOf(TTHOUSAND);
 
-    const THUNDRED =
-      million.match(/(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?ร้อย/)?.at(1) ||
-      ZERO;
+    const THUNDRED = /(หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า)?ร้อย/.exec(million)?.at(1) || ZERO;
     const VHUNDRED = THAINUMBERWORDS.indexOf(THUNDRED);
 
     const VL =
       SatangNum(
         million
-          .replace(/.+แสน/, ``)
-          .replace(/.+หมื่น/, ``)
-          .replace(/.+พัน/, ``)
-          .replace(/.+ร้อย/, ``)
+          .replace(/.+แสน/, '')
+          .replace(/.+หมื่น/, '')
+          .replace(/.+พัน/, '')
+          .replace(/.+ร้อย/, '')
       ) || `00`;
 
     moneyBahts.push(

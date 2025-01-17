@@ -12,9 +12,9 @@ test(`isOctal`, () => {
   expect(isOctal(`0o77_`)).toBe(false);
   expect(isOctal(`0o_77_`)).toBe(false);
   expect(isOctal(`0o7__7`)).toBe(false);
-  expect(isOctal(`0000877`)).toBe(!true);
-  expect(isOctal(`000o77`)).toBe(!true);
-  expect(isOctal(`000oo77`)).toBe(!true);
+  expect(isOctal(`0000877`)).toBe(false);
+  expect(isOctal(`000o77`)).toBe(false);
+  expect(isOctal(`000oo77`)).toBe(false);
   expect(isOctal(`053256462753462`)).toBe(true);
   expect(isOctal(0o77)).toBe(undefined);
   expect(isOctal(123)).toBe(undefined);

@@ -12,12 +12,12 @@ const THAINUMBERWORDS = require("../const/array/THAINUMBERWORDS");
 module.exports = (BT, error = `Invalid String`) => {
   if (!BT) return undefined;
 
-  if (/บาท$/.test(BT)) BT = `${BT}${FULLBAHT}`;
-  if (!/สตางค์$/.test(BT) && !/ถ้วน$/.test(BT)) return error;
+  if (BT.endsWith(BAHT)) BT = `${BT}${FULLBAHT}`;
+  if (!BT.endsWith(SATANG) && !BT.endsWith(FULLBAHT)) return error;
 
   const [moneyBaht, moneySatang] = BT.split(BAHT);
 
-  if (/สตางค์$/.test(moneyBaht) && !moneySatang) {
+  if (moneyBaht.endsWith(SATANG) && !moneySatang) {
     return `0.${SatangNum(moneyBaht.replace(SATANG, ``))}`;
   }
 
@@ -57,11 +57,7 @@ module.exports = (BT, error = `Invalid String`) => {
 
     const VL =
       SatangNum(
-        million
-          .replace(/.+แสน/, ``)
-          .replace(/.+หมื่น/, ``)
-          .replace(/.+พัน/, ``)
-          .replace(/.+ร้อย/, ``)
+        million.replace(/.+(แสน|หมื่น|พัน|ร้อย)/, ``)
       ) || `00`;
 
     moneyBahts.push(
@@ -72,7 +68,7 @@ module.exports = (BT, error = `Invalid String`) => {
     );
   }
 
-  return `${removeLeadingingZeros(moneyBahts.reverse().join(""))}.${SatangNum(
+  return `${removeLeadingingZeros(moneyBahts.toReversed().join(""))}.${SatangNum(
     moneySatang.replace(SATANG, ``)
   )}`;
 };

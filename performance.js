@@ -7,8 +7,7 @@ const performance = async (money_array) => {
   console.time("thai-baht-text");
 
   for (const money of money_array) {
-    // console.log(THBText(money));
-    await pass(THBText(money));
+    pass(THBText(money));
   }
 
   console.timeEnd("thai-baht-text");
@@ -20,8 +19,7 @@ const performanceBR = async (money_array) => {
   console.time("BahtRext");
 
   for (const money of money_array) {
-    // console.log(BahtRext.BF(money));
-    await pass(BahtRext.BF(money));
+    pass(BahtRext.BF(money));
   }
 
   console.timeEnd("BahtRext");

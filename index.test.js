@@ -220,7 +220,7 @@ test(`PrintSatangs 2d+`, () => {
 test(`BulkBahtText`, () =>{
     expect(BulkBahtText(`อย่าลืมใช้โค้ด 9arm นะครับ ใช้เถอะ เค้าจะได้จ้างผมต่อ`)).toBe(`อย่าลืมใช้โค้ด 9arm นะครับ ใช้เถอะ เค้าจะได้จ้างผมต่อ`)
     expect(
-      BulkBahtText(`30฿รักษาทุกโรค`, /(\d+)(\.\d{0,2}0*)?\฿/g).replace(
+      BulkBahtText(`30฿รักษาทุกโรค`, /(\d+)(\.\d{0,2}0*)?฿/g).replace(
         FULLBAHT,
         ``
       )
@@ -228,7 +228,7 @@ test(`BulkBahtText`, () =>{
     expect(
       BulkBahtText(`เงินดิจิมอน 10000฿ ใช้ยังไง ได้วันไหน ใครได้บ้าง`)
         .replace(FULLBAHT, ``)
-        .replace(RegExp(`฿`,`g`), ``)
+        .replace(/฿/g, ``)
     ).toBe(`เงินดิจิมอน หนึ่งหมื่นบาท ใช้ยังไง ได้วันไหน ใครได้บ้าง`);
     expect(BulkBahtText(`"900 ถูกมาก" ตุยไปละ`).replace(FULLBAHT, ``)).toBe(
       `"เก้าร้อยบาท ถูกมาก" ตุยไปละ`
@@ -389,8 +389,8 @@ test('Reverse BahtText', () => {
 });
 
 test('repeat',() => {
-  expect(repeat(`ค`,[3])).toBe(`คคค`);
-  expect(`ปิดสวิตซ์ ${repeat(`ป`, [3])} ป่าหี่`).toBe(
+  expect(repeat('ค',[3])).toBe(`คคค`);
+  expect(`ปิดสวิตซ์ ${repeat('ป', [3])} ป่าหี่`).toBe(
     `ปิดสวิตซ์ ปปป ป่าหี่`
   );
 })
@@ -450,13 +450,6 @@ test(`IsValidText`, () => {
   expect(IsValidText(`ยี่สิบ`)).toBe(true);
   expect(IsValidText(`สองสิบ`)).toBe(false);
 });
-
-test(`Bool Test`, () => {
-  expect(true).toBe(true)
-  expect(true).toBe(!false)
-  expect(false).toBe(false);
-  expect(false).toBe(!true)
-})
 
 test(`IsValidTB`, () => {
     expect(IsValidTB(`แปดสิบแปดบาท`)).toBe(true);

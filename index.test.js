@@ -503,3 +503,64 @@ test(`data type`, () => {
   expect(typeof LNBT).toBe(d.f);
   expect(typeof SEP).toBe(d.f);
 });
+
+const { BR, VERSION } = require("./index"); // Adjust the path as necessary
+
+describe("BR Class", () => {
+  let br;
+
+  beforeEach(() => {
+    br = new BR("1000");
+  });
+
+  test("should return the correct version", () => {
+    expect(BR.version).toBe(VERSION);
+  });
+
+  test("auto() should return the correct value", () => {
+    expect(br.auto()).toBe(`หนึ่งพันบาทถ้วน`);
+  });
+
+  test("text() should return the correct value", () => {
+    expect(br.text()).toBe(`หนึ่งพันบาทถ้วน`);
+  });
+
+  test("flex() should return the correct value", () => {
+    expect(br.flex()).toBe(`หนึ่งพันบาทถ้วน`);
+  });
+
+  test("neg() should return the correct value", () => {
+    expect(br.neg()).toBe(`หนึ่งพันบาทถ้วน`);
+  });
+
+  test("bahttext() should return the correct value", () => {
+    expect(br.bahttext()).toBe(`฿1,000.00 อ่านว่า \"หนึ่งพันบาทถ้วน\"`);
+  });
+
+  test("clean() should return the cleaned value", () => {
+    expect(
+      br.clean()
+    ).toBe(`1000`);
+  });
+
+  test("currency() should return the formatted currency", () => {
+    expect(br.currency()).toBe(`฿1,000.00`);
+  });
+
+  test("printBaht() should return the correct baht representation", () => {
+    expect(br.printBaht()).toBe(`หนึ่งพันบาท`);
+  });
+
+  test("printStangs() should return the correct stangs representation", () => {
+    expect(br.printStangs()).toBe(`ถ้วน`);
+  });
+
+  test("trim() should remove leading zeros", () => {
+    br = new BR("000123");
+    expect(br.trim()).toBe("123");
+  });
+
+  test("isValid() should return true for valid money", () => {
+    expect(br.isValid()).toBe(true); // Adjust based on IsMoneyValidate function
+  });
+});

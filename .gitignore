@@ -7,3 +7,8 @@ coverage
 app.js
 webpack.config.js
 .vscode
+
+.copilot-instructions
+*.config.js
+.cache
+settings.json

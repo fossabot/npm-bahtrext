@@ -2,8 +2,13 @@
 ![Download/month](https://img.shields.io/npm/dm/bahtrext.svg)
 ![Total Download](https://img.shields.io/npm/dt/bahtrext.svg)
 
+## Install
+```
+npm install bahtrext@1.7.0
+```
+
 ## Demo / Example
-- [Webpack](https://webpack.js.org/)
+- [Webpack (1.4.5)](https://webpack.js.org/)
   - [REPO](https://github.com/PingHuskar/webpack-bahtrext)
   - [DEMO](https://pinghuskar.github.io/webpack-bahtrext/)
   - [scripts](https://pinghuskar.github.io/webpack-bahtrext/main.js)
@@ -36,6 +41,7 @@
 5. This Number System not working well with large numbers. Is there a better way to read numbers in Thai?
 
 ## Changes
+- 1.7.0 - add class `BR`
 - 1.6.2 - [Refact.ai] model gpt-4o-mini + human refactor
 - 1.6.1 - allow literal separator (,)
 - 1.6.0 - add Hexadecimal
@@ -65,4 +71,6 @@
 - Write a Review
 - Submit Test Case(s)
 - [GitHub Sponsors](https://github.com/sponsors/PingHuskar)
-- [True Money Wallet](https://tmn.app.link/txb6QYGBcIb)
+
+## Author
+[Chadin Chaipornpisuth](https://chadindev.in.th/)

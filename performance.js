@@ -1,44 +1,42 @@
-const pass = (val) => {
-  return;
-};
+const THBText = require("thai-baht-text");
+const BT = require("./function/BT");
 
-const performance = async (money_array) => {
-  const THBText = require("thai-baht-text");
-  console.time("thai-baht-text");
-
-  for (const money of money_array) {
-    pass(THBText(money));
+const convertToThaiBahtText = async (amounts) => {
+  for (const amount of amounts) {
+    THBText(amount);
   }
-
-  console.timeEnd("thai-baht-text");
-  return `return`;
 };
 
-const performanceBR = async (money_array) => {
-  const BahtRext = require("./index");
-  console.time("BahtRext");
-
-  for (const money of money_array) {
-    pass(BahtRext.BF(money));
+const convertToBT = async (amounts) => {
+  for (const amount of amounts) {
+    BT(amount);
   }
-
-  console.timeEnd("BahtRext");
-  return `return`;
 };
-
-const performance_arr = [];
-const performance_arr_s = [];
 
 const generatePerformanceArrays = (start, end, step) => {
+  const numericArray = [];
+  const stringArray = [];
   for (let i = start; i <= end; i += step) {
-    performance_arr.push(i);
-    performance_arr_s.push(`${i}`);
+    numericArray.push(i);
+    stringArray.push(`${i}`);
   }
+  return { numericArray, stringArray };
 };
 
-generatePerformanceArrays(1, 10000, 0.01);
+const { numericArray, stringArray } = generatePerformanceArrays(1, 100000, 0.01);
+
+const measurePerformance = async (label, func, data) => {
+  const start = performance.now();
+  await func(data);
+  const end = performance.now();
+  console.log(`${label} ${end - start} ms`);
+};
 
 (async () => {
-  console.log(await performanceBR(performance_arr_s));
-  console.log(await performance(performance_arr));
+  await measurePerformance('BahtRext', convertToBT, stringArray);
+  await measurePerformance(
+    "thai-baht-text",
+    convertToThaiBahtText,
+    numericArray
+  );
 })();

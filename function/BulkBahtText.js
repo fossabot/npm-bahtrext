@@ -1,7 +1,6 @@
 const BahtText = require(`./BahtText`);
 const IsMatchInSkipsPattern = require(`./IsMatchInSkipsPattern`);
-const defaultBulkBahtTextPat = require(`../const/regex/defaultBulkBahtTextPat`);
-const defaultBulkBahtTextSkips = require(`../const/regex/defaultBulkBahtTextSkips`);
+const { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } = require(`../const`);
 
 module.exports = (
   str,

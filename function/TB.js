@@ -1,13 +1,9 @@
 const SatangNum = require(`./SatangNum`);
-const padWithLeadingZeros = require(`../snippet/padWithLeadingZeros`);
-const removeLeadingingZeros = require(`../snippet/removeLeadingingZeros`);
 const IsValidText = require(`./IsValidText`);
-const FULLBAHT = require("../const/primitive/FULLBAHT");
-const BAHT = require("../const/primitive/BAHT");
-const ZERO = require("../const/primitive/ZERO");
-const MILLION = require("../const/primitive/MILLION");
-const SATANG = require("../const/primitive/SATANG");
+const {padWithLeadingZeros, removeLeadingingZeros} = require(`../snippet`);
 const THAINUMBERWORDS = require("../const/array/THAINUMBERWORDS");
+const {FULLBAHT, BAHT, SATANG, MILLION, ZERO} = require("../const");
+const BulkReplace = require(`./BulkReplace`);
 
 module.exports = (BT, error = `Invalid String`) => {
   if (!BT) return undefined;
@@ -49,11 +45,7 @@ module.exports = (BT, error = `Invalid String`) => {
 
     const VL =
       SatangNum(
-        million
-          .replace(/.*แสน/, '')
-          .replace(/.*หมื่น/, '')
-          .replace(/.*พัน/, '')
-          .replace(/.*ร้อย/, '')
+        BulkReplace(million, '', /.*แสน/, /.*หมื่น/, /.*พัน/, /.*ร้อย/)
       ) || `00`;
 
     moneyBahts.push(

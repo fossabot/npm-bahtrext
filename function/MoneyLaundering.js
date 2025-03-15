@@ -1,5 +1,6 @@
 const removeLeadingingZeros = require(`../snippet/removeLeadingingZeros`);
+const BulkReplace = require(`./BulkReplace`);
 
 module.exports = (money) => {
-  return removeLeadingingZeros(money.replace(/[, _]/g, ""));
+  return removeLeadingingZeros(BulkReplace(money, "", /[,\s_]/g));
 };

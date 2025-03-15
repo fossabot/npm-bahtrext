@@ -1,13 +1,15 @@
-const MILLION = require("../const/primitive/MILLION");
-const SPECIALONE = require("../const/primitive/SPECIALONE");
-const SPECIALTWO = require("../const/primitive/SPECIALTWO");
-const HUNDREDTHOUSAND = require("../const/primitive/HUNDREDTHOUSAND");
-const TENTHOUSAND = require("../const/primitive/TENTHOUSAND");
-const THOUSAND = require("../const/primitive/THOUSAND");
-const HUNDRED = require("../const/primitive/HUNDRED");
-const TEN = require("../const/primitive/TEN");
-const REVERSETHAIDIGITWORDS = require("../const/array/REVERSETHAIDIGITWORDS");
-const ONETONINE = require("../const/array/ONETONINE");
+const {
+  MILLION,
+  SPECIALONE,
+  SPECIALTWO,
+  HUNDREDTHOUSAND,
+  TENTHOUSAND,
+  THOUSAND,
+  HUNDRED,
+  TEN,
+  REVERSETHAIDIGITWORDS,
+  ONETONINE,
+} = require("../const");
 const ISGREQ = require("./ISGREQ");
 
 module.exports = (text) => {
@@ -57,9 +59,9 @@ module.exports = (text) => {
       return false;
 
     const eachdigits = sixdigitsword.split(/แสน|หมื่น|พัน|ร้อย|สิบ/);
-    for (const digit of eachdigits.filter(x => x)) {
+    for (const digit of eachdigits.filter((x) => x)) {
       const b = !ONETONINE.includes(digit);
-      if (b && [SPECIALONE, SPECIALTWO].includes(digit)) continue 
+      if (b && [SPECIALONE, SPECIALTWO].includes(digit)) continue;
       if (b) return false;
     }
   }

@@ -1,8 +1,6 @@
 const hundredThousandToOne = require(`./hundredThousandToOne`);
-const MILLION = require(`../const/primitive/MILLION`);
-const BAHT = require(`../const/primitive/BAHT`);
 const LeadingSpecialOneToOne = require(`../snippet/LeadingSpecialOneToOne`);
-const LAST6DIGITPATTERN = require(`../const/regex/LAST6DIGITPATTERN`);
+const { MILLION, BAHT, LAST6DIGITPATTERN } = require(`../const`);
 
 module.exports = (money, ed = false) => {
   if (!money) return ``;

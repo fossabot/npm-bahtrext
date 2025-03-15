@@ -2,9 +2,7 @@ const { isOctal, toDec } = require(`../octal`);
 const { isBin, toBin } = require(`../binary`);
 const MoneyInvalid = require(`../snippet/MoneyInvalid`);
 const BahtText = require("./BahtText");
-const THB = require("../const/THB");
-const READAS = require("../const/primitive/READAS");
-const GoogleSheetsCellCharactersLimit = require("../const/primitive/GoogleSheetsCellCharactersLimit");
+const {THB, READAS, GoogleSheetsCellCharactersLimit} = require("../const");
 const { isHex, toHex } = require("../hexadecimal");
 
 module.exports = (money, ed = false, OL = false, rounding = '') => {

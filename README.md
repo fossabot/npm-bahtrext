@@ -4,7 +4,7 @@
 
 ## Install
 ```
-npm install bahtrext@1.7.0
+npm install bahtrext@1.7.1
 ```
 
 ## Demo / Example
@@ -41,6 +41,7 @@ npm install bahtrext@1.7.0
 5. This Number System not working well with large numbers. Is there a better way to read numbers in Thai?
 
 ## Changes
+- 1.7.1 - apply `Rest Parameters` => add function `BulkReplace`, `applyReplacements`
 - 1.7.0 - add class `BR`
 - 1.6.2 - [Refact.ai] model gpt-4o-mini + human refactor
 - 1.6.1 - allow literal separator (,)

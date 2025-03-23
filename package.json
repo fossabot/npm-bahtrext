@@ -27,7 +27,7 @@
     "numbaht": "^0.1.1"
   },
   "dependencies": {
-    "operation-strint": "^1.0.8",
+    "operation-strint": "^1.0.9",
     "thai-baht-text": "^2.0.5",
     "try-catch": "^3.0.1"
   }

@@ -31,18 +31,22 @@ const {
 const { removeLeadingingZeros, LeadingSpecialOneToOne } = require(`./snippet`);
 
 class BR {
+  #num;
   constructor(num) {
-    this.num = num || "";
+    this.#num = num || "";
     this.version = VERSION;
   }
+  set = (num) => {
+    this.#num = IsMoneyValidate(num) ? num : TB(num);
+  }
   static version = this.version;
-  auto = () => ABT(this.num);
-  text = () => BT(this.num);
-  flex = () => BF(this.num);
-  neg = () => NEG(this.num);
-  bahttext = () => BahtText(this.num);
+  auto = () => ABT(this.#num);
+  text = () => BT(this.#num);
+  flex = () => BF(this.#num);
+  neg = () => NEG(this.#num);
+  bahttext = () => BahtText(this.#num);
   bathtext = () => `You spelled it wrong.`;
-  clean = () => MoneyLaundering(this.num);
+  clean = () => MoneyLaundering(this.#num);
   currency = () => THB.format(this.clean());
   printBaht() {
     const [error, result] = tryCatch(() => this.auto().replace(/บาท.+/g, BAHT));
@@ -53,8 +57,8 @@ class BR {
     const [error, result] = tryCatch(() => this.auto().replace(/.+บาท/g, ``));
     return result;
   }
-  trim = () => removeLeadingingZeros(this.num);
-  isValid = () => IsMoneyValidate(this.num);
+  trim = () => removeLeadingingZeros(this.#num);
+  isValid = () => IsMoneyValidate(this.#num);
 }
 
 module.exports = {

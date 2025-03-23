@@ -18,14 +18,7 @@ module.exports = (text) => {
   if (/สองสิบ|สิบหนึ่ง|เอ็ดสิบ/.test(text)) return false;
 
   for (const sixdigitsword of text.split(MILLION)) {
-    for (const REVERSETHAIDIGITWORD of REVERSETHAIDIGITWORDS.slice(0, -1)) {
-      if (
-        (sixdigitsword.match(RegExp(REVERSETHAIDIGITWORD, "g"))?.length || 0) >
-        1
-      ) {
-        return false;
-      }
-    }
+    if (REVERSETHAIDIGITWORDS.slice(0, -1).some(word => sixdigitsword.split(word).length > 2)) return false
 
     const indices = {
       HUNDREDTHOUSAND: sixdigitsword.indexOf(HUNDREDTHOUSAND),

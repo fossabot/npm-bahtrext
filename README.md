@@ -4,7 +4,7 @@
 
 ## Install
 ```
-npm install bahtrext@1.7.1
+npm install bahtrext@1.7.2
 ```
 
 ## Demo / Example

@@ -1,0 +1,1 @@
+export default /^0o?[0-7]+$/i;

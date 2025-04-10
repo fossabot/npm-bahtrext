@@ -1,0 +1,1 @@
+export default `อ่านว่า`;

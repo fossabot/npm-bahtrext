@@ -1,0 +1,1 @@
+export default `ล้าน`;

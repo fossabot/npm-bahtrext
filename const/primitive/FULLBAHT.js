@@ -1,0 +1,1 @@
+export default `ถ้วน`;

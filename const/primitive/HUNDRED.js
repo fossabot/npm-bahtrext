@@ -1,0 +1,1 @@
+export default `ร้อย`;

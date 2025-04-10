@@ -1,0 +1,1 @@
+export default /^0x[\dA-F]+$/i;

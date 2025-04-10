@@ -1,0 +1,1 @@
+export default `เก้า`;

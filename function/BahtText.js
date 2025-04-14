@@ -4,7 +4,7 @@ import PrintBaht from './PrintBaht.js';
 import IsMoneyValidate from './IsMoneyValidate.js';
 import PrintSatangs from './PrintSatangs.js';
 import MoneyInvalid from '../snippet/MoneyInvalid.js';
-import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const/index.js"
+import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const/."
 import { sum } from "operation-strint"
 
 export default (

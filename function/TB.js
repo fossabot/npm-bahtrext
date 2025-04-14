@@ -1,8 +1,8 @@
 import SatangNum from './SatangNum.js';
 import IsValidText from './IsValidText.js';
-import { padWithLeadingZeros, removeLeadingingZeros } from '../snippet/index.js';
+import { padWithLeadingZeros, removeLeadingingZeros } from '../snippet/.';
 import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS.js';
-import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const/index.js';
+import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const/.';
 import BulkReplace from './BulkReplace.js';
 
 export default (BT, error = `Invalid String`) => {

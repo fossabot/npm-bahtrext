@@ -1,4 +1,4 @@
-import { octalRegex1, octalRegex2 } from './const/index.js';
+import { octalRegex1, octalRegex2 } from './const/.';
 import { sum, multiply, pow } from 'operation-strint';
 
 const isOctal = (money) => {

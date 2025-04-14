@@ -8,7 +8,7 @@ import {
   OneToTenTextRegex,
   ElevenToNineteenRegex,
   TwentyToNinetyNine,
-} from '../const/index.js';
+} from '../const/.';
 
 export default (moneySatang) => {
   if (moneySatang === FULLBAHT) {

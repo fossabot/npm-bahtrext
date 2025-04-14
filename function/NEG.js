@@ -1,4 +1,4 @@
-import { negative } from '../const/index.js';
+import { negative } from '../const/.';
 import BF from './BF.js';
 import BulkReplace from './BulkReplace.js';
 

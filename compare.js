@@ -1,5 +1,5 @@
 import { BT } from "./index.js";
-import oc from "./octal.js";
+import {toDec} from "./octal.js";
 import THBText from "thai-baht-text";
 
 let a = 29999999999999999;
@@ -18,5 +18,5 @@ let c = 0o77;
 let d = `0o77`
 console.log(THBText(c));
 console.log(THBText(d));
-console.log(oc.toDec(d))
-console.log(oc.toDec(c))
+console.log(toDec(d))
+console.log(toDec(c))

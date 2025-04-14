@@ -1,4 +1,4 @@
-import { THAI2ARABICNumerals } from '../const/index.js';
+import { THAI2ARABICNumerals } from '../const/.';
 import BT from './BT.js';
 import BulkReplace from './BulkReplace.js';
 

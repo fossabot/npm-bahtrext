@@ -1,4 +1,4 @@
-import { binaryRegex } from './const/index.js';
+import { binaryRegex } from './const/.';
 import { sum, multiply, pow } from 'operation-strint';
 
 const isBin = (money) => {

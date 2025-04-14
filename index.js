@@ -5,7 +5,7 @@ import {
   large_numbers,
   BAHT,
   THB,
-} from './const/index.js';
+} from './const/.';
 import {
   MoneyLaundering,
   IsMoneyValidate,
@@ -26,9 +26,9 @@ import {
   LNBT,
   OB,
   SEP,
-} from './function/index.js';
+} from './function/.';
 
-import { removeLeadingingZeros, LeadingSpecialOneToOne } from './snippet/index.js';
+import { removeLeadingingZeros, LeadingSpecialOneToOne } from './snippet/.';
 
 import {sum, minus, pow} from "operation-strint"
 

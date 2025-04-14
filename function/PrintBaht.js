@@ -1,6 +1,6 @@
 import hundredThousandToOne from './hundredThousandToOne.js';
 import LeadingSpecialOneToOne from '../snippet/LeadingSpecialOneToOne.js';
-import { MILLION, BAHT, LAST6DIGITPATTERN } from '../const/index.js';
+import { MILLION, BAHT, LAST6DIGITPATTERN } from '../const/.';
 
 export default (money, ed = false) => {
   if (!money) return ``;

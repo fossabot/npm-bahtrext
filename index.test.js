@@ -1,5 +1,5 @@
 
-import {FULLBAHT, BAHT} from './const/index.js'
+import {FULLBAHT, BAHT} from './const/.'
 import {
   NumText,
   BT,
@@ -17,7 +17,7 @@ import {
   LNBT,
   SEP,
   NEG
-} from "./index.js";
+} from ".";
 import op from "operation-strint"
 
 test(`PrintBaht`, () => {
@@ -502,7 +502,7 @@ test(`data type`, () => {
   expect(typeof SEP).toBe(d.f);
 });
 
-import BR, { VERSION } from "./index.js";
+import BR, { VERSION } from ".";
 
 describe("BR Class", () => {
   let br;
@@ -532,7 +532,7 @@ describe("BR Class", () => {
   });
 
   test("bahttext() should return the correct value", () => {
-    expect(br.bahttext).toBe(`฿1,000.00 อ่านว่า \"หนึ่งพันบาทถ้วน\"`);
+    expect(br.bahttext).toBe(`฿1,000.00 อ่านว่า "หนึ่งพันบาทถ้วน"`);
   });
 
   test("clean() should return the cleaned value", () => {

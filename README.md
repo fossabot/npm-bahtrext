@@ -5,7 +5,7 @@
 ## Install
 ### ES6
 ```
-npm install bahtrext@2.3.0
+npm install bahtrext@2.3.1
 ```
 ### ES5
 ```

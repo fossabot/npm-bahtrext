@@ -4,7 +4,7 @@ import {
   SPECIALONE,
   SPECIALTWO,
   TEN,
-} from "../const/index.js";
+} from "../const/.";
 
 import padWithLeadingZeros from "../snippet/padWithLeadingZeros.js";
 

@@ -1,6 +1,6 @@
 import ABT from './ABT.js';
 import applyReplacements from './applyReplacements.js';
-import { ONETONINE, REVERSETHAIDIGITWORDS, MILLION, SPECIALONE, SPECIALTWO, BAHT, FULLBAHT } from "../const/index.js";
+import { ONETONINE, REVERSETHAIDIGITWORDS, MILLION, SPECIALONE, SPECIALTWO, BAHT, FULLBAHT } from "../const/.";
 
 export default (num, separator = '-') => {
   let ret = ABT(num, true);

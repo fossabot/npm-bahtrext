@@ -2,7 +2,7 @@ import { isOctal, toDec } from '../octal.js';
 import { isBin, toBin } from '../binary.js';
 import MoneyInvalid from '../snippet/MoneyInvalid.js';
 import BahtText from './BahtText.js';
-import { THB, READAS, GoogleSheetsCellCharactersLimit } from '../const/index.js';
+import { THB, READAS, GoogleSheetsCellCharactersLimit } from '../const/.';
 import { isHex, toHex } from '../hexadecimal.js';
 
 export default (money, ed = false, OL = false, rounding = '') => {

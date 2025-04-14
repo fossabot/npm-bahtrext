@@ -1,4 +1,4 @@
-import { TEN, SPECIALTWO, THAINUMBERWORDS } from "../const/index.js";
+import { TEN, SPECIALTWO, THAINUMBERWORDS } from "../const/.";
 
 export default (digit) => {
   if (digit === `0`) return ``;

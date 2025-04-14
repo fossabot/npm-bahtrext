@@ -9,7 +9,7 @@ import {
   TEN,
   REVERSETHAIDIGITWORDS,
   ONETONINE,
-} from "../const/index.js"
+} from "../const/."
 
 import ISGREQ from "./ISGREQ.js"
 

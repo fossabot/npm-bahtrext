@@ -30,42 +30,71 @@ import {
 
 import { removeLeadingingZeros, LeadingSpecialOneToOne } from './snippet/index.js';
 
+import {sum, minus, pow} from "operation-strint"
+
 class BR {
   #num;
+  #version;
+  #log;
   constructor(num) {
     this.#num = num || "";
-    this.version = VERSION;
+    this.#version = VERSION;
+    this.#log = [num];
   }
   
-  set = (num) => {
-    this.#num = IsMoneyValidate(num) ? num : TB(num);
+  set (num) {
+    this.#version = VERSION;
+    if (typeof num === "object") {
+      console.error("Invalid type")
+      return;
+    }
+    try {
+      this.#num = IsMoneyValidate(num) ? num : TB(num);
+      this.#log.push(num);
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  sum(num) {
+    this.#num = sum(`${this.#num}`, `${num}`)
+  }
+  minus(num) {
+    this.#num = minus(`${this.#num}`, `${num}`)
+  }
+  pow(num) {
+    this.#num = pow(`${this.#num}`, `${num}`)
   }
   
-  static version = this.version;
+  get version() { return this.#version }
+
+  get log() { return this.#log }
   
-  auto = () => ABT(this.#num);
-  text = () => BT(this.#num);
-  flex = () => BF(this.#num);
-  neg = () => NEG(this.#num);
-  bahttext = () => BahtText(this.#num);
-  bathtext = () => `You spelled it wrong.`;
-  clean = () => MoneyLaundering(this.#num);
-  currency = () => THB.format(this.clean());
+  get auto() { return ABT(this.#num) }
+  get text() { return BT(this.#num) }
+  get num() { return TB(this.auto) }
+  get flex() { return BF(this.#num) }
+  get neg() { return NEG(this.#num) }
+  get bahttext() { return BahtText(this.#num) }
+  get bathtext() { return `You spelled it wrong.`}
+  get clean() { return MoneyLaundering(this.#num) }
+  get currency() { return THB.format(this.clean) }
   
-  printBaht() {
-    const [error, result] = tryCatch(() => this.auto().replace(/บาท.+/g, BAHT));
+  get printBaht() {
+    const [_, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
     return result;
   }
   
-  printBath = () => `You spelled it wrong.`;
+  get printBath() { return `You spelled it wrong.`};
   
-  printStangs() {
-    const [error, result] = tryCatch(() => this.auto().replace(/.+บาท/g, ``));
+  get printStangs() {
+    const [_, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
     return result;
   }
   
-  trim = () => removeLeadingingZeros(this.#num);
-  isValid = () => IsMoneyValidate(this.#num);
+  get trim() { return removeLeadingingZeros(this.#num) }
+  get isValid() { return IsMoneyValidate(this.#num) }
+  
 }
 export default BR;
 export {

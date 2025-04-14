@@ -81,16 +81,18 @@ class BR {
   get currency() { return THB.format(this.clean) }
   
   get printBaht() {
-    const [_, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
+    const [, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
     return result;
   }
+
+  get printStangs() {
+    const [, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
+    return result;
+  }
+
   
   get printBath() { return `You spelled it wrong.`};
   
-  get printStangs() {
-    const [_, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
-    return result;
-  }
   
   get trim() { return removeLeadingingZeros(this.#num) }
   get isValid() { return IsMoneyValidate(this.#num) }

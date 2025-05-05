@@ -6,7 +6,7 @@ import {
   TEN,
 } from "../const/.";
 
-import padWithLeadingZeros from "../snippet/padWithLeadingZeros.js";
+import padWithLeadingZeros from "../snippet/padWithLeadingZeros";
 
 const getDigit = (d) => {
   let w = "";

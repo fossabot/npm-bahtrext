@@ -1,5 +1,5 @@
-import hexadecRegex from './const/regex/hexadecRegex.js';
-import { sum, multiply, pow } from 'operation-strint';
+import hexadecRegex from './const/regex/hexadecRegex';
+import toDec from './base';
 
 const isHex = (money) => {
   if (typeof money !== `string`) return undefined;
@@ -8,29 +8,19 @@ const isHex = (money) => {
   return hexadecRegex.test(money);
 };
 
-const toDec = (atof) => {
-  const hexToDecMap = {
-    a: "10",
-    b: "11",
-    c: "12",
-    d: "13",
-    e: "14",
-    f: "15",
-  };
+const hexToDecMap = {
+  a: "10",
+  b: "11",
+  c: "12",
+  d: "13",
+  e: "14",
+  f: "15",
+};
+
+const charToDec = (atof) => {
   return hexToDecMap[atof.toLowerCase()] || atof;
 };
 
-const toHex = (num) => {
-  if (!isHex(num)) return num;
-  num = num.replace(/^0x/i, '');
+const toHex = (num) => toDec(num, 16, hexadecRegex, /^0x/i, charToDec);
 
-  return num
-    .split("")
-    .toReversed()
-    .reduce((acc, digit, index) => {
-      const thispos_val = multiply(pow(`16`, `${index}`), toDec(digit));
-      return sum(acc, thispos_val) || "0";
-    }, `0`);
-};
-
-export { isHex, toDec, toHex };
+export { isHex, toHex, charToDec };

@@ -1,4 +1,4 @@
-import { isBin, toBin } from "./binary.js";
+import { isBin, toDecBin as toBin } from "./binary";
 
 test(`isBin true`, () => {
   expect(isBin(`0b101010`)).toBe(true);

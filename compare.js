@@ -1,5 +1,5 @@
-import { BT } from "./index.js";
-import {toDec} from "./octal.js";
+import { BT } from ".";
+import {toDec} from "./octal";
 import THBText from "thai-baht-text";
 
 let a = 29999999999999999;

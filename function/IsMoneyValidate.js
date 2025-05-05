@@ -1,4 +1,4 @@
-import { SPLITPATTERN } from '../const/.';
+import SPLITPATTERN from '../const/regex/SPLITPATTERN';
 
 export default (money, rounding = '') => {
   if (typeof money !== 'string' && typeof money !== 'number') {

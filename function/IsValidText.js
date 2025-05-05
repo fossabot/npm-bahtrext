@@ -11,7 +11,7 @@ import {
   ONETONINE,
 } from "../const/."
 
-import ISGREQ from "./ISGREQ.js"
+import ISGREQ from "./ISGREQ"
 
 // Helper function to check if digit positions are in correct order
 const areDigitPositionsValid = (indices) => {

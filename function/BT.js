@@ -1,13 +1,13 @@
-import { isOctal, toDec } from '../octal.js';
-import { isBin, toBin } from '../binary.js';
-import MoneyInvalid from '../snippet/MoneyInvalid.js';
-import BahtText from './BahtText.js';
+import { isOctal, toDecOctal } from '../octal';
+import { isBin, toDecBin as toBin } from '../binary';
+import MoneyInvalid from '../snippet/MoneyInvalid';
+import BahtText from './BahtText';
 import { THB, READAS, GoogleSheetsCellCharactersLimit } from '../const/.';
-import { isHex, toHex } from '../hexadecimal.js';
+import { isHex, toHex } from '../hexadecimal';
 
 export default (money, ed = false, OL = false, rounding = '') => {
   if (OL && isOctal(money)) {
-    money = toDec(money);
+    money = toDecOctal(money);
   } else if (isBin(money)) {
     money = toBin(money);
   } else if (isHex(money)) {

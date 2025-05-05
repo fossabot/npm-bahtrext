@@ -1,7 +1,7 @@
 import {
     isOctal
-    , toDec
-} from "./octal.js"
+  , toDecOctal as toDec
+} from "./octal"
 
 test(`isOctal`, () => {
   expect(isOctal(`077`)).toBe(true)

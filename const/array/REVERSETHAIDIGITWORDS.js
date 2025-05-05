@@ -1,8 +1,8 @@
-import TEN from "../primitive/TEN.js"
-import HUNDRED from "../primitive/HUNDRED.js"
-import THOUSAND from "../primitive/THOUSAND.js"
-import TENTHOUSAND from "../primitive/TENTHOUSAND.js"
-import HUNDREDTHOUSAND from "../primitive/HUNDREDTHOUSAND.js"
+import TEN from "../primitive/TEN"
+import HUNDRED from "../primitive/HUNDRED"
+import THOUSAND from "../primitive/THOUSAND"
+import TENTHOUSAND from "../primitive/TENTHOUSAND"
+import HUNDREDTHOUSAND from "../primitive/HUNDREDTHOUSAND"
 
 export default [
   HUNDREDTHOUSAND,

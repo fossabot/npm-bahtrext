@@ -1,4 +1,4 @@
-import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS.js';
+import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS';
 
 export default (str, arr = THAINUMBERWORDS, flag = `g`) => {
   if (!str) return undefined;

@@ -1,5 +1,5 @@
 import { binaryRegex } from './const/.';
-import { sum, multiply, pow } from 'operation-strint';
+import toDec from './base';
 
 const isBin = (money) => {
   if (typeof money !== `string`) return undefined;
@@ -8,17 +8,6 @@ const isBin = (money) => {
   return binaryRegex.test(money);
 };
 
-const toBin = (num) => {
-  if (!isBin(num)) return num;
-  num = num.replace(/^0b/i, '');
+const toDecBin = (num) => toDec(num, 2, binaryRegex, /^0b/i);
 
-  return num
-    .split("")
-    .toReversed()
-    .reduce((acc, digit, index) => {
-      const thispos_val = multiply(pow(`2`, `${index}`), digit);
-      return sum(acc, thispos_val) || "0";
-    }, "0");
-};
-
-export { isBin, toBin };
+export { isBin, toDecBin };

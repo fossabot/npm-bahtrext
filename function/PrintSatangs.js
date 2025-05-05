@@ -1,6 +1,6 @@
 import { FULLBAHT, SATANG } from '../const/.';
-import SatangFirstDigit from './SatangFirstDigit.js';
-import SatangSecondDigit from './SatangSecondDigit.js';
+import SatangFirstDigit from './SatangFirstDigit';
+import SatangSecondDigit from './SatangSecondDigit';
 import { sum } from 'operation-strint';
 
 export default function PrintSatangs(satangs, rounding = '') {

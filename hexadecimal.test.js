@@ -1,4 +1,4 @@
-import { isHex, toHex } from "./hexadecimal.js";
+import { isHex, toHex } from "./hexadecimal";
 
 test(`isHex true`, () => {
   expect(isHex(`0x101A010`)).toBe(true);

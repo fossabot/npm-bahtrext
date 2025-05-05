@@ -1,5 +1,5 @@
-import BahtText from './BahtText.js';
-import IsMatchInSkipsPattern from './IsMatchInSkipsPattern.js';
+import BahtText from './BahtText';
+import IsMatchInSkipsPattern from './IsMatchInSkipsPattern';
 import { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } from '../const/.';
 
 export default (

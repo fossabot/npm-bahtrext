@@ -1,6 +1,6 @@
 import { negative } from '../const/.';
-import BF from './BF.js';
-import BulkReplace from './BulkReplace.js';
+import BF from './BF';
+import BulkReplace from './BulkReplace';
 
 export default (money, ed = false, f = BF, neg = negative) => {
   if (

@@ -1,4 +1,4 @@
-import padWithLeadingZeros from '../snippet/padWithLeadingZeros.js';
+import padWithLeadingZeros from '../snippet/padWithLeadingZeros';
 import {
   FULLBAHT,
   TEN,

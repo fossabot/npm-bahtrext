@@ -1,23 +1,23 @@
 // function
-import MoneyLaundering from "./MoneyLaundering.js";
-import IsMoneyValidate from "./IsMoneyValidate.js";
-import PrintBaht from "./PrintBaht.js";
-import PrintSatangs from "./PrintSatangs.js";
-import BahtText from "./BahtText.js";
-import BT from "./BT.js";
-import BF from "./BF.js";
-import BulkBahtText from "./BulkBahtText.js";
-import NumText from "./NumText.js";
-import SatangNum from "./SatangNum.js";
-import IsValidText from "./IsValidText.js";
-import TB from "./TB.js";
-import IsValidTB from "./IsValidTB.js";
-import NEG from "./NEG.js";
-import ABT from "./ABT.js";
-import repeat from "./repeat.js";
-import LNBT from "./LNBT.js";
-import OB from "./OB.js";
-import SEP from "./SEP.js";
+import MoneyLaundering from "./MoneyLaundering";
+import IsMoneyValidate from "./IsMoneyValidate";
+import PrintBaht from "./PrintBaht";
+import PrintSatangs from "./PrintSatangs";
+import BahtText from "./BahtText";
+import BT from "./BT";
+import BF from "./BF";
+import BulkBahtText from "./BulkBahtText";
+import NumText from "./NumText";
+import SatangNum from "./SatangNum";
+import IsValidText from "./IsValidText";
+import TB from "./TB";
+import IsValidTB from "./IsValidTB";
+import NEG from "./NEG";
+import ABT from "./ABT";
+import repeat from "./repeat";
+import LNBT from "./LNBT";
+import OB from "./OB";
+import SEP from "./SEP";
 
 export {
   MoneyLaundering,

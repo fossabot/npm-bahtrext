@@ -1,5 +1,5 @@
 import { octalRegex1, octalRegex2 } from './const/.';
-import { sum, multiply, pow } from 'operation-strint';
+import toDec from './base';
 
 const isOctal = (money) => {
   if (typeof money !== `string`) return undefined;
@@ -13,18 +13,6 @@ const isOctal = (money) => {
 
   return octalRegex1.test(money) || octalRegex2.test(money);
 };
+const toDecOctal = (num) => toDec(num, 8, octalRegex1, /^0+o?/);
 
-const toDec = (num) => {
-  if (!isOctal(num)) return num;
-  num = num.replace(/^0+o?/, '');
-
-  return num
-    .split("")
-    .toReversed()
-    .reduce((acc, digit, index) => {
-      const thispos_val = multiply(pow(`8`, `${index}`), digit);
-      return sum(acc, thispos_val) || "0";
-    }, "0");
-};
-
-export { isOctal, toDec };
+export { isOctal, toDecOctal };

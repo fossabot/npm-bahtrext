@@ -1,9 +1,9 @@
-import splitIntFrac from './splitIntFrac.js';
-import MoneyLaundering from './MoneyLaundering.js';
-import PrintBaht from './PrintBaht.js';
-import IsMoneyValidate from './IsMoneyValidate.js';
-import PrintSatangs from './PrintSatangs.js';
-import MoneyInvalid from '../snippet/MoneyInvalid.js';
+import splitIntFrac from './splitIntFrac';
+import MoneyLaundering from './MoneyLaundering';
+import PrintBaht from './PrintBaht';
+import IsMoneyValidate from './IsMoneyValidate';
+import PrintSatangs from './PrintSatangs';
+import MoneyInvalid from '../snippet/MoneyInvalid';
 import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const/."
 import { sum } from "operation-strint"
 

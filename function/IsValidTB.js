@@ -1,6 +1,6 @@
-import BT from "./BT.js";
-import TB from "./TB.js";
-import FULLBAHT from "../const/primitive/FULLBAHT.js";
+import BT from "./BT";
+import TB from "./TB";
+import FULLBAHT from "../const/primitive/FULLBAHT";
 
 export default (str) => {
   const BTTB = BT(TB(str)).replace(/\s/g, "");

@@ -1,4 +1,4 @@
-import ABT from "./ABT.js";
+import ABT from "./ABT";
 
 export default (money) => {
   return {

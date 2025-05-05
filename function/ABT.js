@@ -1,5 +1,5 @@
-import NEG from './NEG.js';
-import BF from './BF.js';
+import NEG from './NEG';
+import BF from './BF';
 import THBText from 'thai-baht-text';
 
 export default (money, ed = false, allow_neg = false) => {

@@ -1,4 +1,4 @@
-import { negative } from '../const/.';
+import { negative } from '../const';
 import BF from './BF';
 import BulkReplace from './BulkReplace';
 

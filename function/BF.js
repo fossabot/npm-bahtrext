@@ -1,4 +1,4 @@
-import { THAI2ARABICNumerals } from '../const/.';
+import { THAI2ARABICNumerals } from '../const';
 import BT from './BT';
 import BulkReplace from './BulkReplace';
 

@@ -1,4 +1,4 @@
-import { FULLBAHT, SATANG } from '../const/.';
+import { FULLBAHT, SATANG } from '../const';
 import SatangFirstDigit from './SatangFirstDigit';
 import SatangSecondDigit from './SatangSecondDigit';
 import { sum } from 'operation-strint';

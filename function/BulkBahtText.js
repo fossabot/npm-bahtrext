@@ -1,6 +1,6 @@
 import BahtText from './BahtText';
 import IsMatchInSkipsPattern from './IsMatchInSkipsPattern';
-import { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } from '../const/.';
+import { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } from '../const';
 
 export default (
   str,

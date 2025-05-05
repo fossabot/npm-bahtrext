@@ -1,9 +1,9 @@
-import { isOctal, toDecOctal } from '../octal';
-import { isBin, toDecBin as toBin } from '../binary';
+import { isOctal, toDecOctal } from '../base/octal';
+import { isBin, toDecBin as toBin } from '../base/binary';
+import { isHex, toHex } from '../base/hexadecimal';
 import MoneyInvalid from '../snippet/MoneyInvalid';
 import BahtText from './BahtText';
-import { THB, READAS, GoogleSheetsCellCharactersLimit } from '../const/.';
-import { isHex, toHex } from '../hexadecimal';
+import { THB, READAS, GoogleSheetsCellCharactersLimit } from '../const';
 
 export default (money, ed = false, OL = false, rounding = '') => {
   if (OL && isOctal(money)) {

@@ -1,6 +1,6 @@
 import hundredThousandToOne from './hundredThousandToOne';
 import LeadingSpecialOneToOne from '../snippet/LeadingSpecialOneToOne';
-import { MILLION, BAHT, LAST6DIGITPATTERN } from '../const/.';
+import { MILLION, BAHT, LAST6DIGITPATTERN } from '../const';
 
 export default (money, ed = false) => {
   if (!money) return ``;

@@ -2,7 +2,7 @@ import SatangNum from './SatangNum';
 import IsValidText from './IsValidText';
 import { padWithLeadingZeros, removeLeadingingZeros } from '../snippet/.';
 import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS';
-import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const/.';
+import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const';
 import BulkReplace from './BulkReplace';
 
 export default (BT, error = `Invalid String`) => {

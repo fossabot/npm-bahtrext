@@ -1,4 +1,4 @@
-import { binaryRegex } from './const/.';
+import { binaryRegex } from '../const';
 import toDec from './base';
 
 const isBin = (money) => {

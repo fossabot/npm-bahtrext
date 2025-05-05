@@ -4,7 +4,7 @@ import PrintBaht from './PrintBaht';
 import IsMoneyValidate from './IsMoneyValidate';
 import PrintSatangs from './PrintSatangs';
 import MoneyInvalid from '../snippet/MoneyInvalid';
-import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const/."
+import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const"
 import { sum } from "operation-strint"
 
 export default (

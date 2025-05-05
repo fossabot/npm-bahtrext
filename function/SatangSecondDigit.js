@@ -1,4 +1,4 @@
-import { SPECIALONE, THAINUMBERWORDS } from "../const/."
+import { SPECIALONE, THAINUMBERWORDS } from "../const"
 
 export default (digit) => {
   if (digit[1] === undefined || digit[1] === "0") return "";

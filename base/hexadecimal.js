@@ -1,4 +1,4 @@
-import hexadecRegex from './const/regex/hexadecRegex';
+import hexadecRegex from '../const/regex/hexadecRegex';
 import toDec from './base';
 
 const isHex = (money) => {

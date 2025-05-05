@@ -5,6 +5,7 @@ import PrintBaht from "./PrintBaht";
 import PrintSatangs from "./PrintSatangs";
 import BahtText from "./BahtText";
 import BT from "./BT";
+import B2 from "./BTv2";
 import BF from "./BF";
 import BulkBahtText from "./BulkBahtText";
 import NumText from "./NumText";
@@ -26,6 +27,7 @@ export {
   PrintSatangs,
   BahtText,
   BT,
+  B2,
   BF,
   BulkBahtText,
   NumText,

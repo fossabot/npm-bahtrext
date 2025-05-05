@@ -1,4 +1,4 @@
-import { octalRegex1, octalRegex2 } from './const/.';
+import { octalRegex1, octalRegex2 } from '../const';
 import toDec from './base';
 
 const isOctal = (money) => {

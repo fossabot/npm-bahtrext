@@ -1,5 +1,5 @@
 import { THAI2ARABICNumerals } from '../const';
-import BT from './BT';
+import BT from './BTv2';
 import BulkReplace from './BulkReplace';
 
 export default (

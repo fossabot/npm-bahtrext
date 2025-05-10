@@ -9,6 +9,7 @@ import MILLION from './primitive/MILLION';
 import FULLBAHT from './primitive/FULLBAHT';
 import SATANG from './primitive/SATANG';
 import READAS from './primitive/READAS';
+import INFINITY from './primitive/INFINITY';
 
 import LAST6DIGITPATTERN from './regex/LAST6DIGITPATTERN';
 import SPLITPATTERN from './regex/SPLITPATTERN';
@@ -95,4 +96,5 @@ export {
   MAX_SAFE_INTEGER,
   THB,
   negative,
+  INFINITY,
 };

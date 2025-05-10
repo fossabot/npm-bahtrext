@@ -1,0 +1,1 @@
+export default `อนันต์`;

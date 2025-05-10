@@ -1,5 +1,4 @@
-
-import { FULLBAHT, BAHT } from './const/.'
+import { FULLBAHT, BAHT, INFINITY } from './const/.'
 import BR, {
   NumText,
   BT,
@@ -48,109 +47,74 @@ test("BF", () => {
   );
 });
 
-test(`BT CEIL`, () => {
-  expect(BT(`4.990001`, false, false, `c`)).toBe(`ห้าบาทถ้วน`);
-})
-test(`B2 CEIL`, () => {
-  expect(B2(`4.990001`, false, false, `c`)).toBe(`ห้าบาทถ้วน`);
-})
+describe.each([
+  ['BT', BT],
+  ['B2', B2],
+])('%s Tests', (name, func) => {
+  test(`${name} CEIL`, () => {
+    expect(func(`4.990001`, false, false, `c`)).toBe(`ห้าบาทถ้วน`);
+  })
+  test(`${name} FLOOR`, () => {
+    expect(func(`4.990001`, false, false, `f`)).toBe(`สี่บาทเก้าสิบเก้าสตางค์`);
+  })
+  test(`${name} General`, () => {
+    expect(func(`lol`)).toBe(undefined);
+    expect(func(`2000000000000.9`, false, false, `c`)).toBe(`สองล้านล้านบาทเก้าสิบสตางค์`);
+    expect(func(`2000000000000.990003`, false, false, `c`)).toBe(`สองล้านล้านหนึ่งบาทถ้วน`);
+    expect(func(`2000000000000.99`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
+    expect(func(`2000000000000.990003`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
+    expect(func(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`);
+    expect(func(`1000001000001`)).toBe(`หนึ่งล้านหนึ่งล้านหนึ่งบาทถ้วน`);
+    expect(func(`1000001000001`, true)).toBe(`หนึ่งล้านเอ็ดล้านเอ็ดบาทถ้วน`);
+    expect(func(`1000011000001`, true)).toBe(`หนึ่งล้านสิบเอ็ดล้านเอ็ดบาทถ้วน`);
+    expect(func(`101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+    expect(func(`000101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+    expect(func(`000000000000000101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+    expect(func(`000000000000000101n`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+    expect(func(`101`, true)).toBe(`หนึ่งร้อยเอ็ดบาทถ้วน`);
+    expect(func(`123`)).toBe(`หนึ่งร้อยยี่สิบสามบาทถ้วน`);
+    expect(func(`8.00`)).toBe(`แปดบาทถ้วน`);
+    expect(func(`5678.00`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทถ้วน`);
+    expect(func(`63147.89`)).toBe(`หกหมื่นสามพันหนึ่งร้อยสี่สิบเจ็ดบาทแปดสิบเก้าสตางค์`);
+    expect(func(`51000001.00`, true)).toBe(`ห้าสิบเอ็ดล้านเอ็ดบาทถ้วน`);
+    expect(func(`51000001.00`)).toBe(`ห้าสิบเอ็ดล้านหนึ่งบาทถ้วน`);
+    expect(func(`317.10`)).toBe(`สามร้อยสิบเจ็ดบาทสิบสตางค์`);
+    expect(func(`422.26`)).toBe(`สี่ร้อยยี่สิบสองบาทยี่สิบหกสตางค์`);
+    expect(func(`11.11`)).toBe(`สิบเอ็ดบาทสิบเอ็ดสตางค์`);
+    expect(func(`191415.11`)).toBe(`หนึ่งแสนเก้าหมื่นหนึ่งพันสี่ร้อยสิบห้าบาทสิบเอ็ดสตางค์`);
+    expect(func(`1.01`)).toBe(`หนึ่งบาทหนึ่งสตางค์`);
+    expect(func(`5678.46`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทสี่สิบหกสตางค์`);
+    expect(func(`0.67`)).toBe(`หกสิบเจ็ดสตางค์`);
+    expect(func(`768,601,800,000,000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`);
+    expect(func(`768_601_800_000_000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`);
+    expect(func(`777777777777777777777777777777777777777777`)).toBe(
+      `เจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดบาทถ้วน`
+    );
+  });
 
-test("BT BL", () => {
-  expect(BT(`0B77`)).toBe(undefined);
-  expect(BT(`0B11`)).toBe(`สามบาทถ้วน`);
-  expect(BT(`0b00101010101001010101011001010010010100100001010010001001`)).toBe(
-    `หนึ่งหมื่นสองพันสามล้านเจ็ดแสนสามหมื่นเก้าพันหนึ่งร้อยแปดสิบแปดล้านเจ็ดแสนสองหมื่นแปดพันเก้าร้อยหกสิบเก้าบาทถ้วน`
-  );
-});
-test("B2 BL", () => {
-  expect(B2(`0B77`)).toBe(undefined);
-  expect(B2(`0B11`)).toBe(`สามบาทถ้วน`);
-  expect(B2(`0b00101010101001010101011001010010010100100001010010001001`)).toBe(
-    `หนึ่งหมื่นสองพันสามล้านเจ็ดแสนสามหมื่นเก้าพันหนึ่งร้อยแปดสิบแปดล้านเจ็ดแสนสองหมื่นแปดพันเก้าร้อยหกสิบเก้าบาทถ้วน`
-  );
-});
+  test(`${name} OL`, () => {
+    expect(func(`0x77`)).toBe(`หนึ่งร้อยสิบเก้าบาทถ้วน`);
+    expect(func(`077`)).toBe(`เจ็ดสิบเจ็ดบาทถ้วน`);
+    expect(func(`077`, false, true)).toBe(`หกสิบสามบาทถ้วน`);
+    expect(func(`0o71`, false, true)).toBe(`ห้าสิบเจ็ดบาทถ้วน`);
+    expect(func(`0o71`)).toBe(undefined);
+    expect(func(`0o17`, false, true)).toBe(`สิบห้าบาทถ้วน`);
+  });
 
-test('BT OL', () => {
-  expect(BT(`0x77`)).toBe(`หนึ่งร้อยสิบเก้าบาทถ้วน`);
-  expect(BT(`077`)).toBe(`เจ็ดสิบเจ็ดบาทถ้วน`);
-  expect(BT(`077`, false, true)).toBe(`หกสิบสามบาทถ้วน`);
-  expect(BT(`0o71`, false, true)).toBe(`ห้าสิบเจ็ดบาทถ้วน`);
-  expect(BT(`0o71`)).toBe(undefined);
-  expect(BT(`0o17`, false, true)).toBe(`สิบห้าบาทถ้วน`);
-})
-test('B2 OL', () => {
-  expect(B2(`0x77`)).toBe(`หนึ่งร้อยสิบเก้าบาทถ้วน`);
-  expect(B2(`077`)).toBe(`เจ็ดสิบเจ็ดบาทถ้วน`);
-  expect(B2(`077`, false, true)).toBe(`หกสิบสามบาทถ้วน`);
-  expect(B2(`0o71`, false, true)).toBe(`ห้าสิบเจ็ดบาทถ้วน`);
-  expect(B2(`0o71`)).toBe(undefined);
-  expect(B2(`0o17`, false, true)).toBe(`สิบห้าบาทถ้วน`);
-})
-
-test('BT', () => {
-  expect(BT(`lol`)).toBe(undefined);
-  expect(BT(`2000000000000.9`, false, false, `c`)).toBe(`สองล้านล้านบาทเก้าสิบสตางค์`)
-  expect(BT(`2000000000000.990003`, false, false, `c`)).toBe(`สองล้านล้านหนึ่งบาทถ้วน`)
-  expect(BT(`2000000000000.99`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
-  expect(BT(`2000000000000.990003`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
-  expect(BT(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`)
-  expect(BT(`1000001000001`)).toBe(`หนึ่งล้านหนึ่งล้านหนึ่งบาทถ้วน`);
-  expect(BT(`1000001000001`, true)).toBe(`หนึ่งล้านเอ็ดล้านเอ็ดบาทถ้วน`);
-  expect(BT(`1000011000001`, true)).toBe(`หนึ่งล้านสิบเอ็ดล้านเอ็ดบาทถ้วน`);
-  expect(BT(`101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
-  expect(BT(`101`, true)).toBe(`หนึ่งร้อยเอ็ดบาทถ้วน`);
-  expect(BT(`123`)).toBe(`หนึ่งร้อยยี่สิบสามบาทถ้วน`);
-  expect(BT(`8.00`)).toBe(`แปดบาทถ้วน`)
-  expect(BT(`5678.00`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทถ้วน`)
-  expect(BT(`63147.89`)).toBe(`หกหมื่นสามพันหนึ่งร้อยสี่สิบเจ็ดบาทแปดสิบเก้าสตางค์`)
-  expect(BT(`51000001.00`, true)).toBe(`ห้าสิบเอ็ดล้านเอ็ดบาทถ้วน`)
-  expect(BT(`51000001.00`)).toBe(`ห้าสิบเอ็ดล้านหนึ่งบาทถ้วน`)
-  expect(BT(`317.10`)).toBe(`สามร้อยสิบเจ็ดบาทสิบสตางค์`)
-  expect(BT(`422.26`)).toBe(`สี่ร้อยยี่สิบสองบาทยี่สิบหกสตางค์`)
-  expect(BT(`11.11`)).toBe(`สิบเอ็ดบาทสิบเอ็ดสตางค์`)
-  expect(BT(`191415.11`)).toBe(`หนึ่งแสนเก้าหมื่นหนึ่งพันสี่ร้อยสิบห้าบาทสิบเอ็ดสตางค์`)
-  expect(BT(`1.01`)).toBe(`หนึ่งบาทหนึ่งสตางค์`)
-  expect(BT(`5678.46`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทสี่สิบหกสตางค์`)
-  expect(BT(`0.67`)).toBe(`หกสิบเจ็ดสตางค์`)
-  expect(BT(`768,601,800,000,000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`)
-  expect(BT(`768_601_800_000_000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`)
-  expect(BT(`777777777777777777777777777777777777777777`)).toBe(
-    `เจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดบาทถ้วน`
-  );
-});
-test('B2', () => {
-  expect(B2(`lol`)).toBe(undefined);
-  expect(B2(`2000000000000.9`, false, false, `c`)).toBe(`สองล้านล้านบาทเก้าสิบสตางค์`)
-  expect(B2(`2000000000000.990003`, false, false, `c`)).toBe(`สองล้านล้านหนึ่งบาทถ้วน`)
-  expect(B2(`2000000000000.99`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
-  expect(B2(`2000000000000.990003`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
-  expect(B2(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`)
-  expect(B2(`1000001000001`)).toBe(`หนึ่งล้านหนึ่งล้านหนึ่งบาทถ้วน`);
-  expect(B2(`1000001000001`, true)).toBe(`หนึ่งล้านเอ็ดล้านเอ็ดบาทถ้วน`);
-  expect(B2(`1000011000001`, true)).toBe(`หนึ่งล้านสิบเอ็ดล้านเอ็ดบาทถ้วน`);
-  expect(B2(`101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
-  expect(B2(`101`, true)).toBe(`หนึ่งร้อยเอ็ดบาทถ้วน`);
-  expect(B2(`123`)).toBe(`หนึ่งร้อยยี่สิบสามบาทถ้วน`);
-  expect(B2(`8.00`)).toBe(`แปดบาทถ้วน`)
-  expect(B2(`5678.00`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทถ้วน`)
-  expect(B2(`63147.89`)).toBe(`หกหมื่นสามพันหนึ่งร้อยสี่สิบเจ็ดบาทแปดสิบเก้าสตางค์`)
-  expect(B2(`51000001.00`, true)).toBe(`ห้าสิบเอ็ดล้านเอ็ดบาทถ้วน`)
-  expect(B2(`51000001.00`)).toBe(`ห้าสิบเอ็ดล้านหนึ่งบาทถ้วน`)
-  expect(B2(`317.10`)).toBe(`สามร้อยสิบเจ็ดบาทสิบสตางค์`)
-  expect(B2(`422.26`)).toBe(`สี่ร้อยยี่สิบสองบาทยี่สิบหกสตางค์`)
-  expect(B2(`11.11`)).toBe(`สิบเอ็ดบาทสิบเอ็ดสตางค์`)
-  expect(B2(`191415.11`)).toBe(`หนึ่งแสนเก้าหมื่นหนึ่งพันสี่ร้อยสิบห้าบาทสิบเอ็ดสตางค์`)
-  expect(B2(`1.01`)).toBe(`หนึ่งบาทหนึ่งสตางค์`)
-  expect(B2(`5678.46`)).toBe(`ห้าพันหกร้อยเจ็ดสิบแปดบาทสี่สิบหกสตางค์`)
-  expect(B2(`0.67`)).toBe(`หกสิบเจ็ดสตางค์`)
-  expect(B2(`768,601,800,000,000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`)
-  expect(B2(`768_601_800_000_000`)).toBe(`เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`)
-  expect(B2(`777777777777777777777777777777777777777777`)).toBe(
-    `เจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดล้านเจ็ดแสนเจ็ดหมื่นเจ็ดพันเจ็ดร้อยเจ็ดสิบเจ็ดบาทถ้วน`
-  );
+  test(`${name} BL`, () => {
+    expect(func(`0B77`)).toBe(undefined);
+    expect(func(`0B11`)).toBe(`สามบาทถ้วน`);
+    expect(func(`0b00101010101001010101011001010010010100100001010010001001`)).toBe(
+      `หนึ่งหมื่นสองพันสามล้านเจ็ดแสนสามหมื่นเก้าพันหนึ่งร้อยแปดสิบแปดล้านเจ็ดแสนสองหมื่นแปดพันเก้าร้อยหกสิบเก้าบาทถ้วน`
+    );
+  });
 });
 
 test("ABT", () => {
+  expect(ABT(Number.MAX_VALUE)).toBe(INFINITY);
+  expect(ABT(-Number.MAX_VALUE)).toBe(`ลบ${INFINITY}`);
+  expect(ABT(`${Number.MAX_VALUE}`)).toBe(INFINITY);
+  expect(ABT(`-${Number.MAX_VALUE}`, false, true)).toBe(`ลบ${INFINITY}`);
   expect(ABT(`lol`)).toBe(undefined);
   expect(ABT(37)).toBe(`สามสิบเจ็ดบาทถ้วน`);
   expect(ABT(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`);
@@ -173,10 +137,16 @@ test("ABT", () => {
   expect(ABT(`768,601,800,000,000`)).toBe(
     `เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`
   );
+  expect(ABT(`768,601,800,000,000n`)).toBe(
+    `เจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`
+  );
   expect(ABT([123])).toBe(
     undefined
   )
   expect(ABT(9007199254740992)).toBe(
+    `เก้าพันเจ็ดล้านหนึ่งแสนเก้าหมื่นเก้าพันสองร้อยห้าสิบสี่ล้านเจ็ดแสนสี่หมื่นเก้าร้อยเก้าสิบสองบาทถ้วน`
+  );
+  expect(ABT(9007199254740992n)).toBe(
     `เก้าพันเจ็ดล้านหนึ่งแสนเก้าหมื่นเก้าพันสองร้อยห้าสิบสี่ล้านเจ็ดแสนสี่หมื่นเก้าร้อยเก้าสิบสองบาทถ้วน`
   );
   expect(ABT(`-0.67`)).toBe(undefined);
@@ -187,6 +157,7 @@ test("ABT Negative", () => {
   expect(ABT(`--0.67`, false, true)).toBe(undefined);
   expect(ABT(`-2000000000000.00`, false, true)).toBe(`ลบสองล้านล้านบาทถ้วน`);
   expect(ABT(`-123`, false, true)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
+  expect(ABT(`-123n`, false, true)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
   expect(ABT(`-8.00`, false, true)).toBe(`ลบแปดบาทถ้วน`);
   expect(ABT(`-5678.00`, false, true)).toBe(`ลบห้าพันหกร้อยเจ็ดสิบแปดบาทถ้วน`);
   expect(ABT(`-63147.89`, false, true)).toBe(
@@ -205,6 +176,10 @@ test("ABT Negative", () => {
   expect(ABT(`-768,601,800,000,000`, false, true)).toBe(
     `ลบเจ็ดร้อยหกสิบแปดล้านหกแสนหนึ่งพันแปดร้อยล้านบาทถ้วน`
   );
+  expect(ABT(`101`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+  expect(ABT(`101`, true)).toBe(`หนึ่งร้อยเอ็ดบาทถ้วน`);
+  expect(ABT(`101n`)).toBe(`หนึ่งร้อยหนึ่งบาทถ้วน`);
+  expect(ABT(`101n`, true)).toBe(`หนึ่งร้อยเอ็ดบาทถ้วน`);
 })
 
 test(`NEG`, () => {
@@ -296,109 +271,112 @@ test(`BulkBahtText`, () => {
   expect(BulkBahtText('')).toBe(null);
 })
 
-test('SatangNum', () => {
-  expect(SatangNum("ถ้วน")).toBe("00")
-  expect(SatangNum("หนึ่ง")).toBe("01")
-  expect(SatangNum("สอง")).toBe("02")
-  expect(SatangNum("สาม")).toBe("03")
-  expect(SatangNum("สี่")).toBe("04")
-  expect(SatangNum("ห้า")).toBe("05")
-  expect(SatangNum("หก")).toBe("06")
-  expect(SatangNum("เจ็ด")).toBe("07")
-  expect(SatangNum("แปด")).toBe("08")
-  expect(SatangNum("เก้า")).toBe("09")
-  expect(SatangNum("สิบ")).toBe("10")
-  expect(SatangNum("สิบเอ็ด")).toBe("11")
-  expect(SatangNum("สิบสอง")).toBe("12")
-  expect(SatangNum("สิบสาม")).toBe("13")
-  expect(SatangNum("สิบสี่")).toBe("14")
-  expect(SatangNum("สิบห้า")).toBe("15")
-  expect(SatangNum("สิบหก")).toBe("16")
-  expect(SatangNum("สิบเจ็ด")).toBe("17")
-  expect(SatangNum("สิบแปด")).toBe("18")
-  expect(SatangNum("สิบเก้า")).toBe("19")
-  expect(SatangNum("ยี่สิบ")).toBe("20")
-  expect(SatangNum("ยี่สิบเอ็ด")).toBe("21")
-  expect(SatangNum("ยี่สิบสอง")).toBe("22")
-  expect(SatangNum("ยี่สิบสาม")).toBe("23")
-  expect(SatangNum("ยี่สิบสี่")).toBe("24")
-  expect(SatangNum("ยี่สิบห้า")).toBe("25")
-  expect(SatangNum("ยี่สิบหก")).toBe("26")
-  expect(SatangNum("ยี่สิบเจ็ด")).toBe("27")
-  expect(SatangNum("ยี่สิบแปด")).toBe("28")
-  expect(SatangNum("ยี่สิบเก้า")).toBe("29")
-  expect(SatangNum("สามสิบ")).toBe("30")
-  expect(SatangNum("สามสิบเอ็ด")).toBe("31")
-  expect(SatangNum("สามสิบสอง")).toBe("32")
-  expect(SatangNum("สามสิบสาม")).toBe("33")
-  expect(SatangNum("สามสิบสี่")).toBe("34")
-  expect(SatangNum("สามสิบห้า")).toBe("35")
-  expect(SatangNum("สามสิบหก")).toBe("36")
-  expect(SatangNum("สามสิบเจ็ด")).toBe("37")
-  expect(SatangNum("สามสิบแปด")).toBe("38")
-  expect(SatangNum("สามสิบเก้า")).toBe("39")
-  expect(SatangNum("สี่สิบ")).toBe("40")
-  expect(SatangNum("สี่สิบเอ็ด")).toBe("41")
-  expect(SatangNum("สี่สิบสอง")).toBe("42")
-  expect(SatangNum("สี่สิบสาม")).toBe("43")
-  expect(SatangNum("สี่สิบสี่")).toBe("44")
-  expect(SatangNum("สี่สิบห้า")).toBe("45")
-  expect(SatangNum("สี่สิบหก")).toBe("46")
-  expect(SatangNum("สี่สิบเจ็ด")).toBe("47")
-  expect(SatangNum("สี่สิบแปด")).toBe("48")
-  expect(SatangNum("สี่สิบเก้า")).toBe("49")
-  expect(SatangNum("ห้าสิบ")).toBe("50")
-  expect(SatangNum("ห้าสิบเอ็ด")).toBe("51")
-  expect(SatangNum("ห้าสิบสอง")).toBe("52")
-  expect(SatangNum("ห้าสิบสาม")).toBe("53")
-  expect(SatangNum("ห้าสิบสี่")).toBe("54")
-  expect(SatangNum("ห้าสิบห้า")).toBe("55")
-  expect(SatangNum("ห้าสิบหก")).toBe("56")
-  expect(SatangNum("ห้าสิบเจ็ด")).toBe("57")
-  expect(SatangNum("ห้าสิบแปด")).toBe("58")
-  expect(SatangNum("ห้าสิบเก้า")).toBe("59")
-  expect(SatangNum("หกสิบ")).toBe("60")
-  expect(SatangNum("หกสิบเอ็ด")).toBe("61")
-  expect(SatangNum("หกสิบสอง")).toBe("62")
-  expect(SatangNum("หกสิบสาม")).toBe("63")
-  expect(SatangNum("หกสิบสี่")).toBe("64")
-  expect(SatangNum("หกสิบห้า")).toBe("65")
-  expect(SatangNum("หกสิบหก")).toBe("66")
-  expect(SatangNum("หกสิบเจ็ด")).toBe("67")
-  expect(SatangNum("หกสิบแปด")).toBe("68")
-  expect(SatangNum("หกสิบเก้า")).toBe("69")
-  expect(SatangNum("เจ็ดสิบ")).toBe("70")
-  expect(SatangNum("เจ็ดสิบเอ็ด")).toBe("71")
-  expect(SatangNum("เจ็ดสิบสอง")).toBe("72")
-  expect(SatangNum("เจ็ดสิบสาม")).toBe("73")
-  expect(SatangNum("เจ็ดสิบสี่")).toBe("74")
-  expect(SatangNum("เจ็ดสิบห้า")).toBe("75")
-  expect(SatangNum("เจ็ดสิบหก")).toBe("76")
-  expect(SatangNum("เจ็ดสิบเจ็ด")).toBe("77")
-  expect(SatangNum("เจ็ดสิบแปด")).toBe("78")
-  expect(SatangNum("เจ็ดสิบเก้า")).toBe("79")
-  expect(SatangNum("แปดสิบ")).toBe("80")
-  expect(SatangNum("แปดสิบเอ็ด")).toBe("81")
-  expect(SatangNum("แปดสิบสอง")).toBe("82")
-  expect(SatangNum("แปดสิบสาม")).toBe("83")
-  expect(SatangNum("แปดสิบสี่")).toBe("84")
-  expect(SatangNum("แปดสิบห้า")).toBe("85")
-  expect(SatangNum("แปดสิบหก")).toBe("86")
-  expect(SatangNum("แปดสิบเจ็ด")).toBe("87")
-  expect(SatangNum("แปดสิบแปด")).toBe("88")
-  expect(SatangNum("แปดสิบเก้า")).toBe("89")
-  expect(SatangNum("เก้าสิบ")).toBe("90")
-  expect(SatangNum("เก้าสิบเอ็ด")).toBe("91")
-  expect(SatangNum("เก้าสิบสอง")).toBe("92")
-  expect(SatangNum("เก้าสิบสาม")).toBe("93")
-  expect(SatangNum("เก้าสิบสี่")).toBe("94")
-  expect(SatangNum("เก้าสิบห้า")).toBe("95")
-  expect(SatangNum("เก้าสิบหก")).toBe("96")
-  expect(SatangNum("เก้าสิบเจ็ด")).toBe("97")
-  expect(SatangNum("เก้าสิบแปด")).toBe("98")
-  expect(SatangNum("เก้าสิบเก้า")).toBe("99")
-  expect(SatangNum("ร้อย")).toBe(undefined)
-})
+describe('SatangNum', () => {
+  test.each([["ถ้วน", "00"],
+    ["หนึ่ง", "01"],
+    ["สอง", "02"],
+    ["สาม", "03"],
+    ["สี่", "04"],
+    ["ห้า", "05"],
+    ["หก", "06"],
+    ["เจ็ด", "07"],
+    ["แปด", "08"],
+    ["เก้า", "09"],
+    ["สิบ", "10"],
+    ["สิบเอ็ด", "11"],
+    ["สิบสอง", "12"],
+    ["สิบสาม", "13"],
+    ["สิบสี่", "14"],
+    ["สิบห้า", "15"],
+    ["สิบหก", "16"],
+    ["สิบเจ็ด", "17"],
+    ["สิบแปด", "18"],
+    ["สิบเก้า", "19"],
+    ["ยี่สิบ", "20"],
+    ["ยี่สิบเอ็ด", "21"],
+    ["ยี่สิบสอง", "22"],
+    ["ยี่สิบสาม", "23"],
+    ["ยี่สิบสี่", "24"],
+    ["ยี่สิบห้า", "25"],
+    ["ยี่สิบหก", "26"],
+    ["ยี่สิบเจ็ด", "27"],
+    ["ยี่สิบแปด", "28"],
+    ["ยี่สิบเก้า", "29"],
+    ["สามสิบ", "30"],
+    ["สามสิบเอ็ด", "31"],
+    ["สามสิบสอง", "32"],
+    ["สามสิบสาม", "33"],
+    ["สามสิบสี่", "34"],
+    ["สามสิบห้า", "35"],
+    ["สามสิบหก", "36"],
+    ["สามสิบเจ็ด", "37"],
+    ["สามสิบแปด", "38"],
+    ["สามสิบเก้า", "39"],
+    ["สี่สิบ", "40"],
+    ["สี่สิบเอ็ด", "41"],
+    ["สี่สิบสอง", "42"],
+    ["สี่สิบสาม", "43"],
+    ["สี่สิบสี่", "44"],
+    ["สี่สิบห้า", "45"],
+    ["สี่สิบหก", "46"],
+    ["สี่สิบเจ็ด", "47"],
+    ["สี่สิบแปด", "48"],
+    ["สี่สิบเก้า", "49"],
+    ["ห้าสิบ", "50"],
+    ["ห้าสิบเอ็ด", "51"],
+    ["ห้าสิบสอง", "52"],
+    ["ห้าสิบสาม", "53"],
+    ["ห้าสิบสี่", "54"],
+    ["ห้าสิบห้า", "55"],
+    ["ห้าสิบหก", "56"],
+    ["ห้าสิบเจ็ด", "57"],
+    ["ห้าสิบแปด", "58"],
+    ["ห้าสิบเก้า", "59"],
+    ["หกสิบ", "60"],
+    ["หกสิบเอ็ด", "61"],
+    ["หกสิบสอง", "62"],
+    ["หกสิบสาม", "63"],
+    ["หกสิบสี่", "64"],
+    ["หกสิบห้า", "65"],
+    ["หกสิบหก", "66"],
+    ["หกสิบเจ็ด", "67"],
+    ["หกสิบแปด", "68"],
+    ["หกสิบเก้า", "69"],
+    ["เจ็ดสิบ", "70"],
+    ["เจ็ดสิบเอ็ด", "71"],
+    ["เจ็ดสิบสอง", "72"],
+    ["เจ็ดสิบสาม", "73"],
+    ["เจ็ดสิบสี่", "74"],
+    ["เจ็ดสิบห้า", "75"],
+    ["เจ็ดสิบหก", "76"],
+    ["เจ็ดสิบเจ็ด", "77"],
+    ["เจ็ดสิบแปด", "78"],
+    ["เจ็ดสิบเก้า", "79"],
+    ["แปดสิบ", "80"],
+    ["แปดสิบเอ็ด", "81"],
+    ["แปดสิบสอง", "82"],
+    ["แปดสิบสาม", "83"],
+    ["แปดสิบสี่", "84"],
+    ["แปดสิบห้า", "85"],
+    ["แปดสิบหก", "86"],
+    ["แปดสิบเจ็ด", "87"],
+    ["แปดสิบแปด", "88"],
+    ["แปดสิบเก้า", "89"],
+    ["เก้าสิบ", "90"],
+    ["เก้าสิบเอ็ด", "91"],
+    ["เก้าสิบสอง", "92"],
+    ["เก้าสิบสาม", "93"],
+    ["เก้าสิบสี่", "94"],
+    ["เก้าสิบห้า", "95"],
+    ["เก้าสิบหก", "96"],
+    ["เก้าสิบเจ็ด", "97"],
+    ["เก้าสิบแปด", "98"],
+    ["เก้าสิบเก้า", "99"],
+    ["ร้อย", undefined]
+  ])('should convert "%s" to "%s"', (input, expected) => {
+    expect(SatangNum(input)).toBe(expected);
+  });
+});
 
 test(`TB`, () => {
   expect(TB(`สิบเอ็ดบาทสิบเอ็ดสตางค์`)).toBe(`11.11`);
@@ -420,22 +398,23 @@ test(`TB`, () => {
 })
 
 test('Reverse BahtText', () => {
-  expect(TB(BT(`123`))).toBe(`123.00`);
-  expect(TB(BT(`72`))).toBe(`72.00`);
-  expect(TB(BT(`50000072.00`))).toBe(`50000072.00`);
-  expect(TB(BT(`8.00`))).toBe(`8.00`);
-  expect(TB(BT(`5678.00`))).toBe(`5678.00`);
-  expect(TB(BT(`63147.89`))).toBe(`63147.89`);
-  expect(TB(BT(`51000001.00`))).toBe(`51000001.00`);
-  expect(TB(BT(`422.26`))).toBe(`422.26`);
-  expect(TB(BT(`191415.11`))).toBe(`191415.11`);
-  expect(TB(BT(`1.01`))).toBe(`1.01`);
-  expect(TB(BT(`5678.46`))).toBe(`5678.46`);
-  expect(TB(BT(`0.67`))).toBe(`0.67`);
-  expect(TB(BT(`317.10`))).toBe(`317.10`);
-  expect(TB(BT(`11.11`))).toBe(`11.11`);
-  expect(TB(BT(`230000.00`))).toBe(`230000.00`);
-  expect(TB(BT(`84000.00`))).toBe(`84000.00`);
+  const self = (str) => TB(BT(str))
+  expect(self(`123`)).toBe(`123.00`);
+  expect(self(`72`)).toBe(`72.00`);
+  expect(self(`50000072.00`)).toBe(`50000072.00`);
+  expect(self(`8.00`)).toBe(`8.00`);
+  expect(self(`5678.00`)).toBe(`5678.00`);
+  expect(self(`63147.89`)).toBe(`63147.89`);
+  expect(self(`51000001.00`)).toBe(`51000001.00`);
+  expect(self(`422.26`)).toBe(`422.26`);
+  expect(self(`191415.11`)).toBe(`191415.11`);
+  expect(self(`1.01`)).toBe(`1.01`);
+  expect(self(`5678.46`)).toBe(`5678.46`);
+  expect(self(`0.67`)).toBe(`0.67`);
+  expect(self(`317.10`)).toBe(`317.10`);
+  expect(self(`11.11`)).toBe(`11.11`);
+  expect(self(`230000.00`)).toBe(`230000.00`);
+  expect(self(`84000.00`)).toBe(`84000.00`);
 });
 
 test('repeat', () => {
@@ -533,26 +512,22 @@ test(`sep`, () => {
 })
 
 test(`data type`, () => {
-  const d = {
-    s: `string`,
-    f: `function`,
-    o: `object`,
-  };
-  expect(typeof FULLBAHT).toBe(d.s);
-  expect(typeof BAHT).toBe(d.s);
-  expect(typeof NumText).toBe(d.f);
-  expect(typeof BT).toBe(d.f);
-  expect(typeof ABT).toBe(d.f);
-  expect(typeof PrintSatangs).toBe(d.f);
-  expect(typeof BulkBahtText).toBe(d.f);
-  expect(typeof TB).toBe(d.f);
-  expect(typeof B2).toBe(d.f);
-  expect(typeof repeat).toBe(d.f);
-  expect(typeof IsValidTB).toBe(d.f);
-  expect(typeof IsValidText).toBe(d.f);
-  expect(typeof OB).toBe(d.f);
-  expect(typeof LNBT).toBe(d.f);
-  expect(typeof SEP).toBe(d.f);
+  const [s,f] = ["string", "function"]
+  expect(typeof FULLBAHT).toBe(s);
+  expect(typeof BAHT).toBe(s);
+  expect(typeof NumText).toBe(f);
+  expect(typeof BT).toBe(f);
+  expect(typeof ABT).toBe(f);
+  expect(typeof PrintSatangs).toBe(f);
+  expect(typeof BulkBahtText).toBe(f);
+  expect(typeof TB).toBe(f);
+  expect(typeof B2).toBe(f);
+  expect(typeof repeat).toBe(f);
+  expect(typeof IsValidTB).toBe(f);
+  expect(typeof IsValidText).toBe(f);
+  expect(typeof OB).toBe(f);
+  expect(typeof LNBT).toBe(f);
+  expect(typeof SEP).toBe(f);
 });
 
 describe("BR Class", () => {

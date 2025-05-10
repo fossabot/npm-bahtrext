@@ -1,1 +1,1 @@
-export default /^(\d*)(\.\d{0,2}0*)?$/;
+export default /^((\d*)(\.\d{0,2}0*)?n?|(\d+)n?)$/;

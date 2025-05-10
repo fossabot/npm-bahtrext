@@ -1,12 +1,12 @@
 import NEG from './NEG';
 import BF from './BF';
-import THBText from 'thai-baht-text';
+import iTHBText from './iTHBText';
 
 export default (money, ed = false, allow_neg = false) => {
   if (!money) return undefined;
 
-  if (typeof money === "number") {
-    return money < 0 ? `ลบ${THBText(-money)}` : THBText(money);
+  if (["number", "bigint"].includes(typeof money)) {
+    return money < 0 ? `ลบ${iTHBText(-money)}` : iTHBText(money);
   }
 
   if (typeof money === "string") {

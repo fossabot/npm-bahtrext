@@ -5,7 +5,7 @@
 ## Install
 ### ES6
 ```
-npm install bahtrext@2.3.1
+npm install bahtrext@2.3.4
 ```
 ### ES5
 ```
@@ -61,6 +61,7 @@ npm install bahtrext@1.7.2
 [Chadin Chaipornpisuth](https://chadindev.in.th/)
 
 ## Changes
+- 2.3.4 - Infinity
 - 2.2.0 - ES6 [1.7.2]
 - 1.7.1 - apply `Rest Parameters` => add function `BulkReplace`, `applyReplacements`
 - 1.7.0 - add class `BR`

@@ -5,7 +5,7 @@ import {
   large_numbers,
   BAHT,
   THB,
-} from './const';
+} from './const/.';
 import {
   MoneyLaundering,
   IsMoneyValidate,
@@ -106,6 +106,7 @@ class BR {
   get isValid() { return IsMoneyValidate(this.#num) }
 
 }
+
 export default BR;
 export {
   MoneyLaundering,

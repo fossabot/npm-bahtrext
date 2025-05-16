@@ -1,4 +1,4 @@
-import BahtText from './BahtText';
+import BahtText from './BahtTextv2';
 import IsMatchInSkipsPattern from './IsMatchInSkipsPattern';
 import { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } from '../const';
 
@@ -17,9 +17,7 @@ export default (
   for (const match of matches) {
     if (IsMatchInSkipsPattern(match, skips)) continue;
 
-    const bahtText = BahtText(match.replace(/[^\d]/g, ""), ed)
-      .split('"')
-      .at(-2);
+    const bahtText = BahtText(match.replace(/[^\d]/g, ""), ed);
     str = str.replace(match, bahtText);
   }
 

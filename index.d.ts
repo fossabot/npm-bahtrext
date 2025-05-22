@@ -8,7 +8,7 @@ export declare function MoneyLaundering(num: string): string;
 export declare function removeLeadingingZeros(num: string): string;
 export declare function IsMoneyValidate(num: string | number): boolean;
 export declare function PrintBaht(num: string): string;
-export declare function PrintSatangs(num: string | number): string;
+export declare function PrintSatangs(num: string | number): {word: string | undefined, carry: '0' | '1'};
 export declare function BahtText(num: string | number): string;
 export declare function BT(num: string | number, ed?: boolean, OL?: boolean, rounding?: 'c' | ''): string | undefined;
 export declare function B2(num: string | number, ed?: boolean, OL?: boolean, rounding?: 'c' | ''): string | undefined;

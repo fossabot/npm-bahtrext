@@ -24,8 +24,6 @@ export default (money, ed = false, OL = false, rounding = '') => {
     READAS,
   );
 
-  if (!rBahtText) return undefined;
-
   const retText = rBahtText.split('"').at(-2);
   if (!retText) return undefined;
 

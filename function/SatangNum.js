@@ -11,9 +11,7 @@ import {
 } from '../const';
 
 export default (moneySatang) => {
-  if (moneySatang === FULLBAHT) {
-    return `00`;
-  }
+  if (moneySatang === FULLBAHT) return `00`;
   if (OneToTenTextRegex.test(moneySatang)) {
     return padWithLeadingZeros(THAINUMBERWORDS.indexOf(moneySatang), 2);
   }

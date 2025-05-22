@@ -3,13 +3,13 @@ import SatangFirstDigit from './SatangFirstDigit';
 import SatangSecondDigit from './SatangSecondDigit';
 import { sum } from 'operation-strint';
 
-export default function PrintSatangs(satangs, rounding = '') {
-  if (/^0*$/.exec(satangs)) return [FULLBAHT, `0`];
+export default (satangs, rounding = '') => {
+  if (/^0*$/.exec(satangs)) return {word: FULLBAHT, carry: `0`};
   if (
     (!/^\d{0,2}$/.test(satangs) && rounding === '') ||
     /[^\d]/.test(satangs)
   ) {
-    return [undefined, `0`];
+    return { word: undefined, carry: `0` };
   }
 
   let first2digit = satangs.slice(0, 2);
@@ -21,10 +21,10 @@ export default function PrintSatangs(satangs, rounding = '') {
     satangs = first2digit;
   }
 
-  if (satangs === `100`) return [FULLBAHT, `1`];
+  if (satangs === `100`) return { word: FULLBAHT, carry: `1` };
 
   const satangword = `${SatangFirstDigit(satangs[0])}${SatangSecondDigit(
     satangs
   )}${SATANG}`;
-  return [satangword, `0`];
+  return { word: satangword, carry: `0` };
 };

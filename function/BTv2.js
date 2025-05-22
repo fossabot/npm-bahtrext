@@ -22,7 +22,5 @@ export default (money, ed = false, OL = false, rounding = '') => {
         MoneyInvalid
     );
 
-    if (!rBahtText) return undefined;
-
     return rBahtText;
 };

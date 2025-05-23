@@ -1,9 +1,14 @@
 import { TEN, SPECIALTWO, THAINUMBERWORDS } from "../const";
 
 export default (digit) => {
-  if (digit === `0`) return ``;
-  if (digit === `1`) return `${TEN}`;
-  if (digit === `2`) return `${SPECIALTWO}${TEN}`;
-
-  return `${THAINUMBERWORDS[parseInt(digit)]}${TEN}`;
+  switch (digit) {
+    case "0":
+      return "";
+    case "1":
+      return `${TEN}`;
+    case "2":
+      return `${SPECIALTWO}${TEN}`;
+    default:
+      return `${THAINUMBERWORDS[parseInt(digit)]}${TEN}`;
+  }
 };

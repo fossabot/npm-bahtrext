@@ -1,5 +1,5 @@
 import ABT from './ABT';
-import applyReplacements from './applyReplacements';
+import applyReplacements from '../snippet/applyReplacements';
 import { ONETONINE, REVERSETHAIDIGITWORDS, MILLION, SPECIALONE, SPECIALTWO, BAHT, FULLBAHT } from "../const";
 
 export default (num, separator = '-') => {

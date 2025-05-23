@@ -1,7 +1,6 @@
 import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS';
 
 export default (str, arr = THAINUMBERWORDS, flag = `g`) => {
-  if (!str) return undefined;
   if (typeof str !== "string") return `Invalid Type`;
 
   return Object.entries(arr).reduce(

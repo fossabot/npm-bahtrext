@@ -5,7 +5,7 @@ import {
   large_numbers,
   BAHT,
   THB,
-} from './const/.';
+} from './const';
 import {
   MoneyLaundering,
   IsMoneyValidate,
@@ -23,13 +23,14 @@ import {
   IsValidTB,
   NEG,
   ABT,
-  repeat,
   LNBT,
   OB,
   SEP,
-} from './function/.';
+  ISINFSTR,
+  LeadingSpecialOneToOne,
+} from './function';
 
-import { removeLeadingingZeros, LeadingSpecialOneToOne } from './snippet/.';
+import { removeLeadingingZeros, repeat } from './snippet';
 
 import { sum, minus, pow } from "operation-strint"
 
@@ -78,7 +79,7 @@ class BR {
   get log() { return this.#log }
 
   get auto() { return ABT(this.#num, this.#ed) }
-  get text() { return BT(this.#num, this.#ed) }
+  get text() { return B2(this.#num, this.#ed) }
   get b() { return B2(this.#num, this.#ed) }
   get num() { return TB(this.auto) }
   get flex() { return BF(this.#num) }
@@ -104,7 +105,8 @@ class BR {
 
   get trim() { return removeLeadingingZeros(this.#num) }
   get isValid() { return IsMoneyValidate(this.#num) }
-
+  
+  get isInfinity() { return ISINFSTR(this.#num) }
 }
 
 export default BR;
@@ -133,5 +135,6 @@ export {
   repeat,
   SEP,
   NEG,
+  ISINFSTR,
   VERSION,
 };

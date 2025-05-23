@@ -1,4 +1,5 @@
 import GoogleSheetsCellCharactersLimit from './primitive/GoogleSheetsCellCharactersLimit';
+import JSINFINITY from './primitive/JSINFINITY';
 import VERSION from './primitive/VERSION';
 import negative from './primitive/negative';
 import SPECIALONE from './primitive/SPECIALONE';
@@ -62,6 +63,7 @@ export {
   READAS,
   LAST6DIGITPATTERN,
   SPLITPATTERN,
+  JSINFINITY,
   ZERO,
   ONE,
   TWO,

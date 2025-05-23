@@ -1,4 +1,4 @@
-import {BT} from "."
+import {B2 as BT} from "."
 import THBText from "thai-baht-text";
 import { bahttext } from "bahttext";
 import { convert } from "numbaht";

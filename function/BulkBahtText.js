@@ -1,24 +1,24 @@
 import BahtText from './BahtTextv2';
-import IsMatchInSkipsPattern from './IsMatchInSkipsPattern';
-import { defaultBulkBahtTextPat, defaultBulkBahtTextSkips } from '../const';
+import distinct from '../snippet/distinct';
+import defaultBulkBahtTextPat from '../const/regex/defaultBulkBahtTextPat';
 
 export default (
   str,
   pat = defaultBulkBahtTextPat,
-  skips = defaultBulkBahtTextSkips,
-  ed = false
+  ed = false,
 ) => {
   if (typeof str !== "string") return `Invalid Type`;
-  if (!str) return null;
+  if (!str) return '';
 
   const matches = str.match(pat);
   if (!matches) return str;
 
-  for (const match of matches) {
-    if (IsMatchInSkipsPattern(match, skips)) continue;
-
-    const bahtText = BahtText(match.replace(/[^\d]/g, ""), ed);
-    str = str.replace(match, bahtText);
+  for (const match of distinct(matches)) {
+    let number = match;
+    // If match includes "บาท", extract the number part
+    const numMatch = match.match(/[\d,]+(\.\d+)?/);
+    if (numMatch) number = numMatch[0];
+    str = str.replace(RegExp(match, 'g'), BahtText(number, ed));
   }
 
   return str;

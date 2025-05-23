@@ -1,4 +1,4 @@
-import splitIntFrac from './splitIntFrac';
+import splitIntFrac from '../snippet/splitIntFrac';
 import MoneyLaundering from './MoneyLaundering';
 import PrintBaht from './PrintBaht';
 import IsMoneyValidate from './IsMoneyValidate';

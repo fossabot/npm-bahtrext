@@ -12,7 +12,7 @@ export declare function PrintSatangs(num: string | number): {word: string | unde
 export declare function BahtText(num: string | number): string;
 export declare function BT(num: string | number, ed?: boolean, OL?: boolean, rounding?: 'c' | ''): string | undefined;
 export declare function B2(num: string | number, ed?: boolean, OL?: boolean, rounding?: 'c' | ''): string | undefined;
-export declare function BulkBahtText(nums: Array<string | number>): string | null;
+export declare function BulkBahtText(nums: Array<string | number>): string | undefined;
 export declare function NumText(num: string | number): string | undefined;
 export declare function SatangNum(text: string): string | undefined;
 export declare function TB(num: string | number): string;

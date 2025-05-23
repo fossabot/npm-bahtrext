@@ -1,7 +1,8 @@
 import INFINITY from '../const/primitive/INFINITY';
 import negative from '../const/primitive/negative';
 import BF from './BF';
-import BulkReplace from './BulkReplace';
+import BulkReplace from '../snippet/BulkReplace';
+import ISINFSTR from "./ISINFSTR";
 
 export default (money, ed = false, f = BF, neg = negative) => {
   if (
@@ -9,7 +10,7 @@ export default (money, ed = false, f = BF, neg = negative) => {
     !/^-{2,}/.test(money)
   ) {
     money = BulkReplace(money, "", /^-/);
-    if (money === `1.7976931348623157e+308`) return `${neg}${INFINITY}`
+    if (ISINFSTR(money)) return `${neg}${INFINITY}`
     return `${neg}${f(money, ed)}`;
   }
 

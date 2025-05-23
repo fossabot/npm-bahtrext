@@ -1,4 +1,4 @@
-import BT from "./BT";
+import BT from "./BTv2";
 import TB from "./TB";
 import FULLBAHT from "../const/primitive/FULLBAHT";
 

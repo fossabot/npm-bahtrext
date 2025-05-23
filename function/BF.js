@@ -1,6 +1,6 @@
 import { THAI2ARABICNumerals } from '../const';
 import BT from './BTv2';
-import BulkReplace from './BulkReplace';
+import BulkReplace from '../snippet/BulkReplace';
 
 export default (
   flexmoney,

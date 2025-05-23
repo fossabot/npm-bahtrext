@@ -37,7 +37,7 @@ test('NumText', () => {
 });
 
 test("BF", () => {
-  expect(BF()).toBe(undefined);
+  expect(BF()).toBeUndefined();
   expect(BF(283)).toBe(`Invalid Type`);
   expect(BF(`๑๒๓๔๕๖๗๘๐๙`)).toBe(
     `หนึ่งพันสองร้อยสามสิบสี่ล้านห้าแสนหกหมื่นเจ็ดพันแปดร้อยเก้าบาทถ้วน`
@@ -58,7 +58,7 @@ describe.each([
     expect(func(`4.990001`, false, false, `f`)).toBe(`สี่บาทเก้าสิบเก้าสตางค์`);
   })
   test(`${name} General`, () => {
-    expect(func(`lol`)).toBe(undefined);
+    expect(func(`lol`)).toBeUndefined();
     expect(func(`2000000000000.9`, false, false, `c`)).toBe(`สองล้านล้านบาทเก้าสิบสตางค์`);
     expect(func(`2000000000000.990003`, false, false, `c`)).toBe(`สองล้านล้านหนึ่งบาทถ้วน`);
     expect(func(`2000000000000.99`, false, false, `f`)).toBe(`สองล้านล้านบาทเก้าสิบเก้าสตางค์`);
@@ -97,12 +97,12 @@ describe.each([
     expect(func(`077`)).toBe(`เจ็ดสิบเจ็ดบาทถ้วน`);
     expect(func(`077`, false, true)).toBe(`หกสิบสามบาทถ้วน`);
     expect(func(`0o71`, false, true)).toBe(`ห้าสิบเจ็ดบาทถ้วน`);
-    expect(func(`0o71`)).toBe(undefined);
+    expect(func(`0o71`)).toBeUndefined();
     expect(func(`0o17`, false, true)).toBe(`สิบห้าบาทถ้วน`);
   });
 
   test(`${name} BL`, () => {
-    expect(func(`0B77`)).toBe(undefined);
+    expect(func(`0B77`)).toBeUndefined();
     expect(func(`0B11`)).toBe(`สามบาทถ้วน`);
     expect(func(`0b00101010101001010101011001010010010100100001010010001001`)).toBe(
       `หนึ่งหมื่นสองพันสามล้านเจ็ดแสนสามหมื่นเก้าพันหนึ่งร้อยแปดสิบแปดล้านเจ็ดแสนสองหมื่นแปดพันเก้าร้อยหกสิบเก้าบาทถ้วน`
@@ -115,7 +115,7 @@ test("ABT", () => {
   expect(ABT(-Number.MAX_VALUE)).toBe(`ลบ${INFINITY}`);
   expect(ABT(`${Number.MAX_VALUE}`)).toBe(INFINITY);
   expect(ABT(`-${Number.MAX_VALUE}`, false, true)).toBe(`ลบ${INFINITY}`);
-  expect(ABT(`lol`)).toBe(undefined);
+  expect(ABT(`lol`)).toBeUndefined();
   expect(ABT(37)).toBe(`สามสิบเจ็ดบาทถ้วน`);
   expect(ABT(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`);
   expect(ABT(`123`)).toBe(`หนึ่งร้อยยี่สิบสามบาทถ้วน`);
@@ -149,12 +149,12 @@ test("ABT", () => {
   expect(ABT(9007199254740992n)).toBe(
     `เก้าพันเจ็ดล้านหนึ่งแสนเก้าหมื่นเก้าพันสองร้อยห้าสิบสี่ล้านเจ็ดแสนสี่หมื่นเก้าร้อยเก้าสิบสองบาทถ้วน`
   );
-  expect(ABT(`-0.67`)).toBe(undefined);
+  expect(ABT(`-0.67`)).toBeUndefined();
 });
 
 test("ABT Negative", () => {
   expect(ABT(`-0.67`, false, true)).toBe(`ลบหกสิบเจ็ดสตางค์`);
-  expect(ABT(`--0.67`, false, true)).toBe(undefined);
+  expect(ABT(`--0.67`, false, true)).toBeUndefined();
   expect(ABT(`-2000000000000.00`, false, true)).toBe(`ลบสองล้านล้านบาทถ้วน`);
   expect(ABT(`-123`, false, true)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
   expect(ABT(`-123n`, false, true)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
@@ -184,7 +184,7 @@ test("ABT Negative", () => {
 
 test(`NEG`, () => {
   expect(NEG(`-0.67`)).toBe(`ลบหกสิบเจ็ดสตางค์`);
-  expect(NEG(`--0.67`)).toBe(undefined);
+  expect(NEG(`--0.67`)).toBeUndefined();
   expect(NEG(`-2000000000000.00`)).toBe(`ลบสองล้านล้านบาทถ้วน`);
   expect(NEG(`-123`)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
   expect(NEG(`-8.00`)).toBe(`ลบแปดบาทถ้วน`);
@@ -227,8 +227,8 @@ test('PrintSatangs', () => {
   expect(PrintSatangs(`0`).word).toBe(FULLBAHT);
   expect(PrintSatangs(`00`).word).toBe(FULLBAHT);
   expect(PrintSatangs(`0000`).word).toBe(FULLBAHT);
-  expect(PrintSatangs(`dd`).word).toBe(undefined);
-  expect(PrintSatangs(`999`).word).toBe(undefined);
+  expect(PrintSatangs(`dd`).word).toBeUndefined();
+  expect(PrintSatangs(`999`).word).toBeUndefined();
 })
 
 test(`PrintSatangs 2d+`, () => {
@@ -465,42 +465,42 @@ test(`OB`, () => {
 })
 
 test(`IsValidText`, () => {
-  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านสองสิบล้านหนึ่ง")).toBe(false);
-  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่ง")).toBe(true);
-  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่งล้าน")).toBe(true);
-  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ด@ล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่งล้าน")).toBe(false);
-  expect(IsValidText("สองล้าน")).toBe(true);
-  expect(IsValidText("ล้านล้าน")).toBe(false);
-  expect(IsValidText("สองสอง")).toBe(false);
-  expect(IsValidText("ล้าน")).toBe(false);
-  expect(IsValidText("ล้านล้าน")).toBe(false);
-  expect(IsValidText("ล้านล้านล้าน")).toBe(false);
-  expect(IsValidText("asdf")).toBe(false);
-  expect(IsValidText("123")).toBe(false);
-  expect(IsValidText("")).toBe(false);
-  expect(IsValidText(undefined)).toBe(false);
-  expect(IsValidText(null)).toBe(false);
-  expect(IsValidText(0)).toBe(false);
-  expect(IsValidText(123)).toBe(false);
-  expect(IsValidText(`แสนแสน`)).toBe(false);
-  expect(IsValidText(`ยี่สิบ`)).toBe(true);
-  expect(IsValidText(`ยี่สิบเอ็ด`)).toBe(true);
-  expect(IsValidText(`เอ็ดสิบ`)).toBe(false);
-  expect(IsValidText(`ยี่สิบหนึ่ง`)).toBe(false);
-  expect(IsValidText(`สองสิบ`)).toBe(false);
+  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านสองสิบล้านหนึ่ง")).toBeFalsy();
+  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่ง")).toBeTruthy();
+  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ดล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่งล้าน")).toBeTruthy();
+  expect(IsValidText("สามแสนสองหมื่นห้าสิบเอ็ด@ล้านสองหมื่นสิบล้านยี่สิบล้านหนึ่งล้าน")).toBeFalsy();
+  expect(IsValidText("สองล้าน")).toBeTruthy();
+  expect(IsValidText("ล้านล้าน")).toBeFalsy();
+  expect(IsValidText("สองสอง")).toBeFalsy();
+  expect(IsValidText("ล้าน")).toBeFalsy();
+  expect(IsValidText("ล้านล้าน")).toBeFalsy();
+  expect(IsValidText("ล้านล้านล้าน")).toBeFalsy();
+  expect(IsValidText("asdf")).toBeFalsy();
+  expect(IsValidText("123")).toBeFalsy();
+  expect(IsValidText("")).toBeFalsy();
+  expect(IsValidText(undefined)).toBeFalsy();
+  expect(IsValidText(null)).toBeFalsy();
+  expect(IsValidText(0)).toBeFalsy();
+  expect(IsValidText(123)).toBeFalsy();
+  expect(IsValidText(`แสนแสน`)).toBeFalsy();
+  expect(IsValidText(`ยี่สิบ`)).toBeTruthy();
+  expect(IsValidText(`ยี่สิบเอ็ด`)).toBeTruthy();
+  expect(IsValidText(`เอ็ดสิบ`)).toBeFalsy();
+  expect(IsValidText(`ยี่สิบหนึ่ง`)).toBeFalsy();
+  expect(IsValidText(`สองสิบ`)).toBeFalsy();
 });
 
 test(`IsValidTB`, () => {
-  expect(IsValidTB(`แปดสิบแปดบาท`)).toBe(true);
+  expect(IsValidTB(`แปดสิบแปดบาท`)).toBeTruthy();
 });
 
 test(`LNBT`, () => {
   expect(LNBT(`Googolplex`)).toBe(`Don't Try This`);
   expect(LNBT(`Septillion`)).toBe(`หนึ่งล้านล้านล้านล้านบาทถ้วน`);
-  expect(LNBT(`JumNumKaoEpu`)).toBe(undefined);
+  expect(LNBT(`JumNumKaoEpu`)).toBeUndefined();
   expect(LNBT(1, 0)).toBe(`ศูนย์บาทถ้วน`);
-  expect(LNBT([`asdf`])).toBe(undefined);
-  expect(LNBT('undefined', 234)).toBe(undefined);
+  expect(LNBT([`asdf`])).toBeUndefined();
+  expect(LNBT('undefined', 234)).toBeUndefined();
 });
 
 test(`sep`, () => {
@@ -593,6 +593,6 @@ describe("BR Class", () => {
   });
 
   test("isValid() should return true for valid money", () => {
-    expect(br.isValid).toBe(true); // Adjust based on IsMoneyValidate function
+    expect(br.isValid).toBeTruthy(); // Adjust based on IsMoneyValidate function
   });
 });

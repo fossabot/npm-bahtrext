@@ -61,6 +61,7 @@ npm install bahtrext@1.7.2
 [Chadin Chaipornpisuth](https://chadindev.in.th/)
 
 ## Changes
+- 2.4.0 - Clean Code?
 - 2.3.4 - Infinity
 - 2.2.0 - ES6 [1.7.2]
 - 1.7.1 - apply `Rest Parameters` => add function `BulkReplace`, `applyReplacements`

@@ -1,9 +1,10 @@
 import ABT from './ABT';
 import applyReplacements from '../snippet/applyReplacements';
 import { ONETONINE, REVERSETHAIDIGITWORDS, MILLION, SPECIALONE, SPECIALTWO, BAHT, FULLBAHT } from "../const";
+import defaultSeparator from "../const/defaultConfig/separator"
 
-export default (num, separator = '-') => {
-  let ret = ABT(num, true);
+export default (num, separator = defaultSeparator) => {
+  let ret = ABT(num, { ed: true });
 
   const replaceWithSeparator = (arr) => {
     arr.forEach((i) => {

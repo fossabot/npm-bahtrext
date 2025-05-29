@@ -5,9 +5,11 @@ import MoneyInvalid from '../snippet/MoneyInvalid';
 import BahtText from './BahtTextv2';
 import INFINITY from '../const/primitive/INFINITY';
 import ISINFSTR from "./ISINFSTR";
+import { ed, OL, rounding } from '../const/defaultConfig';
 
-export default (money, ed = false, OL = false, rounding = '') => {
-    if (ISINFSTR(money)) return INFINITY
+export default (money, config = { ed, OL, rounding }) => {
+    if (ISINFSTR(money)) return INFINITY;
+    const { ed, OL, rounding } = config;
     if (OL && isOctal(money)) {
         money = toDec(money);
     } else if (isBin(money)) {
@@ -18,9 +20,11 @@ export default (money, ed = false, OL = false, rounding = '') => {
 
     const rBahtText = BahtText(
         money,
-        ed,
-        rounding,
-        MoneyInvalid
+        {
+            ed,
+            rounding,
+            ClErr: () => MoneyInvalid,
+        }
     );
 
     return rBahtText;

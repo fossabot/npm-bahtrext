@@ -12,13 +12,13 @@ const getDigit = (d) => {
   let w = "";
   switch (d) {
     case 2:
-      w += `${SPECIALTWO}${TEN}`;
+      w = `${SPECIALTWO}${TEN}`;
       break;
     case 1:
-      w += TEN;
+      w = TEN;
       break;
     default:
-      w += `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[4]}`;
+      w = `${THAINUMBERWORDS[d]}${REVERSETHAIDIGITWORDS[4]}`;
   }
   return w;
 };

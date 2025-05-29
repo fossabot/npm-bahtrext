@@ -6,6 +6,7 @@ import {
   BAHT,
   THB,
 } from './const';
+import { ed } from "./const/defaultConfig"
 import {
   MoneyLaundering,
   IsMoneyValidate,
@@ -39,7 +40,7 @@ class BR {
   #ed;
   #version;
   #log;
-  constructor(num, ed = false) {
+  constructor(num) {
     this.#num = num || "";
     this.#ed = ed;
     this.#version = VERSION;
@@ -84,6 +85,7 @@ class BR {
   get num() { return TB(this.auto) }
   get flex() { return BF(this.#num) }
   get neg() { return NEG(this.#num) }
+  get sep() { return SEP(this.#num) }
   get bahttext() { return BahtText(this.#num) }
   get bathtext() { return `You spelled it wrong.` }
   get clean() { return MoneyLaundering(this.#num) }
@@ -98,7 +100,6 @@ class BR {
     const [, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
     return result;
   }
-
 
   get printBath() { return `You spelled it wrong.` };
 

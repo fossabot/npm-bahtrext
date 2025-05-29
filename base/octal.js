@@ -1,7 +1,7 @@
 import { octalRegex1, octalRegex2 } from '../const';
 import toDec from './base';
 
-const isOctal = (money) => {
+export const isOctal = (money) => {
   if (typeof money !== `string`) return undefined;
   if (/__/i.test(money)) return false;
 
@@ -13,6 +13,6 @@ const isOctal = (money) => {
 
   return octalRegex1.test(money) || octalRegex2.test(money);
 };
-const toDecOctal = (num) => toDec(num, 8, octalRegex1, /^0+o?/);
 
-export { isOctal, toDecOctal };
+export const toDecOctal = (num) => toDec(num, 8, octalRegex1, /^0+o?/);
+

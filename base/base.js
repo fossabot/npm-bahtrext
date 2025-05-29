@@ -1,6 +1,6 @@
 import { sum, multiply, pow } from 'operation-strint';
 
-const toDec = (num, base, regex, replaceRegex, charToDec = (i) => i) => {
+export default (num, base, regex, replaceRegex, charToDec = (i) => i) => {
   if (!regex.test(num)) return num;
   num = num.replace(replaceRegex, '');
 
@@ -12,5 +12,3 @@ const toDec = (num, base, regex, replaceRegex, charToDec = (i) => i) => {
       return sum(acc, thispos_val) || "0";
     }, "0");
 };
-
-export default toDec;

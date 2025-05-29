@@ -1,8 +1,9 @@
 import hundredThousandToOne from './hundredThousandToOne';
 import LeadingSpecialOneToOne from './LeadingSpecialOneToOne';
 import { MILLION, BAHT, LAST6DIGITPATTERN } from '../const';
+import defaultEd from "../const/defaultConfig/ed"
 
-export default (money, ed = false) => {
+export default (money, ed = defaultEd) => {
   if (!money) return ``;
 
   const newMoney = [];

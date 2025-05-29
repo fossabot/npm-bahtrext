@@ -1,7 +1,7 @@
 import hexadecRegex from '../const/regex/hexadecRegex';
 import toDec from './base';
 
-const isHex = (money) => {
+export const isHex = (money) => {
   if (typeof money !== `string`) return undefined;
   if (/__/i.test(money)) return false;
   money = money.replace(/(?<=[\da-f])_(?=[\da-f])/gi, "");
@@ -17,10 +17,6 @@ const hexToDecMap = {
   f: "15",
 };
 
-const charToDec = (atof) => {
-  return hexToDecMap[atof.toLowerCase()] || atof;
-};
+export const charToDec = atof => hexToDecMap[atof.toLowerCase()] || atof;
 
-const toHex = (num) => toDec(num, 16, hexadecRegex, /^0x/i, charToDec);
-
-export { isHex, toHex, charToDec };
+export const toHex = num => toDec(num, 16, hexadecRegex, /^0x/i, charToDec);

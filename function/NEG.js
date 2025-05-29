@@ -11,8 +11,8 @@ export default (money, ed = false, f = BF, neg = negative) => {
   ) {
     money = BulkReplace(money, "", /^-/);
     if (ISINFSTR(money)) return `${neg}${INFINITY}`
-    return `${neg}${f(money, ed)}`;
+    return `${neg}${f(money, { ed })}`;
   }
 
-  return f(money, ed);
+  return f(money, { ed });
 };

@@ -6,15 +6,21 @@ import PrintSatangs from './PrintSatangs';
 import MoneyInvalid from '../snippet/MoneyInvalid';
 import { THAINUMBERWORDS, BAHT, FULLBAHT, } from "../const"
 import { sum } from "operation-strint"
+import InvalidType from "../const/error/InvalidType"
+import { ed, rounding } from "../const/defaultConfig"
 
 export default (
     money,
-    ed = false,
-    rounding = ``,
-    ClErr = MoneyInvalid,
+    options = {
+        ed,
+        rounding,
+        ClErr: () => MoneyInvalid,
+    }
 ) => {
+    const { ed, rounding, ClErr } = options;
+
     if (!money) return undefined;
-    if (typeof money !== "string") return `"Invalid Type"`;
+    if (typeof money !== "string") return InvalidType;
 
     const cleanedMoney = MoneyLaundering(money);
     if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {

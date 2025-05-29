@@ -4,6 +4,7 @@ import IsMoneyValidate from "./IsMoneyValidate";
 import PrintBaht from "./PrintBaht";
 import PrintSatangs from "./PrintSatangs";
 import BahtText from "./BahtText";
+import BahtTextv2 from "./BahtTextv2";
 import BT from "./BT";
 import B2 from "./BTv2";
 import BF from "./BF";
@@ -27,6 +28,7 @@ export {
   PrintBaht,
   PrintSatangs,
   BahtText,
+  BahtTextv2,
   BT,
   B2,
   BF,

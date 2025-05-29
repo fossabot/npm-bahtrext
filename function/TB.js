@@ -4,10 +4,11 @@ import { padWithLeadingZeros, removeLeadingingZeros } from '../snippet';
 import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS';
 import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const';
 import BulkReplace from '../snippet/BulkReplace';
+import InvalidString from "../const/error/InvalidString"
 
 // Converts Thai Baht text (BT) to a numeric string representation.
 // Returns the numeric value as a string, or the error string if conversion fails.
-export default (BT, error = `Invalid String`) => {
+export default (BT, error = InvalidString) => {
   // If BT ends with "บาท", append "ถ้วน"
   if (BT.endsWith(BAHT)) BT = `${BT}${FULLBAHT}`;
   // If BT does not end with "สตางค์" or "ถ้วน", return error

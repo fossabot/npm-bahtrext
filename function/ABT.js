@@ -1,16 +1,20 @@
 import NEG from './NEG';
 import BF from './BF';
 import iTHBText from './iTHBText';
+import { negative } from '../const';
+import {ed, allowNeg} from "../const/defaultConfig"
 
-export default (money, ed = false, allow_neg = false) => {
+export default (money, defaultConfig = {ed, allowNeg}) => {
   if (!money) return undefined;
+  
+  const { ed, allowNeg } = defaultConfig;
 
   if (["number", "bigint"].includes(typeof money)) {
-    return money < 0 ? `ลบ${iTHBText(-money)}` : iTHBText(money);
+    return money < 0 ? `${negative}${iTHBText(-money)}` : iTHBText(money);
   }
 
   if (typeof money === "string") {
-    return allow_neg ? NEG(money, ed) : BF(money, ed);
+    return allowNeg ? NEG(money, ed) : BF(money, { ed });
   }
 
   return undefined;

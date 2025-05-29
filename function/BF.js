@@ -1,13 +1,19 @@
 import { THAI2ARABICNumerals } from '../const';
 import BT from './BTv2';
 import BulkReplace from '../snippet/BulkReplace';
+import InvalidType from "../const/error/InvalidType";
+import ed from "../const/defaultConfig/ed"
+import OL from "../const/defaultConfig/OL"
 
 export default (
   flexmoney,
-  ed = false,
-  InvalidType = `Invalid Type`,
-  OL = false
+  options = {
+    ed,
+    OL,
+    InvalidType,
+  }
 ) => {
+  const { ed, OL, InvalidType } = options;
   if (!flexmoney) return undefined;
   if (typeof flexmoney !== "string") return InvalidType;
 
@@ -16,5 +22,5 @@ export default (
     flexmoney
   );
 
-  return BT(money, ed, OL);
+  return BT(money, { ed, OL });
 };

@@ -6,6 +6,7 @@ import IsMoneyValidate from './IsMoneyValidate';
 import PrintSatangs from './PrintSatangs';
 import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const"
 import { sum } from "operation-strint"
+import InvalidType from '../const/error/InvalidType';
 
 export default (
   money,
@@ -16,7 +17,7 @@ export default (
   arrow = READAS,
 ) => {
   if (!money) return undefined;
-  if (typeof money !== "string") return `"Invalid Type"`;
+  if (typeof money !== "string") return InvalidType;
 
   const cleanedMoney = MoneyLaundering(money);
   if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {

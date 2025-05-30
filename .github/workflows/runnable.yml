@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
+          npm install
 
       - name: Run with ES6
         run: npm run test

@@ -51,7 +51,7 @@ class BR {
     this.#version = VERSION;
     if (typeof num === "object") {
       console.error("Invalid type")
-      return;
+      return this;
     }
     try {
       this.#num = IsMoneyValidate(num) ? num : TB(num);
@@ -59,20 +59,25 @@ class BR {
     } catch (e) {
       console.error(e)
     }
+    return this;
   }
 
   toggleed() {
     this.#ed = !this.#ed;
+    return this;
   }
 
   sum(num) {
-    this.#num = sum(`${this.#num}`, `${num}`)
+    this.#num = sum(`${this.#num}`, `${num}`);
+    return this;
   }
   minus(num) {
-    this.#num = minus(`${this.#num}`, `${num}`)
+    this.#num = minus(`${this.#num}`, `${num}`);
+    return this;
   }
   pow(num) {
-    this.#num = pow(`${this.#num}`, `${num}`)
+    this.#num = pow(`${this.#num}`, `${num}`);
+    return this;
   }
 
   get version() { return this.#version }
@@ -80,25 +85,30 @@ class BR {
   get log() { return this.#log }
 
   get auto() { return ABT(this.#num, this.#ed) }
-  get text() { return B2(this.#num, this.#ed) }
-  get b() { return B2(this.#num, this.#ed) }
+  get text() {
+    const result = B2(this.#num, this.#ed);
+    return typeof result === 'string' ? result : '';
+  }
   get num() { return TB(this.auto) }
   get flex() { return BF(this.#num) }
   get neg() { return NEG(this.#num) }
   get sep() { return SEP(this.#num) }
-  get bahttext() { return BahtText(this.#num) }
+  get bahttext() {
+    const result = BahtText(this.#num);
+    return typeof result === 'string' ? result : '';
+  }
   get bathtext() { return `You spelled it wrong.` }
   get clean() { return MoneyLaundering(this.#num) }
   get currency() { return THB.format(this.clean) }
 
   get printBaht() {
     const [, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
-    return result;
+    return result || '';
   }
 
   get printStangs() {
     const [, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
-    return result;
+    return result || '';
   }
 
   get printBath() { return `You spelled it wrong.` };

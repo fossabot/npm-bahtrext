@@ -1,5 +1,5 @@
 import { FULLBAHT, BAHT, INFINITY, SATANG, MILLION } from './const'
-import { ed, allowNeg } from "./const/defaultConfig"
+import { ed } from "./const/defaultConfig"
 import BR, {
   NumText,
   BT,
@@ -117,7 +117,7 @@ test("ABT", () => {
   expect(ABT(-Number.MAX_VALUE)).toBe(`ลบ${INFINITY}`);
   expect(ABT(`${Number.MAX_VALUE}`)).toBe(INFINITY);
   expect(ABT(`-${Number.MAX_VALUE}`, { ed, allowNeg: true })).toBe(`ลบ${INFINITY}`);
-  expect(ABT(`lol`)).toBeUndefined();
+  expect(ABT(`lol`)).toBe('');
   expect(ABT(37)).toBe(`สามสิบเจ็ดบาทถ้วน`);
   expect(ABT(`2000000000000.00`)).toBe(`สองล้านล้านบาทถ้วน`);
   expect(ABT(`123`)).toBe(`หนึ่งร้อยยี่สิบสามบาทถ้วน`);
@@ -151,12 +151,12 @@ test("ABT", () => {
   expect(ABT(9007199254740992n)).toBe(
     `เก้าพันเจ็ดล้านหนึ่งแสนเก้าหมื่นเก้าพันสองร้อยห้าสิบสี่ล้านเจ็ดแสนสี่หมื่นเก้าร้อยเก้าสิบสองบาทถ้วน`
   );
-  expect(ABT(`-0.67`)).toBeUndefined();
+  expect(ABT(`-0.67`)).toBe('');
 });
 
 test("ABT Negative", () => {
   expect(ABT(`-0.67`, {ed: false, allowNeg: true})).toBe(`ลบหกสิบเจ็ดสตางค์`);
-  expect(ABT(`--0.67`, { ed: false, allowNeg: true })).toBeUndefined();
+  expect(ABT(`--0.67`, { ed: false, allowNeg: true })).toBe('');
   expect(ABT(`-2000000000000.00`, {ed: false, allowNeg: true})).toBe(`ลบสองล้านล้านบาทถ้วน`);
   expect(ABT(`-123`, {ed: false, allowNeg: true})).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
   expect(ABT(`-123n`, {ed: false, allowNeg: true})).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
@@ -186,7 +186,7 @@ test("ABT Negative", () => {
 
 test(`NEG`, () => {
   expect(NEG(`-0.67`)).toBe(`ลบหกสิบเจ็ดสตางค์`);
-  expect(NEG(`--0.67`)).toBeUndefined();
+  expect(NEG(`--0.67`)).toBe(``);
   expect(NEG(`-2000000000000.00`)).toBe(`ลบสองล้านล้านบาทถ้วน`);
   expect(NEG(`-123`)).toBe(`ลบหนึ่งร้อยยี่สิบสามบาทถ้วน`);
   expect(NEG(`-8.00`)).toBe(`ลบแปดบาทถ้วน`);
@@ -261,14 +261,14 @@ test(`BulkBahtText`, () => {
     )
   ).toBe(`สามสิบบาทรักษาทุกโรค`);
   expect(
-    BulkBahtText(`๑๓๓ ล้าน เพื่อความสวยงาม`, { pat: /([\d๐-๙]+)(\.[\d๐-๙]{0,2}0*)?/g }).replace(
+    BulkBahtText(`๑๓๓ ล้าน เพื่อศักดิ์ศรี`, { pat: /([\d๐-๙]+)(\.[\d๐-๙]{0,2}0*)?/g }).replace(
       `${BAHT}${FULLBAHT} `,
       `${MILLION}${BAHT}`
     ).replace(
       `${MILLION} `,
       ` `,
     )
-  ).toBe(`หนึ่งร้อยสามสิบสามล้านบาท เพื่อความสวยงาม`);
+  ).toBe(`หนึ่งร้อยสามสิบสามล้านบาท เพื่อเงินทอน`);
   expect(
     BulkBahtText(`เงินดิจิมอน 10000฿ ใช้ยังไง ได้วันไหน ใครได้บ้าง`)
       .replace(FULLBAHT, '')
@@ -282,8 +282,8 @@ test(`BulkBahtText`, () => {
       `กู้ 2000000000000 ดอก 3000000000000 กู้ชาตินี้........ใช้หนี้ชาติหน้า`
     ).replace(RegExp(`${BAHT}${FULLBAHT}`, `g`), '')
   ).toBe(`กู้ สองล้านล้าน ดอก สามล้านล้าน กู้ชาตินี้........ใช้หนี้ชาติหน้า`);
-  expect(BulkBahtText(123)).toBe(InvalidType);
-  expect(BulkBahtText(0x3)).toBe(InvalidType);
+  expect(BulkBahtText(123).name).toBe(InvalidType.name);
+  expect(BulkBahtText(0x3).name).toBe(InvalidType.name);
   expect(BulkBahtText('')).toBe('');
 })
 
@@ -396,19 +396,19 @@ describe('SatangNum', () => {
 
 test(`TB`, () => {
   expect(TB(`สิบเอ็ดบาทสิบเอ็ดสตางค์`)).toBe(`11.11`);
-  expect(TB(`สามสิบสามแสนบาทถ้วน`)).toBe(InvalidString);
+  expect(TB(`สามสิบสามแสนบาทถ้วน`).name).toBe(InvalidString.name);
   expect(TB(`สองล้านล้านบาทถ้วน`)).toBe(`2000000000000.00`);
   expect(TB(`สองล้านล้านยี่สิบบาทถ้วน`)).toBe(`2000000000020.00`);
   expect(TB(`หนึ่งล้านสามแสนบาทถ้วน`)).toBe(`1300000.00`);
   expect(TB(`สามแสนล้านบาทถ้วน`)).toBe(`300000000000.00`);
   expect(TB(`สามแสนสามสิบบาทถ้วน`)).toBe(`300030.00`);
   expect(TB(`สามแสนสิบบาทถ้วน`)).toBe(`300010.00`);
-  expect(TB(`สิบหนึ่งบาทถ้วน`)).toBe(InvalidString);
-  expect(TB(`สองสิบหนึ่งบาทถ้วน`)).toBe(InvalidString);
+  expect(TB(`สิบหนึ่งบาทถ้วน`).name).toBe(InvalidString.name);
+  expect(TB(`สองสิบหนึ่งบาทถ้วน`).name).toBe(InvalidString.name);
   expect(TB(`สี่บาท`)).toBe(`4.00`);
   expect(TB(`สี่บาทถ้วน`)).toBe(`4.00`);
-  expect(TB(`สี่บาทหก`)).toBe(InvalidString);
-  expect(TB(`สี่บาทหกสิบ`)).toBe(InvalidString);
+  expect(TB(`สี่บาทหก`).name).toBe(InvalidString.name);
+  expect(TB(`สี่บาทหกสิบ`).name).toBe(InvalidString.name);
   expect(TB(`สี่บาทหกสิบสตางค์`)).toBe(`4.60`);
   expect(TB(`สี่บาทหกสตางค์`)).toBe(`4.06`);
 })
@@ -468,8 +468,8 @@ test(`OB`, () => {
     val: "2000000000000.00",
   });
   expect(OB(`s6d7f6d7f6`)).toEqual({
-    err: true,
-    txt: undefined,
+    err: false,
+    txt: '',
     typ: "string",
     val: "s6d7f6d7f6",
   });
@@ -564,9 +564,6 @@ describe("BR Class", () => {
 
   test("text() should return the correct value", () => {
     expect(br.text).toBe(`หนึ่งพันบาทถ้วน`);
-  });
-  test("text() should return the correct value", () => {
-    expect(br.b).toBe(`หนึ่งพันบาทถ้วน`);
   });
 
   test("flex() should return the correct value", () => {

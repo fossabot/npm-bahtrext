@@ -16,12 +16,12 @@ export default (
   ClErr = MoneyInvalid,
   arrow = READAS,
 ) => {
-  if (!money) return undefined;
-  if (typeof money !== "string") return InvalidType;
+  if (!money) return '';
+  if (typeof money !== "string") return String(InvalidType);
 
   const cleanedMoney = MoneyLaundering(money);
   if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {
-    return ClErr(money);
+    return String(ClErr(money));
   }
 
   const [moneyFull, moneyInt, moneyFrac] = splitIntFrac(cleanedMoney);

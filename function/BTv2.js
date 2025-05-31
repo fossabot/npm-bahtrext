@@ -8,7 +8,7 @@ import ISINFSTR from "./ISINFSTR";
 import { ed, OL, rounding } from '../const/defaultConfig';
 
 export default (money, config = { ed, OL, rounding }) => {
-    if (ISINFSTR(money)) return INFINITY;
+    if (ISINFSTR(money)) return String(INFINITY);
     const { ed, OL, rounding } = config;
     if (OL && isOctal(money)) {
         money = toDec(money);
@@ -27,5 +27,6 @@ export default (money, config = { ed, OL, rounding }) => {
         }
     );
 
-    return rBahtText;
+    // Always return a string
+    return typeof rBahtText === 'string' ? rBahtText : '';
 };

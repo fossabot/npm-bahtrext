@@ -49,6 +49,7 @@ import octalRegex2 from './regex/octalRegex2';
 import binaryRegex from './regex/binaryRegex';
 import hexadecRegex from './regex/hexadecRegex';
 import THB from './THB';
+import { InvalidString, InvalidType } from './error';
 
 export {
   GoogleSheetsCellCharactersLimit,
@@ -99,4 +100,6 @@ export {
   THB,
   negative,
   INFINITY,
+  InvalidString,
+  InvalidType,
 };

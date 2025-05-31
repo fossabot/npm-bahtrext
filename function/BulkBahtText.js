@@ -1,6 +1,4 @@
-import BahtText from './BahtTextv2';
 import BF from "./BF"
-import distinct from '../snippet/distinct';
 import defaultBulkBahtTextPat from '../const/defaultConfig/BulkBahtTextPat';
 import InvalidType from "../const/error/InvalidType"
 import ed from '../const/defaultConfig/ed';
@@ -17,16 +15,15 @@ export default (
 
   const { pat, ed } = options;
 
-  const matches = str.match(pat);
-  if (!matches) return str;
-
-  for (const match of distinct(matches)) {
-    let number = match;
-    // If match includes "บาท", extract the number part
-    const numMatch = match.match(/[\d,]+(\.\d+)?/);
+  let result = str;
+  let regex = pat instanceof RegExp && !pat.global ? new RegExp(pat.source, pat.flags + 'g') : pat;
+  let match;
+  while ((match = regex.exec(str)) !== null) {
+    let number = match[0];
+    const numMatch = number.match(/[\d,]+(\.\d+)?/);
     if (numMatch) number = numMatch[0];
-    str = str.replace(RegExp(match, 'g'), BF(number, ed));
+    result = result.replace(match[0], BF(number, ed));
   }
 
-  return str;
+  return result;
 };

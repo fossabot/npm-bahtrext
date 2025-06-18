@@ -9,8 +9,8 @@ export default (money, ed = defaultEd) => {
   const newMoney = [];
 
   while (money) {
-    const selectedupto6digit = money.match(LAST6DIGITPATTERN)[0];
-    newMoney.push(`${hundredThousandToOne(selectedupto6digit, ed)}${MILLION}`);
+    const selectedUpTo6digit = money.match(LAST6DIGITPATTERN)[0];
+    newMoney.push(`${hundredThousandToOne(selectedUpTo6digit, ed)}${MILLION}`);
     money = money.replace(LAST6DIGITPATTERN, "");
   }
 

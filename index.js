@@ -31,7 +31,7 @@ import {
   LeadingSpecialOneToOne,
 } from './function';
 
-import { removeLeadingingZeros, repeat } from './snippet';
+import { removeLeadingZeros, repeat } from './snippet';
 
 import { sum, minus, pow } from "operation-strint"
 
@@ -114,7 +114,7 @@ class BR {
   get printBath() { return `You spelled it wrong.` };
 
 
-  get trim() { return removeLeadingingZeros(this.#num) }
+  get trim() { return removeLeadingZeros(this.#num) }
   get isValid() { return IsMoneyValidate(this.#num) }
   
   get isInfinity() { return ISINFSTR(this.#num) }
@@ -123,7 +123,7 @@ class BR {
 export default BR;
 export {
   MoneyLaundering,
-  removeLeadingingZeros,
+  removeLeadingZeros,
   IsMoneyValidate,
   PrintBaht,
   PrintSatangs,

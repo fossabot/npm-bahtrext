@@ -11,7 +11,7 @@ export declare const BAHT: `บาท`;
 export declare const THB: Intl.NumberFormat;
 
 export declare function MoneyLaundering(num: string): string;
-export declare function removeLeadingingZeros(num: string): string;
+export declare function removeLeadingZeros(num: string): string;
 export declare function IsMoneyValidate(num: string | number): boolean;
 export declare function PrintBaht(num: string, ed?: boolean): string;
 export declare function PrintSatangs(num: string | number, rounding?: "c" | "f" | ""): {word: string | undefined, carry: '0' | '1'};

@@ -1,6 +1,6 @@
 import SatangNum from './SatangNum';
 import IsValidText from './IsValidText';
-import { padWithLeadingZeros, removeLeadingingZeros } from '../snippet';
+import { padWithLeadingZeros, removeLeadingZeros } from '../snippet';
 import THAINUMBERWORDS from '../const/array/THAINUMBERWORDS';
 import { FULLBAHT, BAHT, SATANG, MILLION, ZERO } from '../const';
 import BulkReplace from '../snippet/BulkReplace';
@@ -65,7 +65,7 @@ export default (BT, error = InvalidString) => {
   }
 
   // Combine all baht groups, remove leading zeros, and append satang
-  return `${removeLeadingingZeros(moneyBahts.toReversed().join(""))}.${SatangNum(
+  return `${removeLeadingZeros(moneyBahts.toReversed().join(""))}.${SatangNum(
     moneySatang.replace(SATANG, '')
   )}`;
 };

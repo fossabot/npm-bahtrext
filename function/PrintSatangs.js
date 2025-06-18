@@ -16,8 +16,8 @@ export default (satangs, rounding = defaultRounding) => {
 
   let first2digit = satangs.slice(0, 2);
   if (rounding === ceiling) {
-    const therest = satangs.slice(2);
-    if (/^\d*[1-9]+/.exec(therest) && /^\d*$/.exec(therest)) {
+    const theRest = satangs.slice(2);
+    if (/^\d*[1-9]+/.exec(theRest) && /^\d*$/.exec(theRest)) {
       first2digit = sum(`1`, first2digit);
     }
     satangs = first2digit;
@@ -25,8 +25,8 @@ export default (satangs, rounding = defaultRounding) => {
 
   if (satangs === `100`) return { word: FULLBAHT, carry: `1` };
 
-  const satangword = `${SatangFirstDigit(satangs[0])}${SatangSecondDigit(
+  const satangWord = `${SatangFirstDigit(satangs[0])}${SatangSecondDigit(
     satangs
   )}${SATANG}`;
-  return { word: satangword, carry: `0` };
+  return { word: satangWord, carry: `0` };
 };

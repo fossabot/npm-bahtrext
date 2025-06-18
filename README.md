@@ -2,10 +2,21 @@
 ![Download/month](https://img.shields.io/npm/dm/bahtrext.svg)
 ![Total Download](https://img.shields.io/npm/dt/bahtrext.svg)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=bugs)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
+
 ## Install
 ### ES6
 ```
-npm install bahtrext@2.3.4
+npm install bahtrext@2.5.0
 ```
 ### ES5
 ```
@@ -85,3 +96,29 @@ npm install bahtrext@1.7.2
 - 1.0.9 - add TB (reverse BT)
 - 1.0.8 - add SatangNum
 - 1.0.6 - BT is main function
+
+## Flow
+```mermaid
+flowchart TD
+    A(ABT) -->|input type| B{Type}
+    B --> |Number| C(iTHBText)
+    B --> |String| D{Allow Negative ?}
+    D --> |True| E(NEG)
+    D --> |False| F(BF)
+    E --> F(BF)
+    F --> G(BT)
+    G --> |Convert Number to Decimal| H(BahtText)
+    H --> I(MoneyLaundering)
+    I --> J(splitIntFrac)
+    J --> |moneyFull| K[/moneyFull/]
+    J --> |moneyInt| L[/moneyInt/]
+    J --> |moneyFrac| M[/moneyFrac/]
+    K --> |moneyFull| N{Match Zero ?}
+    N --> |True| P[/Zero/]
+    P --> ZZZ(return)
+    M --> |moneyFrac| O(PrintSatangs)
+    O --> |satang_part| R
+    L --> |moneyInt| Q(PrintBaht)
+    Q --> |baht_part| R(Concat)
+    R --> ZZZ
+```

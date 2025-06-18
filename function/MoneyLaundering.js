@@ -1,6 +1,6 @@
-import removeLeadingingZeros from '../snippet/removeLeadingingZeros';
+import removeLeadingZeros from '../snippet/removeLeadingZeros';
 import BulkReplace from '../snippet/BulkReplace';
 
 export default (money) => {
-  return removeLeadingingZeros(BulkReplace(money, "", /[,\s_]/g));
+  return removeLeadingZeros(BulkReplace(money, "", /[,\s_]/g));
 };

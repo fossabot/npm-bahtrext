@@ -1,6 +1,6 @@
 import MoneyInvalid from './MoneyInvalid';
 import padWithLeadingZeros from './padWithLeadingZeros';
-import removeLeadingingZeros from './removeLeadingingZeros';
+import removeLeadingZeros from './removeLeadingZeros';
 import splitIntFrac from './splitIntFrac';
 import repeat from './repeat';
 import IsMatchInRegexPatterns from './IsMatchInRegexPatterns';
@@ -11,7 +11,7 @@ import ISGREQ from './ISGREQ';
 export {
   MoneyInvalid,
   padWithLeadingZeros,
-  removeLeadingingZeros,
+  removeLeadingZeros,
   splitIntFrac,
   repeat,
   IsMatchInRegexPatterns,

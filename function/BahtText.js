@@ -7,6 +7,7 @@ import PrintSatangs from './PrintSatangs';
 import { THAINUMBERWORDS, BAHT, FULLBAHT, THB, READAS } from "../const"
 import { sum } from "operation-strint"
 import InvalidType from '../const/error/InvalidType';
+import invariant from 'tiny-invariant';
 
 export default (
   money,
@@ -17,7 +18,7 @@ export default (
   arrow = READAS,
 ) => {
   if (!money) return '';
-  if (typeof money !== "string") return String(InvalidType);
+  invariant(typeof money === "string", String(InvalidType));
 
   const cleanedMoney = MoneyLaundering(money);
   if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {

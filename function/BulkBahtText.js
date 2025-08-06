@@ -2,6 +2,7 @@ import BF from "./BF"
 import defaultBulkBahtTextPat from '../const/defaultConfig/BulkBahtTextPat';
 import InvalidType from "../const/error/InvalidType"
 import ed from '../const/defaultConfig/ed';
+import invariant from 'tiny-invariant';
 
 export default (
   str,
@@ -10,7 +11,7 @@ export default (
     ed,
   }
 ) => {
-  if (typeof str !== "string") return InvalidType;
+  invariant(typeof str === "string", String(InvalidType));
   if (!str) return '';
 
   const { pat, ed } = options;

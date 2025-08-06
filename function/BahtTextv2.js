@@ -8,6 +8,7 @@ import { THAINUMBERWORDS, BAHT, FULLBAHT, } from "../const"
 import { sum } from "operation-strint"
 import InvalidType from "../const/error/InvalidType"
 import { ed, rounding } from "../const/defaultConfig"
+import invariant from 'tiny-invariant';
 
 export default (
     money,
@@ -20,7 +21,7 @@ export default (
     const { ed, rounding, ClErr } = options;
 
     if (!money) return undefined;
-    if (typeof money !== "string") return InvalidType;
+    invariant(typeof money === "string", String(InvalidType));
 
     const cleanedMoney = MoneyLaundering(money);
     if (!IsMoneyValidate(cleanedMoney, rounding) || money === `.`) {

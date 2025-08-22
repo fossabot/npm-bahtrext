@@ -29,7 +29,8 @@ import {
   SEP,
   ISINFSTR,
   LeadingSpecialOneToOne,
-} from './function';
+  PrintDotMRR,
+} from "./function";
 
 import { removeLeadingZeros, repeat } from './snippet';
 
@@ -105,6 +106,10 @@ class BR {
     const [, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
     return result || '';
   }
+  get printMRR() {
+    const [, result] = tryCatch(() => this.auto.replace(/บาท.+/g, BAHT));
+    return result || "";
+  }
 
   get printStangs() {
     const [, result] = tryCatch(() => this.auto.replace(/.+บาท/g, ``));
@@ -148,4 +153,5 @@ export {
   NEG,
   ISINFSTR,
   VERSION,
+  PrintDotMRR,
 };

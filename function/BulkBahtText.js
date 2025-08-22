@@ -11,7 +11,7 @@ export default (
     ed,
   }
 ) => {
-  invariant(typeof str === "string", String(InvalidType));
+  if (typeof str !== "string") return InvalidType;
   if (!str) return '';
 
   const { pat, ed } = options;

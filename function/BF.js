@@ -4,6 +4,7 @@ import BulkReplace from '../snippet/BulkReplace';
 import InvalidType from "../const/error/InvalidType";
 import ed from "../const/defaultConfig/ed"
 import OL from "../const/defaultConfig/OL"
+import TBF from './TBF';
 
 export default (
   flexmoney,
@@ -17,10 +18,7 @@ export default (
   if (!flexmoney) return undefined;
   if (typeof flexmoney !== "string") return InvalidType;
 
-  let money = THAI2ARABICNumerals.reduce(
-    (acc, { th, a }) => BulkReplace(acc, a, new RegExp(th, `g`)),
-    flexmoney
-  );
+  let money = TBF(flexmoney);
 
   return BT(money, { ed, OL });
 };

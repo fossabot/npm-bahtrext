@@ -13,6 +13,8 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
 
+![Alt](https://repobeats.axiom.co/api/embed/8886441cca310333aaa0f1c2fd34f2ad39e6b5bb.svg "Repobeats analytics image")
+
 ## Install
 ### ES6
 ```

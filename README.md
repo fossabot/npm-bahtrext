@@ -15,6 +15,15 @@
 
 ![Alt](https://repobeats.axiom.co/api/embed/0063bf6c1488724103db9a5bbc5c818064e6bd82.svg "Repobeats analytics image")
 
+## OpenTelemetry
+
+This project is instrumented with OpenTelemetry. To enable tracing, you will need to configure the OTLP exporter by setting the following environment variables:
+
+- `OTEL_EXPORTER_OTLP_ENDPOINT`
+- `OTEL_EXPORTER_OTLP_HEADERS`
+
+For more information, please refer to the OpenTelemetry documentation.
+
 ## Install
 ### ES6
 ```

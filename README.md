@@ -27,7 +27,7 @@ For more information, please refer to the OpenTelemetry documentation.
 ## Install
 ### ES6
 ```
-npm install bahtrext@2.5.0
+npm install bahtrext@2.5.2
 ```
 ### ES5
 ```

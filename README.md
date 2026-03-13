@@ -1,6 +1,7 @@
 # [BahtRext](https://pinghuskar.github.io/npm-bahtrext/)
 ![Download/month](https://img.shields.io/npm/dm/bahtrext.svg)
 ![Total Download](https://img.shields.io/npm/dt/bahtrext.svg)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPingHuskar%2Fnpm-bahtrext.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FPingHuskar%2Fnpm-bahtrext?ref=badge_shield)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=PingHuskar_npm-bahtrext&metric=bugs)](https://sonarcloud.io/summary/new_code?id=PingHuskar_npm-bahtrext)
@@ -124,3 +125,7 @@ flowchart TD
     Q --> |baht_part| R(Concat)
     R --> ZZZ
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPingHuskar%2Fnpm-bahtrext.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FPingHuskar%2Fnpm-bahtrext?ref=badge_large)
